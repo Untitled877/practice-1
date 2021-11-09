@@ -38,4 +38,51 @@
 .part1 > .father5 > .child5 {
     vertical-align: middle;
 }
+.part1 > .father6 {
+    border: 1px solid red;
+    height: 150px;
+}
+.part1 > .father6 > .child6 {
+    width: 200px;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+}
+
+.part1 > .father6 > .child7 {
+    width: 200px;
+    height: 100px;
+    margin-right: auto;
+    border: 1px solid black;
+}
+
+.part1 > .father6 > .child8 {
+    width: 200px;
+    height: 100px;
+    margin-left: auto;
+    border: 1px solid black;
+}
+.part1 > .father9 {
+    position: relative;
+    border: 1px solid red;
+    height: 150px;
+}
+.part1 > .father9 > .child9 {
+    position: absolute;
+    left: 50%;
+    margin-left: -100px;
+    width: 200px;
+    height: 100px;
+    border: 1px solid red;
+}
+.part1 > .father9 > .child10 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 200px;
+    height: 100px;
+    border: 1px solid red;
+}
 
