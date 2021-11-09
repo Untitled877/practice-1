@@ -74,7 +74,7 @@
     margin-left: -100px;
     width: 200px;
     height: 100px;
-    border: 1px solid red;
+    border: 1px solid black;
 }
 .part1 > .father9 > .child10 {
     position: absolute;
@@ -83,6 +83,53 @@
     margin: auto;
     width: 200px;
     height: 100px;
+    border: 1px solid black;
+}
+.part1 > .father11 {
+    border: 1px solid black;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.part1 > .content1 {
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    height: 150px;
+    border: 1px solid black;
+}
+.part1 >.father12 {
+    position: relative;
+    height: 150px;
     border: 1px solid red;
 }
+.part1 >.father12 > .child12 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid black;
+}
+.part1 > .father13 {
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    height: 150px;
+    border: 1px solid red;
+}
+.part1 > .father13 > .child13 {
+    position: relative;
+    right: 50%;
+    border: 1px solid black;
+}
+.part1 > .father14 {
+    display: flex;
+    justify-content: center;
+    border: 1px solid red;
+    height: 150px;
+}
+.part1 > .father14 > .child14{
+    border: 1px solid black;
+}
+
+
 
