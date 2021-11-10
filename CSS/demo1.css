@@ -68,3 +68,66 @@ body {
     bottom: -30px;
     border: 10px solid lightgrey;
 }
+.triangle-wrapper {
+    margin: 50px auto;
+    display: flex;
+    justify-content: space-between;
+}
+.triangle-wrapper > div {
+    width: 0;
+    height: 0;
+}
+.triangle1 {
+    border-top: 50px solid yellowgreen;
+    border-bottom: 50px solid deeppink;
+    border-left: 50px solid bisque;
+    border-right: 50px solid cadetblue;
+}
+.top-triangle {
+    border: 50px solid transparent;
+    border-bottom: 50px solid lightskyblue;
+}
+.bottom-triangle {
+    border: 50px solid transparent;
+    border-top: 50px solid lightskyblue;
+}
+.left-triangle {
+    border: 50px solid transparent;
+    border-right: 50px solid lightskyblue;
+}
+.right-triangle {
+    border: 50px solid transparent;
+    border-left: 50px solid lightskyblue;
+}
+.triangle2 {
+    margin: 50px auto;
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(45deg, lightskyblue, lightskyblue 50%, transparent 50%, transparent 100%);
+}
+.triangle3 {
+    width: 141px;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    margin: 50px auto;
+}
+.triangle3:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: lightseagreen;
+    transform-origin: left bottom;
+    transform: rotate(45deg);
+}
+/*https://www.html.cn/tool/css-clip-path/*/
+.triangle4 {
+    width: 100px;
+    height: 100px;
+    margin: 50px auto;
+    background: lightpink;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
