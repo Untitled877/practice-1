@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多边框-三角形-卡片</title>
+    <link rel="stylesheet" href="demo1.css">
+</head>
+<body>
+    <h3>多边框</h3>
+    <div class="multi-border">
+        <p>第一种方法-用box-shadow解决</p>
+        <div class="box1"></div>
+        <p>第二种方法-利用outline（适用于两层边框）</p>
+        <div class="box2"></div>
+        <p>第三种方法-利用额外的div</p>
+        <div class="wrapper">
+            <div class="outer">
+                <div class="box3"></div>
+            </div>
+        </div>
+        <p>第四种方法-利用伪元素实现双重、三重边框</p>
+        <div class="box4"></div>
+    </div>
+
+</body>
+</html>
