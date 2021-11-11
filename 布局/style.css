@@ -1,0 +1,282 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.part1 {
+    background: antiquewhite;
+}
+.part1 > .father1 {
+    height: 50px;
+    border: 1px solid blue;
+    text-align: center;
+}
+.part1 > .father2 {
+    height: 50px;
+    border: 1px solid blue;
+    text-align: left;
+}
+.part1 > .father3 {
+    height: 50px;
+    border: 1px solid blue;
+    text-align: right;
+}
+.part1 > .father4 {
+    height: 50px;
+    line-height: 50px;
+    border: 1px solid blue;
+}
+
+.part1 > .father5 {
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border: 1px solid blue;
+}
+
+.part1 > .father6 {
+    border: 1px solid red;
+    height: 150px;
+}
+.part1 > .father6 > .child6 {
+    width: 200px;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+}
+
+.part1 > .father6 > .child7 {
+    width: 200px;
+    height: 100px;
+    margin-right: auto;
+    border: 1px solid black;
+}
+
+.part1 > .father6 > .child8 {
+    width: 200px;
+    height: 100px;
+    margin-left: auto;
+    border: 1px solid black;
+}
+.part1 > .father9 {
+    position: relative;
+    border: 1px solid red;
+    height: 150px;
+}
+.part1 > .father9 > .child9 {
+    position: absolute;
+    left: 50%;
+    margin-left: -100px;
+    width: 200px;
+    height: 100px;
+    border: 1px solid black;
+}
+.part1 > .father9 > .child10 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 200px;
+    height: 100px;
+    border: 1px solid black;
+}
+.part1 > .father11 {
+    border: 1px solid black;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.part1 > .content1 {
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    height: 150px;
+    border: 1px solid black;
+}
+.part1 >.father12 {
+    position: relative;
+    height: 150px;
+    border: 1px solid red;
+}
+.part1 >.father12 > .child12 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid black;
+}
+.part1 > .father13 {
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    height: 150px;
+    border: 1px solid red;
+}
+.part1 > .father13 > .child13 {
+    position: relative;
+    right: 50%;
+    border: 1px solid black;
+}
+.part1 > .father14 {
+    display: flex;
+    justify-content: center;
+    border: 1px solid red;
+    height: 150px;
+}
+.part1 > .father14 > .child14{
+    border: 1px solid black;
+}
+.part2 {
+    margin-top: 10px;
+    background: lightskyblue;
+}
+.part2 > .father15 {
+    border: 1px solid red;
+    height: 150px;
+}
+.part2 > .father15 .child15 {
+    border: 1px solid black;
+}
+
+.part2 > .father16 {
+    border: 1px solid red;
+    height: 150px;
+    position: relative;
+}
+.part2 > .father16 >.child16 {
+    position: absolute;
+    height: 100px;
+    top: 50%;
+    margin-top: -50px;
+    border: 1px solid black;
+}
+.part2 > .father17 {
+    border: 1px solid red;
+    height: 150px;
+    position: relative;
+}
+.part2 > .father17 >.child17 {
+    position: absolute;
+    height: 100px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border: 1px solid black;
+}
+
+.part2 > .father18 {
+    border: 1px solid red;
+    height: 150px;
+    position: relative;
+}
+.part2 > .father18 >.child18 {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 1px solid black;
+}
+.part2 > .father19 {
+    border: 1px solid red;
+    height: 150px;
+    display: flex;
+    align-items: center;
+}
+.part2 > .father19 >.child19 {
+    border: 1px solid black;
+}
+.part3 {
+    margin-top: 10px;
+    background: lightpink;
+}
+
+.part3 > .table{
+    display: table;
+    border: 1px solid red;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.part3 > .table .td{
+    display: table-cell;
+    vertical-align: middle;
+}
+.part3 > .table .child1{
+    border: 1px solid black;
+}
+.part3 > .parent2 {
+    border: 1px solid red;
+    height: 150px;
+    text-align: center;
+}
+.part3 > .parent2:before, .part3 > .parent2:after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+.part3 > .parent2 > .child2 {
+    border: 1px solid black;
+    display: inline-block;
+    width: 300px;
+    vertical-align: middle;
+}
+.part3 > .parent3 {
+    height: 150px;
+    border: 1px solid red;
+    position: relative;
+}
+.part3 > .parent3 > .child3 {
+    border: 1px solid black;
+    width: 300px;
+    height: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -150px;
+    margin-top: -50px;
+}
+.part3 > .parent4 {
+    height: 150px;
+    border: 1px solid red;
+    position: relative;
+}
+.part3 > .parent4 > .child4 {
+    border: 1px solid black;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    width: 300px;
+    margin: auto;
+}
+.part3 > .parent5 {
+    height: 150px;
+    border: 1px solid red;
+    position: relative;
+}
+.part3 > .parent5 > .child5 {
+    border: 1px solid black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.part3 > .parent6 {
+    border: 1px solid red;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.part3 > .parent6 > .child6 {
+    border: 1px solid black;
+}
+
+
+
+
+
+
