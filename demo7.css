@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+    width: 100%;
+}
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.header {
+    background: lightpink;
+    height: 100px;
+    flex-shrink: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.content {
+    flex: 1;
+    display: flex;
+}
+.left {
+    width: 150px;
+    flex-shrink: 0;
+    background: lightgreen;
+    position: fixed;
+    top: 100px;
+    left: 0;
+    height: 100%;
+}
+.right {
+    margin-top: 100px;
+    margin-left: 150px;
+    flex: 1;
+    overflow: auto;
+    background: lightblue;
+}
+.right > p {
+    line-height: 30px;
+    border: 2px solid black;
+}

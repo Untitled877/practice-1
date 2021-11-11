@@ -1,0 +1,56 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.wrapper {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+.left {
+    width: 200px;
+    height: 100%;
+    background: lightskyblue;
+}
+.right {
+    flex: 1;
+    height: 100%;
+    border: 5px solid black;
+    background: antiquewhite;
+}
+.clearfix:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/*方法一： float+calc()函数*/
+/*.left {*/
+/*    float: left;*/
+/*}*/
+/*.right {*/
+/*    float: left;*/
+/*    width: calc(100% - 200px);*/
+/*}*/
+/*方法二：float+margin-left*/
+/*.left {*/
+/*    float: left;*/
+/*}*/
+/*.right {*/
+/*    margin-left: 200px;*/
+/*}*/
+/*方法三：absolute+margin-left*/
+/*.left {*/
+/*    position: absolute;*/
+/*}*/
+/*.right {*/
+/*    margin-left: 200px;*/
+/*}*/
+/*方法四：float+overflow*/
+/*.left {*/
+/*    float: left;*/
+/*}*/
+/*.right {*/
+/*    overflow: hidden;*/
+/*}*/

@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>居中与对齐</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="part1">
+        <div class="father1">
+            <span class="child1">子元素是inline元素-水平居中(利用text-align)</span>
+        </div>
+        <div class="father2">
+            <span class="child2">子元素是inline元素-左对齐(利用text-align)</span>
+        </div>
+        <div class="father3">
+            <span class="child3">子元素是inline元素-右对齐(利用text-align)</span>
+        </div>
+        <div class="father4">
+            <span class="child4">子元素是inline元素-垂直居中(利用line-height)</span>
+        </div>
+        <div class="father5">
+            <span class="child5">子元素是inline元素-垂直水平居中(text-align+line-height)</span>
+        </div>
+        <div class="father6">
+            <div class="child6">子元素是确定宽度的块级元素-水平居中(利用margin-left和margin-right:auto)</div>
+        </div>
+        <div class="father6">
+            <div class="child7">子元素是确定宽度的块级元素-左对齐(利用margin-right:auto)</div>
+        </div>
+        <div class="father6">
+            <div class="child8">子元素是确定宽度的块级元素-右对齐(利用margin-left:auto)</div>
+        </div>
+        <div class="father9">
+            <div class="child9">子元素是确定宽度的块级元素-水平居中(绝对定位+负margin)</div>
+        </div>
+        <div class="father9">
+            <div class="child10">子元素是确定宽度的块级元素-水平居中(绝对定位+margin:auto)</div>
+        </div>
+        <table class="father11">
+            <tr>
+                <td class="child11">未知宽度的块级元素-水平居中(利用table标签)</td>
+            </tr>
+        </table>
+        <div class="content1">
+            未知宽度的块级元素-水平居中(display:table)
+        </div>
+        <div class="father12">
+            <div class="child12">
+                未知宽度的块级元素-水平居中(绝对定位+transform)
+            </div>
+        </div>
+        <div class="father13">
+            <div class="child13">
+                未知宽度的块级元素-水平居中(利用相对定位)
+            </div>
+        </div>
+        <div class="father14">
+            <div class="child14">
+                未知宽度的块级元素-水平居中(利用flex)
+            </div>
+        </div>
+    </div>
+    <div class="part2">
+        <table class="father15">
+            <tr>
+                <td class="child15">利用table标签-垂直居中</td>
+            </tr>
+        </table>
+        <div class="father16">
+            <div class="child16">
+                高度确定的块级元素-垂直居中(绝对定位和负margin)
+            </div>
+        </div>
+        <div class="father17">
+            <div class="child17">
+                高度确定的块级元素-垂直居中(绝对定位和margin:auto)
+            </div>
+        </div>
+        <div class="father18">
+            <div class="child18">
+                未知高度的块级元素-垂直居中(translateY -50%)
+            </div>
+        </div>
+        <div class="father19">
+            <div class="child19">
+                未知高度的块级元素-垂直居中(利用flex布局)
+            </div>
+        </div>
+    </div>
+    <div class="part3">
+        <div class="table">
+            <div class="td">
+                <div class="child1">
+                    水平垂直居中-利用display:table实现
+                </div>
+            </div>
+        </div>
+        <div class="parent2">
+            <div class="child2">
+                水平垂直居中-利用伪元素和inline-block
+            </div>
+        </div>
+        <div class="parent3">
+            <div class="child3">
+                水平垂直居中-绝对定位和负margin
+            </div>
+        </div>
+        <div class="parent4">
+            <div class="child4">
+                水平垂直居中-绝对定位和margin:auto
+            </div>
+        </div>
+        <div class="parent5">
+            <div class="child5">
+                水平垂直居中-绝对定位和translate-50%
+            </div>
+        </div>
+        <div class="parent6">
+            <div class="child6">
+                水平垂直居中-利用flex布局
+            </div>
+        </div>
+    </div>
+</body>
+</html>
