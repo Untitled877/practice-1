@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM事件流</title>
+    <style>
+        #btn3 {
+            width: 200px;
+            height: 200px;
+            background: lightblue;
+        }
+        #btn2 {
+            width: 150px;
+            height: 150px;
+            background: lightpink;
+        }
+        #btn1 {
+            width: 100px;
+            height: 100px;
+            background: lightgreen;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        div[class^=level] {
+            border: 1px solid;
+            border-radius: 50%;
+            display: inline-flex;
+        }
+        .level1 {
+            padding: 10px;
+            background: purple;
+        }
+        .level2 {
+            padding: 10px;
+            background: blue;
+        }
+        .level3 {
+            padding: 10px;
+            background: cyan;
+        }
+        .level4 {
+            padding: 10px;
+            background: green;
+        }
+        .level5 {
+            padding: 10px;
+            background: yellow;
+        }
+        .level6 {
+            padding: 10px;
+            background: orange;
+        }
+        .level7 {
+            width: 50px;
+            height: 50px;
+            border: 1px solid;
+            background: red;
+            border-radius: 50%;
+        }
+        .x{
+            background: transparent;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="btnClick()">click</button>
+    <button id="button-click">点击</button>
+    <hr />
+    <div id="btn3">
+        btn3
+        <div id="btn2">
+            btn2
+            <div id="btn1">
+                btn1
+            </div>
+        </div>
+    </div>
+    <hr />
+    <h4>先捕获后冒泡</h4>
+    <div class="level1 x">
+        <div class="level2 x">
+            <div class="level3 x">
+                <div class="level4 x">
+                    <div class="level5 x">
+                        <div class="level6 x">
+                            <div class="level7 x">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let btn1 = document.getElementById("btn1");
+        let btn2 = document.getElementById("btn2");
+        let btn3 = document.getElementById("btn3");
+        btn1.addEventListener('click',function(){
+            console.log('btn1冒泡')
+        }, false)
+        btn1.addEventListener('click',function(){
+            console.log('btn1捕获')
+        }, true)
+
+        btn2.addEventListener('click',function(){
+            console.log('btn2冒泡')
+        }, false)
+        btn2.addEventListener('click',function(e){
+            e.stopPropagation();
+            console.log('btn2捕获')
+        }, true)
+
+        btn3.addEventListener('click',function(){
+            console.log('btn3冒泡')
+        }, false)
+        btn3.addEventListener('click',function(){
+            console.log('btn3捕获')
+        }, true)
+
+        const level1 = document.querySelector('.level1')
+        const level2 = document.querySelector('.level2')
+        const level3 = document.querySelector('.level3')
+        const level4 = document.querySelector('.level4')
+        const level5 = document.querySelector('.level5')
+        const level6 = document.querySelector('.level6')
+        const level7 = document.querySelector('.level7')
+
+        let n = 1
+
+        level1.addEventListener('click', (e)=>{
+            const t = e.currentTarget
+            setTimeout(()=>{
+                t.classList.remove('x')
+            },n*1000)
+            n+=1
+        },true)
+        level1.addEventListener('click', (e)=>{
+            const t = e.currentTarget
+            setTimeout(()=>{
+                t.classList.add('x')
+            },n*1000)
+            n+=1
+        })
+        level2.addEventListener('click', (e)=>{
+            const t = e.currentTarget
+            setTimeout(()=>{
+                t.classList.remove('x')
+            },n*1000)
+            n+=1
+        }, true)
+        level2.addEventListener('click', (e)=>{
+            const t = e.currentTarget
+            setTimeout(()=>{
+                t.classList.add('x')
+            },n*1000)
+            n+=1
+        })
+        level3.addEventListener('click', (e)=>{
+            const t = e.currentTarget
+            setTimeout(()=>{
+                t.classList.remove('x')
+            },n*1000)
+            n+=1
+        }, true)
+        level3.addEventListener('click', (e)=>{
+            const t = e.currentTarget
+            setTimeout(()=>{
+                t.classList.add('x')
+            },n*1000)
+            n+=1
+        })
+        level4.addEventListener('click', (e)=>{
+            const t = e.currentTarget
+            setTimeout(()=>{
+                t.classList.remove('x')
+            },n*1000)
+            n+=1
+        }, true)
+        level4.addEventListener('click', (e)=>{
+            const t = e.currentTarget
+            setTimeout(()=>{
+                t.classList.add('x')
+            },n*1000)
+            n+=1
+        })
+        level5.addEventListener('click', (e)=>{
+            const t = e.currentTarget
+            setTimeout(()=>{
+                t.classList.remove('x')
+            },n*1000)
+            n+=1
+        }, true)
+        level5.addEventListener('click', (e)=>{
+            const t = e.currentTarget
+            setTimeout(()=>{
+                t.classList.add('x')
+            },n*1000)
+            n+=1
+        })
+        level6.addEventListener('click', (e)=>{
+            const t = e.currentTarget
+            setTimeout(()=>{
+                t.classList.remove('x')
+            },n*1000)
+            n+=1
+        }, true)
+        level6.addEventListener('click', (e)=>{
+            const t = e.currentTarget
+            setTimeout(()=>{
+                t.classList.add('x')
+            },n*1000)
+            n+=1
+        })
+        level7.addEventListener('click', (e)=>{
+            const t = e.currentTarget
+            setTimeout(()=>{
+                t.classList.remove('x')
+            },n*1000)
+            n+=1
+        }, true)
+        level7.addEventListener('click', (e)=>{
+            const t = e.currentTarget
+            setTimeout(()=>{
+                t.classList.add('x')
+            },n*1000)
+            n+=1
+        })
+    </script>
+</body>
+<script>
+    function btnClick() {
+        window.alert('hello')
+    }
+    let button = document.getElementById('button-click')
+    button.onclick = function() {
+        window.alert('点击我')
+    }
+    button.onclick = function() {
+        window.alert('点击2')
+    }
+
+    function delegate(element, eventType, selector, fn) {
+        element.addEventListener(eventType, e => {
+            let el = e.target
+            while(!el.matches(selector)) {
+                if(element === el) {
+                    el = null
+                    break
+                }
+                el = el.parentNode
+            }
+            el && fn.call(el, e, el)
+        })
+        return element
+    }
+
+</script>
+</html>
