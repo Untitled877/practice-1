@@ -110,3 +110,140 @@
 CSS animations 使得可以将从一个CSS样式配置转换到另一个CSS样式配置。使用@keyframes建立两个或两个以上关键帧；使用animation属性或其子属性配置动画时间、时长以及其他动画细节，创建动画序列。
 
 参考文档：[CSS 动画](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Animations/Using_CSS_animations)
+
+# JavaScript 部分
+### JavaScript 事件流
+当一个节点产生一个事件时，该事件会在元素节点与根节点之间按特定的顺序传播，路径所经过的节点都会收到该事件，这个传播过程称为DOM事件流。
+### 事件冒泡和事件捕获
+IE提出的事件流是事件冒泡，即从下至上，从目标触发的元素逐级向上传播，直到window对象。
+
+网景的事件流是事件捕获，即从document逐级向下传播到目标元素。
+
+### DOM事件处理
+
+DOM事件处理分为3个级别，DOM0级事件处理，DOM2级事件处理和DOM3级事件处理。
+
+- DOM0级事件：具有极好的跨浏览器优势，会以最快的速度绑定。DOM0级只支持冒泡阶段。
+  - 方式一：内联模型：缺点是不符合 W3C 中关于内容与行为分离的基本规范。
+```
+<div onclick="btnClick()">click</div>
+<script>
+function btnClick(){
+    console.log("hello");
+}
+</script>
+```
+  - 方式二：脚本模型（动态绑定）：缺点是同一个节点只能添加一次同类型事件。
+```
+<div id="btn">点击</div>
+<script>
+var btn=document.getElementById("btn");
+btn.onclick=function(){
+    console.log("hello");
+}
+</script>
+```
+```
+<div id="btn3">
+    btn3
+    <div id="btn2">
+        btn2
+        <div id="btn1">
+            btn1
+        </div>
+    </div>
+</div>
+<script>
+    let btn1 = document.getElementById("btn1");
+    let btn2 = document.getElementById("btn2");
+    let btn3 = document.getElementById("btn3");
+    btn1.onclick=function(){
+        console.log(1)
+    }
+    btn2.onclick=function(){
+        console.log(2)
+    }
+    btn3.onclick=function(){
+        console.log(3)
+    }
+</script>
+```
+- DOM2级事件：定义了
+  - `addEventListener()`——添加事件侦听器
+  - `removeEventListener()`——删除事件侦听器
+函数均有3个参数：第一个参数是要处理的事件名，第二个参数是作为事件处理程序的函数，第三个参数是一个Boolean值，默认 false 表示使用冒泡机制，true表示捕获机制。`addEventListener()`可以绑定多个事件处理程序。但同样的事件和事件流机制下相同方法只会触发一次。
+- 阻止事件传播
+  - 可以通过`stopPropagation()`来阻止冒泡
+  - 通过`preventDefault()`来阻止默认事件
+### 事件委托
+事件委托利用冒泡的原理，由于事件会在冒泡阶段向上传播到父节点，因此可以把子节点的监听函数定义在父节点上，由父节点的监听函数统一处理多个子元素的事件。
+
+优点：
+- 减少内存消耗，提高性能
+- 可以监听动态元素
+封装事件委托：
+```
+function delegate(element, eventType, selector, fn) {
+        element.addEventListener(eventType, e => {
+            let el = e.target
+            while(!el.matches(selector)) {
+                if(element === el) {
+                    el = null
+                    break
+                }
+                el = el.parentNode
+            }
+            el && fn.call(el, e, el)
+        })
+        return element
+    }
+```
+### JavaScript的基础类型和引用类型
+文档：[JavaScript数据类型和数据结构](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures)
+
+最新的ECMAScript 标准定义了8中数据类型：
+- 7种原始类型：可以使用 typeof 运算符检查
+  - Boolean
+  - Number
+  - String
+  - Symbol
+  - BigInt
+  - undefined
+  - null
+- Object
+  - 判断对象的类型：
+    - 已知对象类型： instanceof
+    - 对象原型链判断方法：Object.prototype.toString.call()
+    - 根据对象的 constructor 进行判断
+  
+基本类型和引用类型的区别：
+
+基本数据类型：
+
+- 按值访问，可操作保存在变量中实际的值
+- 值被保存在栈内存中，占据固定大小的空间
+
+引用数据类型：
+
+- 引用类型的值是按引用访问的
+- 保存在堆内存中的对象，不能直接访问操作对象的内存空间
+
+### ES6 语法学习
+
+[ES6 标准入门教程](https://www.bookstack.cn/read/es6-3rd/sidebar.md)
+
+**let命令**
+
+let 用来声明变量，所声明的变量只在 let 命令所在的代码块内有效、不存在变量提升、存在暂时性死区（TDZ）、不允许重复声明。
+
+**const命令**
+
+const 用来声明一个只读的常量，一旦声明，常量的值就不能改变。const 的作用域与 let 命令相同，只在声明所在的块级作用域内有效。同样不存在变量提升、存在暂时性死区。需要注意的是：const只能保证声明的简单类型的数据是不可变的，而声明的对象只能保证其内存地址不变。可以使用`Object.freeze()`方法冻结对象。
+
+**变量的解构赋值**
+
+- 数组的解构赋值：一种“模式匹配”，只要等号两边的模式相同，左边的变量就会被赋予对应的值。（只要某种数据结构具有Iterator接口，都可以采用数组形式的解构赋值）
+- 对象的解构赋值：与数组不同的是，数组的元素是按次序排列的，变量的取值由它的位置决定；而对象的属性没有次序，变量必须与属性同名。
+- 字符串的解构赋值：字符串被转换成一个类似数组的对象，还可以对`length`属性解构赋值。
+- 数值和布尔值的解构赋值：如果等号右边时数值和布尔值，就会先转为对象。
+
