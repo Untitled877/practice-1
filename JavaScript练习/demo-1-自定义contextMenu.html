@@ -20,9 +20,13 @@
             border-radius: 4px;
             box-shadow: 0 2px 6px 2px #ddd;
         }
+        .hidden {
+            display: none;
+        }
         .custom-context-menu > li{
             display: block;
             padding: 10px 20px;
+            white-space: nowrap;
         }
         .custom-context-menu > li:hover {
             cursor: pointer;
@@ -85,17 +89,27 @@
             }
         ]
     })
+    // 元素不显示（display:none）的时候offsetWidth的值是获取不到的，为0；
+    function getNextContextMenuPosition(e) {
+        let x = e.clientX, y = e.clientY,
+        html = document.documentElement, vx = html.clientWidth, vy = html.clientHeight;
+        let mw = menuSingleton.getInstance().offsetWidth, mh = menuSingleton.getInstance().offsetHeight;
+        return {
+            left: (x + mw) > vx ? (vx - mw) : x,
+            top: (y + mh) > vy ? (vy - mh) : y
+        }
+    }
+
     function showMenu(e) {
         const menus = menuSingleton.getInstance()
-        menus.style.top = `${e.clientY}px`
-        menus.style.left = `${e.clientX}px`
+        menus.style.top = getNextContextMenuPosition(e).top + 'px'
+        menus.style.left = getNextContextMenuPosition(e).left + 'px'
         menus.classList.remove('hidden')
-        menus.style.display = 'block'
     }
 
     function hideMenu(e) {
         const menus = menuSingleton.getInstance()
-        menus.style.display = 'none'
+        menus.classList.add('hidden')
     }
     document.addEventListener('contextmenu', (e) => {
         e.preventDefault()
