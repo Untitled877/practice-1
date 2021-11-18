@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+    class CustomArray {
+        constructor(array) {
+            this.array = array
+        }
+        getMin() {
+            if(this.isEmpty()) {
+                return '数组为空'
+            }
+            return Math.min(...this.array)
+        }
+        getMax(){
+            if(this.isEmpty()) {
+                return '数组为空'
+            }
+            return Math.max(...this.array)
+        }
+        getSize(){
+            return this.array.length
+        }
+        isEmpty(){
+            return this.array.length <= 0
+        }
+        add(start, ...items){
+            return this.array.splice(start ,0, ...items)
+        }
+
+        delete(){
+            if(arguments.length <= 0) { // 删除末尾
+                 return this.array.pop()
+            } else if(arguments.length === 2) { // 删除位置和个数
+                 return this.array.splice(...arguments)
+            } else {
+                alert('只能为0个或两个参数！')
+            }
+        }
+        reverse(){
+            for(let i = 0; i < this.array.length; i++) {
+                if(typeof this.array[i] === 'string') {
+                    this.array[i] = this.array[i].split('').reverse().join('')
+                }
+            }
+            return this.array.reverse()
+        }
+        unique(){
+            // return Array.from(new Set(this.array))
+            let result = []
+            for(let i = 0; i < this.array.length; i++) {
+                if(result.indexOf(Number(this.array[i])) === -1) {
+                    result.push(Number(this.array[i]))
+                }
+            }
+            return result
+        }
+        find(callback){
+            return this.array.filter(callback)
+        }
+        copy(){
+            return this.array.slice()
+            // return JSON.parse((JSON.stringify(this.array)))
+        }
+    }
+
+    let arr = new CustomArray([1,2,3,'2',2,'1.5', '555','6',8,12,'8.4',10,'10'])
+    let arr1 = arr.copy()
+    console.log('拷贝')
+    console.log(arr1)
+    console.log('最小值是：' + arr.getMin())
+    console.log('最大值是：' + arr.getMax())
+    console.log('该数组的个数为：' + arr.getSize())
+    console.log('是否为空：' + arr.isEmpty())
+    console.log('获取满足条件的数组项（值小于10）:')
+    console.log(arr.find(item => item < 10))
+    console.log('任意位置添加数据：')
+    arr.add(0, 66, 666)
+    console.log(arr)
+    console.log('删除：无参数则默认删除末尾一个，或者输入参数为 (index,num)')
+    console.log(arr.delete(0, 2))
+    console.log('反转：')
+    console.log(arr.reverse())
+    console.log('去重')
+    console.log(arr.unique())
+</script>
+</body>
+</html>
