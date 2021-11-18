@@ -45,6 +45,141 @@
     console.log(str6[2])
     console.log(str6.indexOf('e'))
     console.log(str6.lastIndexOf('e'))
+    console.log('-----------------------')
+
+    let str7 = 'Hello, 我叫Real'
+    let str8 = '大家好，我叫张三'
+    console.log(/\w+/.test(str7))
+    console.log(/\w+/.test(str8))
+    console.log(str7.match('Hello'))
+    console.log(str7.match(/\w+/))
+    console.log(str7.match(/\w+/g))
+    console.log('abbbaababab'.match('ab'))
+    console.log('----------------------------以下是Array')
+    let arr = []
+    let len = arr.push(1)
+    console.log(arr)
+    console.log(len)
+    len = arr.push(2,3)
+    console.log(arr)
+    console.log(len)
+    arr.unshift(0)
+    console.log(arr)
+    len = arr.unshift(-2, -1)
+    console.log(arr)
+    let arr1 = arr.concat(4, 5, 6)
+    console.log(arr)
+    console.log(arr1)
+    arr.splice(4, 0, 1.5, 1.7, 1.9)
+    console.log(arr)
+    let item = arr.pop()
+    console.log(item)
+    console.log(arr)
+    let item2 = arr.shift()
+    console.log(item2)
+    console.log(arr)
+    let arr2 = arr.slice(2,6)
+    console.log(arr2)
+    console.log(arr)
+    arr.splice(2, 4)
+    console.log(arr)
+    arr.splice(2, 0,1)
+    console.log(arr)
+    console.log(arr.indexOf(1))
+    console.log(arr.lastIndexOf(1))
+    console.log('----------------------------以下是Set')
+    const s =new Set();
+    [2,3,5,4,5,2,2].forEach(x => s.add(x));
+    for(let i of s){
+        console.log(i);
+    }
+    let set = new Set(['red','green','blue']);
+    for(let item of set.keys()){
+        console.log(item);
+    }
+
+    for(let item of set.values()){
+        console.log(item);
+    }
+    for(let item of set.entries()){
+        console.log(item);
+    }
+    let set2 = new Set([1,4,9]);
+    set2.forEach((value, key)=> console.log(key +' : '+ value))
+
+    let set3 = new Set([1,2,3])
+    set3 = new Set([...set3].map(x => x * 2))
+    console.log(set3);
+
+    let set4 = new Set([1,2,3,4,5,6])
+    set4 = new Set([...set4].filter(x => (x % 2) !== 0))
+    console.log(set4)
+
+    console.log('----------------------------以下是Map')
+    const m = new Map();
+    const o = {p: 'Hello World'};
+    m.set(o, 'content')
+    console.log(m)
+    console.log(m.has(o))
+    m.delete(o)
+    console.log(m.has(o))
+
+    const map = new Map();
+    map.set(1, 'aaa').set(1, 'bbb')
+    console.log(map.get(1));
+
+
+    map.set(['a'], 555);
+    console.log(map.get(['a']));
+
+    const k1 = ['a'];
+    const k2 = ['a'];
+    map
+        .set(k1, 111)
+        .set(k2, 222);
+    console.log(map.get(k1));
+    console.log(map.get(k2));
+
+    const map2 = new Map([
+        [1, 'one'],
+        [2, 'two'],
+        [3, 'three']
+    ])
+
+    console.log([...map2.keys()])
+    console.log([...map2.values()])
+    console.log([...map2.entries()])
+    console.log([...map2])
+
+    const map3 = new Map().set(1, 'a').set(2, 'b').set(3, 'c')
+    const map4 = new Map(
+        [...map3].filter(([k,v])=>k < 3)
+    )
+    console.log(map4)
+    const map5 = new Map(
+        [...map3].map(([k,v]) => [k*2, '_'+ v])
+    )
+    console.log(map5)
+    console.log('----------------------------以下是Object')
+
+    let obj = {
+        'name': 'Anna',
+        'age': 18
+    }
+    console.log(Object.keys(obj))
+    console.log(obj.hasOwnProperty('toString')) //false
+    console.log(obj.hasOwnProperty('name')) // true
+    obj.gender = 'woman'
+    console.log(obj)
+    Object.assign(obj, {'hobby': 'sing', 'color':'pink'})
+    console.log(obj)
+    delete obj.color
+    console.log(obj)
+    obj.hobby = 'draw'
+    console.log(obj)
+    console.log(toString in obj)
+    obj['age'] = 22
+    console.log(obj)
 </script>
 </body>
 </html>
