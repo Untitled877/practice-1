@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    function Stack() {
+        this.items = []
+
+        Stack.prototype.push = function(element) {
+            this.items.push(element)
+        }
+        Stack.prototype.pop = () => {
+            return this.items.pop()
+        }
+        Stack.prototype.peek = () => {
+            return this.items[this.items.length - 1]
+        }
+        Stack.prototype.isEmpty = () => {
+            return this.items.length === 0
+        }
+        Stack.prototype.size = () => {
+            return this.items.length
+        }
+     }
+
+     // 测试用例
+    console.log('-----------------Stack')
+    let s = new Stack()
+    s.push(10)
+    s.push(20)
+    s.push(30)
+    s.push(40)
+    s.push(50)
+    console.log(s)
+    console.log(s.pop())
+    console.log(s.pop())
+    console.log(s)
+    console.log(s.peek())
+    console.log(s.isEmpty())
+    console.log(s.size())
+
+    console.log('-----------------Queue')
+    function Queue() {
+        this.items = []
+
+        Queue.prototype.enqueue = (element) => {
+            this.items.push(element)
+        }
+        Queue.prototype.dequeue = () => {
+            return this.items.shift()
+        }
+        Queue.prototype.front = () => {
+            return this.items[0]
+        }
+        Queue.prototype.isEmpty = () => {
+            return this.items.length === 0
+        }
+        Queue.prototype.size = () => {
+            return this.items.length
+        }
+    }
+    // 测试用例
+    let queue = new Queue()
+    queue.enqueue('A')
+    queue.enqueue('B')
+    queue.enqueue('C')
+    queue.enqueue('D')
+    queue.enqueue('E')
+    console.log(queue)
+    console.log(queue.dequeue())
+    console.log(queue.dequeue())
+    console.log(queue)
+    console.log(queue.front())
+    console.log(queue.size())
+    console.log(queue.isEmpty())
+
+    console.log('-----------------优先级队列')
+    function PriorityQueue() {
+        function QueueElement(element, priority) {
+            this.element = element
+            this.priority = priority
+        }
+
+        this.items = []
+
+        PriorityQueue.prototype.enqueue = (element, priority) => {
+            let queueElement = new QueueElement(element, priority)
+            if(this.items.length === 0) {
+                this.items.push(queueElement)
+            } else {
+                let added = false
+                for(let i of this.items) {
+                    if(queueElement.priority < i.priority) {
+                        this.items.splice(i, 0, queueElement)
+                        added = true
+                        break
+                    }
+                }
+                if(!added) {
+                    this.items.push(queueElement)
+                }
+            }
+        }
+        PriorityQueue.prototype.dequeue = () => {
+            return this.items.shift()
+        }
+        PriorityQueue.prototype.front = () => {
+            return this.items[0]
+        }
+        PriorityQueue.prototype.isEmpty = () => {
+            return this.items.length === 0
+        }
+        PriorityQueue.prototype.size = () => {
+            return this.items.length
+        }
+    }
+    let pq = new PriorityQueue();
+    pq.enqueue('Tom',111);
+    pq.enqueue('Hellen',200);
+    pq.enqueue('Mary',30);
+    pq.enqueue('Gogo',27);
+    console.log(pq);
+    console.log('-----------------链表')
+    function LinkList() {
+        function Node(data) {
+            this.data = data
+            this.next = null
+        }
+        this.head = null
+        this.length = 0
+
+        LinkList.prototype.append = (data) => {
+            let newNode = new Node(data)
+            if(this.length === 0) {
+                this.head = newNode
+            } else {
+                let current = this.head
+                while(current.next) {
+                    current = current.next
+                }
+                current.next = newNode
+            }
+            this.length += 1
+        }
+        LinkList.prototype.insert = (position, data) => {
+            if(position < 0 || position > this.length) {
+                return false
+            }
+            let newNode = new Node(data)
+            if(position === 0) {
+                newNode.next = this.head
+                this.head = newNode
+            } else {
+                let index = 0
+                let previous = null
+                let current = this.head
+                while(index++ < position) {
+                    previous = current
+                    current = current.next
+                }
+                newNode.next = current
+                previous.next = newNode
+            }
+            this.length += 1
+            return true
+        }
+        LinkList.prototype.get = (position) => {
+            if(position < 0 || position >= this.length) {
+                return null
+            }
+            let current = this.head
+            let index = 0
+            while(index++ < position) {
+                current = current.next
+            }
+            return current.data
+        }
+        LinkList.prototype.indexOf = (data) => {
+            let current = this.head
+            let index = 0
+            while(current) {
+                if(current.data === data) {
+                    return index
+                }
+                current = current.next
+                index += 1
+            }
+            return -1
+        }
+        LinkList.prototype.update = (position, newData) => {
+            if(position < 0 || position >= this.length) {
+                return false
+            }
+            let current = this.head
+            let index = 0
+            while(index++ < position) {
+                current = current.next
+            }
+            current.data = newData
+            return true
+        }
+        LinkList.prototype.removeAt = (position) => {
+            if(position < 0 || position >= this.length) {
+                return null
+            }
+            let current = this.head
+            if(position === 0) {
+                this.head = this.head.next
+            } else {
+                let index = 0
+                let previous = null
+                while(index++ < position) {
+                    previous = current
+                    current = current.next
+                }
+                previous.next = current.next
+            }
+            this.length -= 1
+            return current.data
+        }
+        LinkList.prototype.remove = (data) => {
+            let position = this.indexOf(data)
+            return this.removeAt(position)
+        }
+        LinkList.prototype.isEmpty = () => {
+            return this.length === 0
+        }
+        LinkList.prototype.size = () => {
+            return this.length
+        }
+    }
+    let list = new LinkList()
+    list.append('aaa')
+    list.append('bbb')
+    list.append('ccc')
+    console.log(list)
+    list.insert(0, '在链表最前面插入节点')
+    list.insert(2, '在链表中第二个节点后插入节点')
+    list.insert(5, '在链表最后插入节点')
+    console.log(list)
+    console.log(list.get(1))
+    console.log(list.get(3))
+    console.log(list.indexOf('aaa'))
+    console.log(list.indexOf('bbb'))
+    console.log(list.update(3, '修改后的值'))
+    console.log(list)
+    console.log(list.removeAt(0))
+    console.log(list)
+    console.log(list.removeAt(1))
+    console.log(list)
+    console.log(list.remove('aaa'))
+    console.log(list)
+    console.log(list.isEmpty())
+    console.log(list.size())
+
+    console.log('-----------------二叉树')
+    function BinarySearchTree() {
+        function Node(key) {
+            this.key = key
+            this.left = null
+            this.right = null
+        }
+        this.root = null
+
+        BinarySearchTree.prototype.insert = (key) => {
+            let newNode = new Node(key)
+            if(this.root === null) {
+                this.root = newNode
+            } else {
+                this.insertNode(this.root, newNode)
+            }
+        }
+        BinarySearchTree.prototype.insertNode = (node, newNode) => {
+            if(newNode.key < node.key) {
+                if(node.left === null) {
+                    node.left = newNode
+                } else {
+                    this.insertNode(node.left, newNode)
+                }
+            } else {
+                if(node.right === null) {
+                    node.right = newNode
+                } else {
+                    this.insertNode(node.right, newNode)
+                }
+            }
+        }
+        BinarySearchTree.prototype.preOrderTraversal = (handler) => {
+            this.preOrderTraversalNode(this.root, handler)
+        }
+        BinarySearchTree.prototype.preOrderTraversalNode = (node, handler) => {
+            if(node !== null) {
+                handler(node.key)
+                this.preOrderTraversalNode(node.left, handler)
+                this.preOrderTraversalNode(node.right, handler)
+            }
+        }
+        BinarySearchTree.prototype.midOrderTraversal = (handler) => {
+            this.midOrderTraversalNode(this.root, handler)
+        }
+        BinarySearchTree.prototype.midOrderTraversalNode = (node, handler) => {
+            if(node !== null) {
+                this.midOrderTraversalNode(node.left, handler)
+                handler(node.key)
+                this.midOrderTraversalNode(node.right, handler)
+            }
+        }
+        BinarySearchTree.prototype.postOrderTraversal = (handler) => {
+            this.postOrderTraversalNode(this.root, handler)
+        }
+        BinarySearchTree.prototype.postOrderTraversalNode = (node, handler) => {
+            if(node !== null) {
+                this.postOrderTraversalNode(node.left, handler)
+                this.postOrderTraversalNode(node.right, handler)
+                handler(node.key)
+            }
+        }
+        BinarySearchTree.prototype.max = () => {
+            let node = this.root
+            let key = null
+            while(node !== null) {
+                key = node.key
+                node = node.right
+            }
+            return key
+        }
+        BinarySearchTree.prototype.min = () => {
+            let node = this.root
+            let key = null
+            while(node !== null) {
+                key = node.key
+                node = node.left
+            }
+            return key
+        }
+        BinarySearchTree.prototype.search = (key) => {
+            let node = this.root
+            while(node) {
+                if(key < node.key) {
+                    node = node.left
+                } else if(key > node.key) {
+                    node = node.right
+                } else {
+                    return true
+                }
+            }
+            return false
+        }
+        BinarySearchTree.prototype.remove = (key) => {
+            let current = this.root
+            let parent = null
+            let isLeftChild = true
+
+            while(current.key !== key) {
+                parent = current
+                if(key < current.key) {
+                    isLeftChild = true
+                    current = current.left
+                } else {
+                    isLeftChild = false
+                    current = current.right
+                }
+                if(current === null) {
+                    return false
+                }
+            }
+            // 删除的是叶子节点
+            if(current.left === null && current.right === null) {
+                if(current === this.root) {
+                    this.root = null
+                } else if(isLeftChild) {
+                    parent.left = null
+                } else {
+                    parent.right = null
+                }
+            }
+            // 删除的节点有一个子节点
+            // 当current存在左子节点时
+            else if(current.right === null) {
+                if(current === this.root) {
+                    this.root = current.left
+                } else if(isLeftChild) {
+                    parent.left = current.left
+                } else {
+                    parent.right = current.left
+                }
+                // 当current存在右子节点时
+            } else if(current.left === null) {
+                if(current === this.root) {
+                    this.root = current.right
+                } else if(isLeftChild) {
+                    parent.left = current.right
+                } else {
+                    parent.right = current.right
+                }
+                // 删除节点有两个子节点
+            } else {
+
+            }
+
+        }
+    }
+    let bst = new BinarySearchTree()
+    bst.insert(11);
+    bst.insert(7);
+    bst.insert(15);
+    bst.insert(5);
+    bst.insert(3);
+    bst.insert(9);
+    bst.insert(8);
+    bst.insert(10);
+    bst.insert(13);
+    bst.insert(12);
+    bst.insert(14);
+    bst.insert(20);
+    bst.insert(18);
+    bst.insert(25);
+    bst.insert(6);
+    console.log(bst)
+    let result = ''
+    bst.preOrderTraversal((key) => {
+        result += key + ' '
+    })
+    console.log(result)
+    let result2 = ''
+    bst.midOrderTraversal((key) => {
+        result2 += key + ' '
+    })
+    console.log(result2)
+    let result3 = ''
+    bst.postOrderTraversal((key) => {
+        result3 += key + ' '
+    })
+    console.log(result3)
+    console.log(bst.max())
+    console.log(bst.min())
+    console.log(bst.search(24))
+    console.log(bst.search(25))
+    console.log(bst.search(6))
+</script>
+</body>
+</html>
