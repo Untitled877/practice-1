@@ -291,6 +291,7 @@
                 }
             }
         }
+        // 前序遍历 递归
         BinarySearchTree.prototype.preOrderTraversal = (handler) => {
             this.preOrderTraversalNode(this.root, handler)
         }
@@ -301,6 +302,22 @@
                 this.preOrderTraversalNode(node.right, handler)
             }
         }
+        // 迭代
+        BinarySearchTree.prototype.preOrderIteration = (root) => {
+            let stack = []
+            let result = []
+            if(root !== null) {
+                stack.push(root)
+            }
+            while(stack.length) {
+                let top = stack.pop()
+                result.push(top.key)
+                if(top.right) stack.push(top.right)
+                if(top.left) stack.push(top.left)
+            }
+            return result
+        }
+        // 中序遍历 递归
         BinarySearchTree.prototype.midOrderTraversal = (handler) => {
             this.midOrderTraversalNode(this.root, handler)
         }
@@ -311,6 +328,26 @@
                 this.midOrderTraversalNode(node.right, handler)
             }
         }
+        // 迭代
+        BinarySearchTree.prototype.midOrderIteration = (root) => {
+            let stack = []
+            let result = []
+            while(true) {
+                while(root !== null) {
+                    stack.push(root)
+                    root = root.left
+                }
+                if(stack.length === 0) {
+                    break
+                }
+                let top = stack.pop()
+                result.push(top.key)
+                root = top.right
+            }
+            return result
+        }
+
+        // 后序遍历 递归
         BinarySearchTree.prototype.postOrderTraversal = (handler) => {
             this.postOrderTraversalNode(this.root, handler)
         }
@@ -321,6 +358,22 @@
                 handler(node.key)
             }
         }
+        // 迭代
+        BinarySearchTree.prototype.postOrderIteration = (root) => {
+            let stack = []
+            let result = []
+            if(root !== null) {
+                stack.push(root)
+            }
+            while(stack.length !== 0) {
+                let top = stack.pop()
+                result.push(top.key)
+                if(top.left) stack.push(top.left)
+                if(top.right) stack.push(top.right)
+            }
+            return result.reverse()
+        }
+
         BinarySearchTree.prototype.max = () => {
             let node = this.root
             let key = null
@@ -353,11 +406,15 @@
             return false
         }
         BinarySearchTree.prototype.remove = (key) => {
+            // 用来存放当前的节点，初始指向根节点
             let current = this.root
+            // 用来存放当前节点的父节点，初始置为 null
             let parent = null
+            // 判断当前节点是父节点的左孩子还是右孩子，初始置为左
             let isLeftChild = true
 
             while(current.key !== key) {
+                // 先将父节点指向当前的节点（最开始是root），再将当前节点向下移动
                 parent = current
                 if(key < current.key) {
                     isLeftChild = true
@@ -366,6 +423,7 @@
                     isLeftChild = false
                     current = current.right
                 }
+                // 未找到
                 if(current === null) {
                     return false
                 }
@@ -400,10 +458,39 @@
                     parent.right = current.right
                 }
                 // 删除节点有两个子节点
+                // 需要查找当前节点的前驱或后继节点
+                // 这里以后继节点为例（右子树中的最小值）
             } else {
+                let successor = this.getSuccessor(current)
 
+                if(current === this.root) {
+                    this.root = successor
+                } else if(isLeftChild) {
+                    parent.left = successor
+                } else {
+                    parent.right = successor
+                }
+                // 将原来节点的左子节点放到后继节点的左子节点
+                successor.left = current.left
             }
 
+        }
+        // 封装查找后继节点的操作
+        BinarySearchTree.prototype.getSuccessor = (delNode) => {
+            let successorParent = delNode
+            let successor = delNode
+            let current = delNode.right
+
+            while(current !== null) {
+                successorParent = successor
+                successor = current
+                current = current.left
+            }
+            if(successor !== delNode.right) {
+                successorParent.left = successor.right
+                successor.right = delNode.right
+            }
+            return successor
         }
     }
     let bst = new BinarySearchTree()
@@ -427,22 +514,37 @@
     bst.preOrderTraversal((key) => {
         result += key + ' '
     })
-    console.log(result)
+    console.log('递归-先序遍历：' + result)
+    console.log('迭代-先序遍历：' + bst.preOrderIteration(bst.root))
     let result2 = ''
     bst.midOrderTraversal((key) => {
         result2 += key + ' '
     })
-    console.log(result2)
+    console.log('递归-中序遍历：' + result2)
+    console.log('迭代-中序遍历：' + bst.midOrderIteration(bst.root))
     let result3 = ''
     bst.postOrderTraversal((key) => {
         result3 += key + ' '
     })
-    console.log(result3)
-    console.log(bst.max())
-    console.log(bst.min())
-    console.log(bst.search(24))
-    console.log(bst.search(25))
-    console.log(bst.search(6))
+    console.log('递归-后序遍历：' + result3)
+    console.log('迭代-后序遍历：' + bst.postOrderIteration(bst.root))
+    console.log('最大值：' + bst.max())
+    console.log('最小值：' + bst.min())
+    console.log('查找24：' + bst.search(24))
+    console.log('查找25：' + bst.search(25))
+    console.log('查找6：' + bst.search(6))
+    bst.remove(15)
+    let result4 = ''
+    bst.midOrderTraversal((key) => {
+        result4 += key + ' '
+    })
+    console.log('删除15：' + result4)
+    bst.remove(3)
+    let result5 = ''
+    bst.midOrderTraversal((key) => {
+        result5 += key + ' '
+    })
+    console.log('删除3：' + result5)
 </script>
 </body>
 </html>
