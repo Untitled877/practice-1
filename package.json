@@ -1,11 +1,21 @@
 {
+  "scripts": {
+    "lint:style": "stylelint src/**/*.{css,sass,scss,less,vue}",
+    "fix:style": "stylelint --fix src/**/*.{css,sass,scss,less,vue}"
+  },
   "devDependencies": {
     "@commitlint/cli": "^14.1.0",
     "@commitlint/config-conventional": "^14.1.0",
     "commitizen": "^4.2.4",
     "cz-customizable": "^6.3.0",
     "husky": "^7.0.4",
-    "prettier": "^2.4.1"
+    "prettier": "^2.4.1",
+    "stylelint": "^14.1.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-recess-order": "^3.0.0",
+    "stylelint-config-standard": "^24.0.0",
+    "stylelint-order": "^5.0.0",
+    "stylelint-scss": "^4.0.0"
   },
   "husky": {
     "hooks": {
