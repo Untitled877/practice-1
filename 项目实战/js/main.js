@@ -46,3 +46,4 @@ let onLoad = () => {
 
 window.addEventListener('DOMContentLoaded', onLoad)
 window.addEventListener('hashchange', onHashChange)
+

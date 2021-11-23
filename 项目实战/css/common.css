@@ -94,6 +94,46 @@ main > .left {
     background: lightyellow;
 }
 
+main > .left li .svg-right {
+    display: none;
+}
+
+main > .left li > a {
+    display: block;
+    padding: 10px 0;
+    font-size: 18px;
+    text-align: center;
+}
+
+main > .left li > a:hover {
+    background: #ffe84d;
+}
+
+main > .left li > .selected {
+    background: #ffe84d;
+}
+
+main > .left li:last-child {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #e5e5a1;
+}
+
+main > .left li:last-child:hover {
+    cursor: pointer;
+}
+
+main > .left li > svg {
+    display: block;
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 main > .content {
     position: absolute;
     top: 80px;
@@ -184,3 +224,4 @@ main > .content .content-bottom > .user-img {
 .img12 {
     background-image: url("../images/cat_12.jpg");
 }
+

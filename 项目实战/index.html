@@ -7,6 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>项目实战</title>
     <link rel="stylesheet" href="css/common.css">
+    <style>
+        .icon {
+            width: 1em; height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -16,11 +24,19 @@
     <main>
         <div class="left">
             <ul>
-                <li><a href="#/nav1">nav 1</a></li>
+                <li><a href="#/nav1" class="selected">nav 1</a></li>
                 <li><a href="#/nav2">nav 2</a></li>
                 <li><a href="#/nav3">nav 3</a></li>
                 <li><a href="#/nav4">nav 4</a></li>
                 <li><a href="#/nav5">nav 5</a></li>
+                <li>
+                    <svg class="icon svg-right" aria-hidden="true">
+                        <use xlink:href="#icon-right"></use>
+                    </svg>
+                    <svg class="icon svg-left" aria-hidden="true">
+                        <use xlink:href="#icon-left"></use>
+                    </svg>
+                </li>
             </ul>
         </div>
         <div class="content">
@@ -32,6 +48,7 @@
         高度固定 音乐控制条
     </footer>
 </div>
+<script src="//at.alicdn.com/t/font_2959176_2tkq1zadjfp.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="./js/main.js"></script>
 </body>
