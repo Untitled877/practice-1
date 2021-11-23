@@ -92,6 +92,12 @@ main > .left {
     left: 0;
     width: 200px;
     background: lightyellow;
+    transition: width .5s;
+}
+
+main > .left-hidden {
+    width: 70px;
+    transition: width .5s;
 }
 
 main > .left li .svg-right {
@@ -142,6 +148,12 @@ main > .content {
     left: 200px;
     overflow: auto;
     background: #f5f5f5;
+    transition: left .5s;
+}
+
+main > .content-extension {
+    left: 70px;
+    transition: left .5s;
 }
 
 main > .content .content-top {
