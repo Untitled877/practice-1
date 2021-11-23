@@ -9,6 +9,7 @@
 }
 
 body {
+    height: 100vh;
     font-family: Avenir, Helvetica, Arial, sans-serif;
     font-size: 14px;
     color: #333;
@@ -43,4 +44,143 @@ label {
 
 table {
     border-collapse: collapse;
+}
+
+.clearfix::after {
+    display: block;
+    clear: both;
+    content: '';
+}
+
+.scale-img img {
+    transition: 1s ease-out;
+    transform: scale(1);
+}
+
+.scale-img:hover img {
+    transform: scale(1.1);
+}
+
+/* 懒加载默认图片 */
+.original {
+    background: #f4f4f4 url('../images/lazy-load-img.png') center no-repeat;
+}
+
+/* 整体样式 */
+.container {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 80px;
+    line-height: 80px;
+    color: white;
+    text-align: center;
+    background: #242424;
+}
+
+main > .left {
+    position: absolute;
+    top: 80px;
+    bottom: 50px;
+    left: 0;
+    width: 200px;
+    background: lightyellow;
+}
+
+main > .content {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    bottom: 50px;
+    left: 200px;
+    overflow: auto;
+    background: lightskyblue;
+}
+
+main > .content > .content-top {
+    padding: 50px 0;
+    margin: 0 10px;
+    font-size: 32px;
+    border: 3px solid green;
+}
+
+main > .content > .content-bottom {
+    margin: 10px;
+    border: 3px solid black;
+}
+
+footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    line-height: 50px;
+    color: white;
+    text-align: center;
+    background: #242424;
+}
+
+main > .content > .content-bottom > .user-img {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.img1 {
+    background-image: url("../images/cat_1.jpg");
+}
+
+.img2 {
+    background-image: url("../images/cat_2.jpg");
+}
+
+.img3 {
+    background-image: url("../images/cat_3.jpg");
+}
+
+.img4 {
+    background-image: url("../images/cat_4.jpg");
+}
+
+.img5 {
+    background-image: url("../images/cat_5.jpg");
+}
+
+.img6 {
+    background-image: url("../images/cat_6.jpg");
+}
+
+.img7 {
+    background-image: url("../images/cat_7.jpg");
+}
+
+.img8 {
+    background-image: url("../images/cat_8.jpg");
+}
+
+.img9 {
+    background-image: url("../images/cat_9.jpg");
+}
+
+.img10 {
+    background-image: url("../images/cat_10.jpg");
+}
+
+.img11 {
+    background-image: url("../images/cat_11.jpg");
+}
+
+.img12 {
+    background-image: url("../images/cat_12.jpg");
 }
