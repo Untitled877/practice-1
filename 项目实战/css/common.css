@@ -157,11 +157,88 @@ main > .content-extension {
     transition: left .5s;
 }
 
+/*
 main > .content .content-top {
     padding: 50px 0;
     margin: 0 10px;
-    font-size: 32px;
     border: 3px solid green;
+}
+*/
+
+#carousel {
+    position: relative;
+    border: 3px solid green;
+}
+
+#list-wrapper {
+    position: relative;
+    width: 800px;
+    height: 300px;
+    margin: 0 auto;
+    overflow: hidden;
+    border: 3px solid red;
+}
+
+#list {
+    position: absolute;
+    z-index: 1;
+    width: 4000px;
+    height: 300px;
+}
+
+#list img {
+    float: left;
+    width: 800px;
+    height: 300px;
+}
+
+#buttons {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    width: 140px;
+    height: 10px;
+    transform: translateX(-50%);
+}
+
+#buttons span {
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    background: #ffe84d;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+#buttons .on {
+    background: green;
+}
+
+#carousel svg {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    width: 50px;
+    height:50px;
+    padding: 7px;
+    cursor: pointer;
+    border-radius: 50%;
+    transform: translateY(-50%);
+}
+
+#carousel svg:hover {
+    background: #e8e5e5;
+}
+
+#prev {
+    left: 20px;
+}
+
+#next {
+    right: 20px;
 }
 
 main > .content .content-bottom {
@@ -181,7 +258,8 @@ footer {
     background: #242424;
 }
 
-main > .content .content-bottom > .user-img {
+/* main > .content .content-bottom > */
+.user-img {
     display: inline-block;
     width: 200px;
     height: 200px;

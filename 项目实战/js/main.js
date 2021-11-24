@@ -1,41 +1,63 @@
 let routerView = null
 
 let nav1HTML =
-    `<div class="content-top">
-                    轮播图
-                </div>
-                <div class="content-bottom">
-                    <div class="user-img img1"></div>
-                    <div class="user-img img2"></div>
-                    <div class="user-img img3"></div>
-                    <div class="user-img img4"></div>
-                    <div class="user-img img5"></div>
-                    <div class="user-img img6"></div>
-                    <div class="user-img img7"></div>
-                    <div class="user-img img8"></div>
-                    <div class="user-img img9"></div>
-                    <div class="user-img img10"></div>
-                    <div class="user-img img11"></div>
-                    <div class="user-img img12"></div>
-                    <div class="user-img img1"></div>
-                    <div class="user-img img2"></div>
-                    <div class="user-img img3"></div>
-                    <div class="user-img img4"></div>
-                    <div class="user-img img5"></div>
-                    <div class="user-img img6"></div>
-                    <div class="user-img img7"></div>
-                    <div class="user-img img8"></div>
-                    <div class="user-img img9"></div>
-                    <div class="user-img img10"></div>
-                    <div class="user-img img11"></div>
-                    <div class="user-img img12"></div>
-                </div>`
+    `<div class="content-top" id="carousel">
+        <div id="list-wrapper">
+            <div id="list" style="left: 0">
+                <img src="./images/carousel/carousel_1.png" alt="">
+                <img src="./images/carousel/carousel_2.jpg" alt="">
+                <img src="./images/carousel/carousel_3.jpg" alt="">
+                <img src="./images/carousel/carousel_4.jpg" alt="">
+                <img src="./images/carousel/carousel_5.jpg" alt="">
+            </div>
+            <div id="buttons">
+                <span index="1" class="on"></span>
+                <span index="2"></span>
+                <span index="3"></span>
+                <span index="4"></span>
+                <span index="5"></span>
+            </div> 
+        </div>
+<!--        <a class="arrow" id="prev">&lt;</a>-->
+<!--        <a class="arrow" id="next">&gt;</a>            -->
+        <svg class="icon" id="prev" aria-hidden="true">
+            <use xlink:href="#icon-left"></use>
+        </svg>
+        <svg class="icon" id="next" aria-hidden="true">
+            <use xlink:href="#icon-right"></use>
+        </svg>
+    </div>
+        <div class="content-bottom">
+            <div class="user-img img1"></div>
+            <div class="user-img img2"></div>
+            <div class="user-img img3"></div>
+            <div class="user-img img4"></div>
+            <div class="user-img img5"></div>
+            <div class="user-img img6"></div>
+            <div class="user-img img7"></div>
+            <div class="user-img img8"></div>
+            <div class="user-img img9"></div>
+            <div class="user-img img10"></div>
+            <div class="user-img img11"></div>
+            <div class="user-img img12"></div>
+            <div class="user-img img1"></div>
+            <div class="user-img img2"></div>
+            <div class="user-img img3"></div>
+            <div class="user-img img4"></div>
+            <div class="user-img img5"></div>
+            <div class="user-img img6"></div>
+            <div class="user-img img7"></div>
+            <div class="user-img img8"></div>
+            <div class="user-img img9"></div>
+            <div class="user-img img10"></div>
+            <div class="user-img img11"></div>
+            <div class="user-img img12"></div>
+        </div>`
 
 let onHashChange = () => {
     switch (location.hash) {
         case '#/nav1':
             routerView.innerHTML = nav1HTML
-
             return
         case '#/nav2':
             routerView.innerHTML = 'Nav 2'
@@ -104,7 +126,78 @@ let smoothScrollToTop = () => {
 document.querySelector('#right-content').addEventListener('scroll', showScrollBar)
 document.querySelector('.back-to-top').addEventListener('click', smoothScrollToTop)
 
+window.onload = () => {
+    let list = document.getElementById('list')
+    let prev = document.getElementById('prev')
+    let next = document.getElementById('next')
+    let animate = (offset) => {
 
+        let newLeft = parseInt(list.style.left) + offset
+        list.style.left = newLeft + 'px'
+        list.style.transition = '300ms ease'
+        if(newLeft <= -4000) {
+            list.style.left = 0 + 'px'
+        }
+        if(newLeft > 0) {
+            list.style.left = -2400 + 'px'
+        }
+    }
+
+    let buttons = document.getElementById('buttons').getElementsByTagName('span')
+    let index = 1
+    let showButton = () => {
+        for(let i = 0; i < buttons.length; i++) {
+            if(buttons[i].className === 'on') {
+                buttons[i].className = ''
+            }
+        }
+        buttons[index-1].className = 'on'
+    }
+
+    prev.onclick = function() {
+        index -= 1
+        if(index < 1) {
+            index = 5
+        }
+        showButton()
+        animate(800)
+    }
+    next.onclick = function() {
+        index += 1
+        if(index > 5) {
+            index = 1
+        }
+        showButton()
+        animate(-800)
+    }
+
+    let timer
+    let autoplay = () => {
+        timer = setInterval(() => {
+            next.onclick()
+        }, 2000)
+    }
+
+    for(let i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = function() {
+            let clickIndex = parseInt(this.getAttribute('index'))
+            let offset = 800*(index - clickIndex)
+            animate(offset)
+            index = clickIndex
+            showButton()
+        }
+    }
+
+    autoplay()
+
+    let carousel = document.querySelector('#carousel')
+    function stopplay() {
+        clearInterval(timer)
+    }
+    carousel.onmouseover = stopplay
+    carousel.onmouseout = autoplay
+
+}
 
 
 
