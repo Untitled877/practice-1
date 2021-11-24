@@ -17,6 +17,18 @@ let nav1HTML =
                     <div class="user-img img10"></div>
                     <div class="user-img img11"></div>
                     <div class="user-img img12"></div>
+                    <div class="user-img img1"></div>
+                    <div class="user-img img2"></div>
+                    <div class="user-img img3"></div>
+                    <div class="user-img img4"></div>
+                    <div class="user-img img5"></div>
+                    <div class="user-img img6"></div>
+                    <div class="user-img img7"></div>
+                    <div class="user-img img8"></div>
+                    <div class="user-img img9"></div>
+                    <div class="user-img img10"></div>
+                    <div class="user-img img11"></div>
+                    <div class="user-img img12"></div>
                 </div>`
 
 let onHashChange = () => {
@@ -65,6 +77,35 @@ let toggle = () => {
         document.querySelector('.svg-right').style.display = 'block'
         document.querySelector('.svg-left').style.display = 'none'
     }
-    console.log(visible)
 }
 document.querySelector('#toggle-menu').addEventListener('click', toggle)
+
+let showScrollBar = () => {
+    let backToTop = document.querySelector('.back-to-top')
+    // let scrollTop = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
+    let scrollTop = document.querySelector('#right-content').scrollTop
+    if(scrollTop > 150) {
+        backToTop.style.display = 'inline-block'
+    } else {
+        backToTop.style.display = 'none'
+    }
+}
+
+
+
+let smoothScrollToTop = () => {
+    document.querySelector('#right-content').scrollTo({
+        left: 0,
+        top: 0,
+        behavior: 'smooth'
+    })
+}
+
+document.querySelector('#right-content').addEventListener('scroll', showScrollBar)
+document.querySelector('.back-to-top').addEventListener('click', smoothScrollToTop)
+
+
+
+
+
+

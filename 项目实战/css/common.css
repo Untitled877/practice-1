@@ -10,6 +10,7 @@
 
 body {
     height: 100vh;
+    overflow: hidden;
     font-family: Avenir, Helvetica, Arial, sans-serif;
     font-size: 14px;
     color: #333;
@@ -146,7 +147,7 @@ main > .content {
     right: 0;
     bottom: 50px;
     left: 200px;
-    overflow: auto;
+    overflow-y: auto;
     background: #f5f5f5;
     transition: left .5s;
 }
@@ -237,3 +238,16 @@ main > .content .content-bottom > .user-img {
     background-image: url("../images/cat_12.jpg");
 }
 
+.content > .back-to-top {
+    position: fixed;
+    right: 20px;
+    bottom: 70px;
+    display: none;
+    background: #333;
+}
+
+.content > .back-to-top > .svg-to-top {
+    width: 35px;
+    height: 35px;
+    color: #ccc;
+}
