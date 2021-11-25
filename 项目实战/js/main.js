@@ -27,30 +27,30 @@ let nav1HTML =
     </div>
         <div class="content-bottom">
             <div class="image-wrapper">
-                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_1.jpg">
-                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_2.jpg">
-                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_3.jpg">
-                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_4.jpg">
-                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_5.jpg">
-                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_6.jpg">
-                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_7.jpg">
-                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_8.jpg">
-                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_9.jpg">
-                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_10.jpg">
-                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_11.jpg">
-                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_12.jpg">
-                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_1.jpg">
-                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_2.jpg">
-                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_3.jpg">
-                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_4.jpg">
-                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_5.jpg">
-                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_6.jpg">
-                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_7.jpg">
-                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_8.jpg">
-                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_9.jpg">
-                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_10.jpg">
-                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_11.jpg">
-                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_12.jpg">
+                <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_1.jpg">
+                <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_2.jpg">
+                <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_3.jpg">
+                <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_4.jpg">
+                <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_5.jpg">
+                <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_6.jpg">
+                <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_7.jpg">
+                <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_8.jpg">
+                <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_9.jpg">
+                <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_10.jpg">
+                <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_11.jpg">
+                <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_12.jpg">
+                <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_1.jpg">
+                <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_2.jpg">
+                <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_3.jpg">
+                <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_4.jpg">
+                <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_5.jpg">
+                <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_6.jpg">
+                <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_7.jpg">
+                <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_8.jpg">
+                <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_9.jpg">
+                <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_10.jpg">
+                <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_11.jpg">
+                <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_12.jpg">
             </div>
         </div>`
 
@@ -195,6 +195,40 @@ window.onload = () => {
     }
     carouselImgs.onmouseover = stopplay
     carouselImgs.onmouseout = autoplay
+
+    let viewHeight = document.documentElement.clientHeight
+    let throttle = (fn, delay) => {
+        let canRun = true
+        return function() {
+            if(canRun) {
+                fn.apply(this, arguments)
+                canRun = false
+                setTimeout(() => canRun = true, delay)
+            }
+        }
+    }
+
+    let lazyload = () => {
+        let imgs = document.querySelectorAll('img[data-original][lazyload]')
+        imgs.forEach(item => {
+            if(item.dataset.original === '') {
+                return
+            }
+            let rect = item.getBoundingClientRect()
+            if(rect.bottom >= 0 && rect.top < viewHeight) {
+                let img = new Image()
+                img.src = item.dataset.original
+                img.onload = () => {
+                    item.src = img.src
+                }
+                item.removeAttribute('data-original')
+                item.removeAttribute('lazyload')
+            }
+        })
+    }
+    lazyload()
+    let throttle_lazyload = throttle(lazyload, 300)
+    document.querySelector('#right-content').addEventListener('scroll', throttle_lazyload)
 
 }
 
