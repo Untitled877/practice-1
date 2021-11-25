@@ -18,8 +18,6 @@ let nav1HTML =
                 <span index="5"></span>
             </div> 
         </div>
-<!--        <a class="arrow" id="prev">&lt;</a>-->
-<!--        <a class="arrow" id="next">&gt;</a>            -->
         <svg class="icon" id="prev" aria-hidden="true">
             <use xlink:href="#icon-left"></use>
         </svg>
@@ -113,8 +111,6 @@ let showScrollBar = () => {
     }
 }
 
-
-
 let smoothScrollToTop = () => {
     document.querySelector('#right-content').scrollTo({
         left: 0,
@@ -131,15 +127,16 @@ window.onload = () => {
     let prev = document.getElementById('prev')
     let next = document.getElementById('next')
     let animate = (offset) => {
-
         let newLeft = parseInt(list.style.left) + offset
         list.style.left = newLeft + 'px'
         list.style.transition = '300ms ease'
         if(newLeft <= -4000) {
+            list.style.transition = ''
             list.style.left = 0 + 'px'
         }
-        if(newLeft > 0) {
-            list.style.left = -2400 + 'px'
+        if(newLeft >= 800) {
+            list.style.transition = ''
+            list.style.left = -3200 + 'px'
         }
     }
 
@@ -190,12 +187,12 @@ window.onload = () => {
 
     autoplay()
 
-    let carousel = document.querySelector('#carousel')
+    let carouselImgs = document.querySelector('#list-wrapper')
     function stopplay() {
         clearInterval(timer)
     }
-    carousel.onmouseover = stopplay
-    carousel.onmouseout = autoplay
+    carouselImgs.onmouseover = stopplay
+    carouselImgs.onmouseout = autoplay
 
 }
 
