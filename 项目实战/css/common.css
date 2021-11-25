@@ -233,78 +233,22 @@ main > .content-extension {
 }
 
 main > .content .content-bottom {
-    margin: 10px;
+    max-width: 900px;
+    margin: 50px auto 10px;
     border: 3px solid black;
 }
 
-footer {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: 50px;
-    line-height: 50px;
-    color: white;
-    text-align: center;
-    background: #242424;
+main > .content .content-bottom > .image-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
-/* main > .content .content-bottom > */
-.user-img {
+main > .content .content-bottom .image-item {
     display: inline-block;
     width: 200px;
     height: 200px;
-    margin: 10px;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.img1 {
-    background-image: url("../images/cat_1.jpg");
-}
-
-.img2 {
-    background-image: url("../images/cat_2.jpg");
-}
-
-.img3 {
-    background-image: url("../images/cat_3.jpg");
-}
-
-.img4 {
-    background-image: url("../images/cat_4.jpg");
-}
-
-.img5 {
-    background-image: url("../images/cat_5.jpg");
-}
-
-.img6 {
-    background-image: url("../images/cat_6.jpg");
-}
-
-.img7 {
-    background-image: url("../images/cat_7.jpg");
-}
-
-.img8 {
-    background-image: url("../images/cat_8.jpg");
-}
-
-.img9 {
-    background-image: url("../images/cat_9.jpg");
-}
-
-.img10 {
-    background-image: url("../images/cat_10.jpg");
-}
-
-.img11 {
-    background-image: url("../images/cat_11.jpg");
-}
-
-.img12 {
-    background-image: url("../images/cat_12.jpg");
+    margin: 20px 0;
 }
 
 .content > .back-to-top {
@@ -319,4 +263,16 @@ footer {
     width: 35px;
     height: 35px;
     color: #ccc;
+}
+
+footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    line-height: 50px;
+    color: white;
+    text-align: center;
+    background: #242424;
 }

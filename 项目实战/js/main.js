@@ -26,30 +26,32 @@ let nav1HTML =
         </svg>
     </div>
         <div class="content-bottom">
-            <div class="user-img img1"></div>
-            <div class="user-img img2"></div>
-            <div class="user-img img3"></div>
-            <div class="user-img img4"></div>
-            <div class="user-img img5"></div>
-            <div class="user-img img6"></div>
-            <div class="user-img img7"></div>
-            <div class="user-img img8"></div>
-            <div class="user-img img9"></div>
-            <div class="user-img img10"></div>
-            <div class="user-img img11"></div>
-            <div class="user-img img12"></div>
-            <div class="user-img img1"></div>
-            <div class="user-img img2"></div>
-            <div class="user-img img3"></div>
-            <div class="user-img img4"></div>
-            <div class="user-img img5"></div>
-            <div class="user-img img6"></div>
-            <div class="user-img img7"></div>
-            <div class="user-img img8"></div>
-            <div class="user-img img9"></div>
-            <div class="user-img img10"></div>
-            <div class="user-img img11"></div>
-            <div class="user-img img12"></div>
+            <div class="image-wrapper">
+                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_1.jpg">
+                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_2.jpg">
+                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_3.jpg">
+                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_4.jpg">
+                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_5.jpg">
+                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_6.jpg">
+                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_7.jpg">
+                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_8.jpg">
+                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_9.jpg">
+                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_10.jpg">
+                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_11.jpg">
+                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_12.jpg">
+                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_1.jpg">
+                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_2.jpg">
+                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_3.jpg">
+                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_4.jpg">
+                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_5.jpg">
+                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_6.jpg">
+                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_7.jpg">
+                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_8.jpg">
+                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_9.jpg">
+                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_10.jpg">
+                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_11.jpg">
+                <img src="javascript:;" alt="" class="image-item" lazyload="true" data-original="./images/cat_12.jpg">
+            </div>
         </div>`
 
 let onHashChange = () => {
