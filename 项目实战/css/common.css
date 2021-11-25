@@ -232,6 +232,20 @@ main > .content-extension {
     right: 20px;
 }
 
+.read-more {
+    margin-right: 20px;
+    line-height: 30px;
+    text-align: right;
+}
+
+.read-more > a {
+    text-decoration: underline;
+}
+
+.read-more > a:hover {
+    color: blue;
+}
+
 main > .content .content-bottom {
     max-width: 900px;
     margin: 50px auto 10px;
@@ -242,13 +256,6 @@ main > .content .content-bottom > .image-wrapper{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-}
-
-main > .content .content-bottom .image-item {
-    display: inline-block;
-    width: 200px;
-    height: 200px;
-    margin: 20px 0;
 }
 
 .content > .back-to-top {
@@ -275,4 +282,70 @@ footer {
     color: white;
     text-align: center;
     background: #242424;
+}
+
+.image-wrapper > .box {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 10px 0;
+}
+
+.image-wrapper > .box > .img-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.image-wrapper > .box > .img-box img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+.image-wrapper > .box .content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    padding: 15px;
+    overflow: hidden;
+    color: white;
+    background: #000;
+    opacity: 0.7;
+    transition: 0.5s;
+}
+
+.image-wrapper > .box:hover .content {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.image-wrapper > .box:hover .content h3 {
+    padding: 0;
+    margin: 0;
+    font-size: 20px;
+}
+
+.image-wrapper > .box .content p {
+    padding: 0;
+    margin: 10px 0 0;
+    line-height: 1.2em;
+    text-align: justify;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.image-wrapper > .box:hover .content p {
+    opacity: 1;
 }
