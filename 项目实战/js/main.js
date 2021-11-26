@@ -241,10 +241,73 @@ let nav1HTML =
             </div>
         </div>`
 
+let readMoreHTML = `<div class="more-content">
+            <div class="more-imgs-wrapper">
+                <div class="scale-img">
+                    <img src="./images/cat_13.jpg" alt="">
+                </div>
+                <div class="scale-img">
+                    <img src="./images/cat_14.jpg" alt="">
+                </div>
+                <div class="scale-img">
+                    <img src="./images/cat_15.jpg" alt="">
+                </div>
+                <div class="scale-img">
+                    <img src="./images/cat_16.jpg" alt="">
+                </div>
+                <div class="scale-img">
+                    <img src="./images/cat_17.jpg" alt="">
+                </div>
+                <div class="scale-img">
+                    <img src="./images/cat_18.jpg" alt="">
+                </div>
+                <div class="scale-img">
+                    <img src="./images/cat_19.jpg" alt="">
+                </div>
+                <div class="scale-img">
+                    <img src="./images/cat_20.jpg" alt="">
+                </div>
+                <div class="scale-img">
+                    <img src="./images/cat_21.jpg" alt="">
+                </div>
+                <div class="scale-img">
+                    <img src="./images/cat_22.jpg" alt="">
+                </div>
+                <div class="scale-img">
+                    <img src="./images/cat_23.jpg" alt="">
+                </div>
+                <div class="scale-img">
+                    <img src="./images/cat_24.jpg" alt="">
+                </div>
+                <div class="scale-img">
+                    <img src="./images/cat_25.jpg" alt="">
+                </div>
+                <div class="scale-img">
+                    <img src="./images/cat_26.jpg" alt="">
+                </div>
+                <div class="scale-img">
+                    <img src="./images/cat_27.jpg" alt="">
+                </div>
+                <div class="scale-img">
+                    <img src="./images/cat_28.jpg" alt="">
+                </div>
+                <div class="scale-img">
+                    <img src="./images/cat_29.jpg" alt="">
+                </div>
+                <div class="scale-img">
+                    <img src="./images/cat_30.jpg" alt="">
+                </div>
+            </div>
+        </div>`
+
 let onHashChange = () => {
     switch (location.hash) {
         case '#/nav1':
+            console.log('1')
             routerView.innerHTML = nav1HTML
+            return
+        case '#/nav1/readMore':
+            routerView.innerHTML = readMoreHTML
             return
         case '#/nav2':
             routerView.innerHTML = 'Nav 2'
@@ -312,6 +375,7 @@ document.querySelector('#right-content').addEventListener('scroll', showScrollBa
 document.querySelector('.back-to-top').addEventListener('click', smoothScrollToTop)
 
 window.onload = () => {
+    console.log('onload执行一次')
     let list = document.getElementById('list')
     let prev = document.getElementById('prev')
     let next = document.getElementById('next')
@@ -416,6 +480,9 @@ window.onload = () => {
     lazyload()
     let throttle_lazyload = throttle(lazyload, 300)
     document.querySelector('#right-content').addEventListener('scroll', throttle_lazyload)
+}
+
+let bindEvents = () => {
 
 }
 
