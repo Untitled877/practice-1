@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 * {
     padding: 0;
     margin:0;
@@ -234,15 +235,15 @@ main > .content-extension {
 
 .scale-img {
     position: relative;
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     margin: 10px 0;
     overflow: hidden;
 }
 
 .scale-img img {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     transition: .5s ease-out;
     transform: scale(1);
 }
@@ -261,6 +262,42 @@ main > .content .content-bottom > .image-wrapper, .more-imgs-wrapper{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    border: 3px solid green;
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    width: 480px;
+    height: 30px;
+    margin: 20px auto;
+    line-height: 30px;
+    border: 1px solid #ccc;
+}
+
+.pagination > span {
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.pagination > ul {
+    display: flex;
+    flex: 1;
+}
+
+.pagination > ul > li {
+    flex: 1;
+    text-align: center;
+    cursor: pointer;
+    border-right: 1px solid #ccc;
+}
+
+.pagination > ul > li.current {
+    color: orange;
+}
+
+.pagination > ul > li:first-child {
+    border-left: 1px solid #ccc;
 }
 
 .content > .back-to-top {

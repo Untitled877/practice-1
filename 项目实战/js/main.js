@@ -298,16 +298,136 @@ let readMoreHTML = `<div class="more-content">
                     <img src="./images/cat_30.jpg" alt="">
                 </div>
             </div>
+            <div class="pagination">
+                <span id="prev-page">上一页</span>
+                <ul id="pages">
+                    <li class="current">1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                    <li>7</li>
+                    <li>8</li>
+                    <li>9</li>
+                    <li>10</li>
+                </ul>
+                <span id="next-page">下一页</span>
+            </div>
         </div>`
 
 let onHashChange = () => {
     switch (location.hash) {
         case '#/nav1':
-            console.log('1')
             routerView.innerHTML = nav1HTML
             return
         case '#/nav1/readMore':
             routerView.innerHTML = readMoreHTML
+
+            let imgsNum = document.querySelectorAll('.more-imgs-wrapper img').length
+            // let total = Math.ceil(imgsNum / 3)
+
+
+            // total 总页数 pagesLen 页码个数 currentPage当前页码
+            let around = (total, pagesLen, currentPage) => {
+                let pagesNum
+                let side = (pagesLen - 5) / 2
+                let leftArr = [], rightArr = []
+                for(let i = 1; i < side; i++) {
+                    leftArr.unshift(currentPage - i)
+                    rightArr.push(currentPage + i)
+                }
+                pagesNum = (pagesLen - 5) % 2 === 0 ? [1, '...'].concat(leftArr, currentPage, rightArr, '...', total)
+                                                    : [1, '...'].concat(currentPage - Math.ceil(side), leftArr, currentPage, rightArr, '...', total)
+                return pagesNum
+            }
+            let drawPage = (total, pagesLen, currentPage) => {
+                let temp = pagesLen - 2
+                let pagesNum = []
+                // 如果总页数小于页码个数，则直接显示总页数个页码
+                if(total <= pagesLen) {
+                    for(let i = 0; i < total; i++) {
+                        pagesNum.push(i + 1)
+                    }
+                } else {
+                    // total大于页码总数，分三种情况
+                    // 1. 当前页码小于 temp
+                    if(currentPage <= temp) {
+                        // 1.1 当前页离首页近，尾部显示省略号
+                        if(currentPage <= temp - Math.ceil(temp / 2)) {
+                            for(let i = 0; i < temp; i++) {
+                                pagesNum.push(i + 1)
+                            }
+                            pagesNum.push('...', total)
+                        } else {
+                            // 1.2 当前页离首页远，两边显示省略号
+                            pagesNum = around(total, pagesLen, currentPage)
+                        }
+                        // 2. 当前页大于 总数 - temp
+                    } else if(currentPage >= total - temp) {
+                        // 2.1 当前页离尾页近， 首部显示省略号
+                        if(currentPage >= total - Math.floor(temp / 2)) {
+                            for(let i = 0; i < temp; i++) {
+                                pagesNum.unshift(total - i)
+                            }
+                            pagesNum.unshift(1, '...')
+                        } else {
+                            // 当前页离尾页远，两边显示省略号
+                            pagesNum = around(total, pagesLen, currentPage)
+                        }
+                    } else {
+                        pagesNum = around(total, pagesLen, currentPage)
+                    }
+                }
+                return pagesNum
+            }
+
+            let pages = document.getElementById('pages')
+            let pagesSum = pages.children.length
+            let pageTotal = 30
+            let changePage = (total, pagesLen, cur) => {
+                let nums = drawPage(total, pagesLen, cur)
+                console.log(nums)
+                for(let i = 0; i < pages.children.length; i++) {
+                    pages.children[i].innerText = nums[i]
+                }
+            }
+
+            changePage(pageTotal, pagesSum, 1)
+            let currentPage = 1
+            pages.addEventListener('click', (e) => {
+                let target = e.target
+                if(target.nodeName === 'LI') {
+                    let numText = target.innerText
+                    if(numText === '...') return
+
+                    currentPage = numText * 1
+                    changePage(pageTotal, pagesSum, currentPage)
+                    for(let i = 0; i < pages.children.length; i++) {
+                        pages.children[i].className = pages.children[i].innerText === numText ? 'current' : '';
+                    }
+                }
+            })
+            let prevPage = document.getElementById('prev-page')
+            let nextPage = document.getElementById('next-page')
+            prevPage.addEventListener('click', () => {
+                if(currentPage === 1) return
+                currentPage -= 1
+                changePage(pageTotal, pagesSum, currentPage)
+                for(let i = 0; i < pages.children.length; i++) {
+                    pages.children[i].className = pages.children[i].innerText === ''+currentPage ? 'current' : '';
+                }
+            })
+
+            nextPage.addEventListener('click', () => {
+                if(currentPage === pageTotal) return
+                currentPage += 1
+                changePage(pageTotal, pagesSum, currentPage)
+                for(let i = 0; i < pages.children.length; i++) {
+                    pages.children[i].className = pages.children[i].innerText === ''+currentPage ? 'current' : '';
+                }
+            })
+
             return
         case '#/nav2':
             routerView.innerHTML = 'Nav 2'
@@ -375,7 +495,6 @@ document.querySelector('#right-content').addEventListener('scroll', showScrollBa
 document.querySelector('.back-to-top').addEventListener('click', smoothScrollToTop)
 
 window.onload = () => {
-    console.log('onload执行一次')
     let list = document.getElementById('list')
     let prev = document.getElementById('prev')
     let next = document.getElementById('next')
@@ -485,6 +604,10 @@ window.onload = () => {
 let bindEvents = () => {
 
 }
+
+
+
+
 
 
 
