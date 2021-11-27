@@ -4,11 +4,11 @@ let nav1HTML =
     `<div class="content-top" id="carousel">
         <div id="list-wrapper">
             <div id="list" style="left: 0">
-                <img src="./images/carousel/carousel_1.png" alt="">
+                <img src="./images/carousel/carousel_1.jpg" alt="">
                 <img src="./images/carousel/carousel_2.jpg" alt="">
                 <img src="./images/carousel/carousel_3.jpg" alt="">
-                <img src="./images/carousel/carousel_4.jpg" alt="">
-                <img src="./images/carousel/carousel_5.jpg" alt="">
+                <img src="./images/carousel/carousel_4.png" alt="">
+                <img src="./images/carousel/carousel_5.png" alt="">
             </div>
             <div id="buttons">
                 <span index="1" class="on"></span>
@@ -30,7 +30,7 @@ let nav1HTML =
             <div class="image-wrapper">
                 <div class="box">
                     <div class="img-box">
-                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_1.jpg">
+                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/1.jpg">
                     </div>
                     <div class="content">
                         <h3>Post Title One</h3>
@@ -39,7 +39,7 @@ let nav1HTML =
                 </div>
                 <div class="box">
                     <div class="img-box">
-                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_2.jpg">
+                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/2.jpg">
                     </div>
                     <div class="content">
                         <h3>Post Title One</h3>
@@ -48,7 +48,7 @@ let nav1HTML =
                 </div>
                 <div class="box">
                     <div class="img-box">
-                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_3.jpg">
+                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/3.jpg">
                     </div>
                     <div class="content">
                         <h3>Post Title One</h3>
@@ -57,7 +57,7 @@ let nav1HTML =
                 </div>
                 <div class="box">
                     <div class="img-box">
-                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_4.jpg">
+                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/4.jpg">
                     </div>
                     <div class="content">
                         <h3>Post Title One</h3>
@@ -66,7 +66,7 @@ let nav1HTML =
                 </div>
                 <div class="box">
                     <div class="img-box">
-                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_5.jpg">
+                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/5.jpg">
                     </div>
                     <div class="content">
                         <h3>Post Title One</h3>
@@ -74,7 +74,7 @@ let nav1HTML =
                     </div>
                 </div><div class="box">
                     <div class="img-box">
-                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_6.jpg">
+                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/6.jpg">
                     </div>
                     <div class="content">
                         <h3>Post Title One</h3>
@@ -82,7 +82,7 @@ let nav1HTML =
                     </div>
                 </div><div class="box">
                     <div class="img-box">
-                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_7.jpg">
+                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/7.jpg">
                     </div>
                     <div class="content">
                         <h3>Post Title One</h3>
@@ -90,7 +90,7 @@ let nav1HTML =
                     </div>
                 </div><div class="box">
                     <div class="img-box">
-                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_8.jpg">
+                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/8.jpg">
                     </div>
                     <div class="content">
                         <h3>Post Title One</h3>
@@ -99,7 +99,7 @@ let nav1HTML =
                 </div>
                 <div class="box">
                     <div class="img-box">
-                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_9.jpg">
+                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/9.jpg">
                     </div>
                     <div class="content">
                         <h3>Post Title One</h3>
@@ -108,7 +108,7 @@ let nav1HTML =
                 </div>
                 <div class="box">
                     <div class="img-box">
-                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_10.jpg">
+                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/10.jpg">
                     </div>
                     <div class="content">
                         <h3>Post Title One</h3>
@@ -117,7 +117,7 @@ let nav1HTML =
                 </div>
                 <div class="box">
                     <div class="img-box">
-                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_11.jpg">
+                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/11.jpg">
                     </div>
                     <div class="content">
                         <h3>Post Title One</h3>
@@ -126,7 +126,7 @@ let nav1HTML =
                 </div>
                 <div class="box">
                     <div class="img-box">
-                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_12.jpg">
+                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/12.jpg">
                     </div>
                     <div class="content">
                         <h3>Post Title One</h3>
@@ -135,7 +135,7 @@ let nav1HTML =
                 </div>
                 <div class="box">
                     <div class="img-box">
-                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_1.jpg">
+                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/1.jpg">
                     </div>
                     <div class="content">
                         <h3>Post Title One</h3>
@@ -144,7 +144,7 @@ let nav1HTML =
                 </div>
                 <div class="box">
                     <div class="img-box">
-                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_2.jpg">
+                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/2.jpg">
                     </div>
                     <div class="content">
                         <h3>Post Title One</h3>
@@ -153,7 +153,7 @@ let nav1HTML =
                 </div>
                 <div class="box">
                     <div class="img-box">
-                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_3.jpg">
+                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/3.jpg">
                     </div>
                     <div class="content">
                         <h3>Post Title One</h3>
@@ -162,7 +162,7 @@ let nav1HTML =
                 </div>
                 <div class="box">
                     <div class="img-box">
-                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_4.jpg">
+                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/4.jpg">
                     </div>
                     <div class="content">
                         <h3>Post Title One</h3>
@@ -171,7 +171,7 @@ let nav1HTML =
                 </div>
                 <div class="box">
                     <div class="img-box">
-                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_5.jpg">
+                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/5.jpg">
                     </div>
                     <div class="content">
                         <h3>Post Title One</h3>
@@ -179,7 +179,7 @@ let nav1HTML =
                     </div>
                 </div><div class="box">
                     <div class="img-box">
-                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_6.jpg">
+                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/6.jpg">
                     </div>
                     <div class="content">
                         <h3>Post Title One</h3>
@@ -187,7 +187,7 @@ let nav1HTML =
                     </div>
                 </div><div class="box">
                     <div class="img-box">
-                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_7.jpg">
+                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/7.jpg">
                     </div>
                     <div class="content">
                         <h3>Post Title One</h3>
@@ -195,7 +195,7 @@ let nav1HTML =
                     </div>
                 </div><div class="box">
                     <div class="img-box">
-                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_8.jpg">
+                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/8.jpg">
                     </div>
                     <div class="content">
                         <h3>Post Title One</h3>
@@ -204,7 +204,7 @@ let nav1HTML =
                 </div>
                 <div class="box">
                     <div class="img-box">
-                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_9.jpg">
+                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/9.jpg">
                     </div>
                     <div class="content">
                         <h3>Post Title One</h3>
@@ -213,7 +213,7 @@ let nav1HTML =
                 </div>
                 <div class="box">
                     <div class="img-box">
-                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_10.jpg">
+                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/10.jpg">
                     </div>
                     <div class="content">
                         <h3>Post Title One</h3>
@@ -222,7 +222,7 @@ let nav1HTML =
                 </div>
                 <div class="box">
                     <div class="img-box">
-                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_11.jpg">
+                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/11.jpg">
                     </div>
                     <div class="content">
                         <h3>Post Title One</h3>
@@ -231,8 +231,8 @@ let nav1HTML =
                 </div>
                 <div class="box">
                     <div class="img-box">
-                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/cat_12.jpg">
-                    </div>
+                        <img src="" alt="" class="image-item" lazyload="true" data-original="./images/12.jpg">
+                    </
                     <div class="content">
                         <h3>Post Title One</h3>
                         <p>The quick brown fox jumps over a lazy dog.</p>
@@ -244,58 +244,58 @@ let nav1HTML =
 let readMoreHTML = `<div class="more-content">
             <div class="more-imgs-wrapper">
                 <div class="scale-img">
-                    <img src="./images/cat_13.jpg" alt="">
+                    <img src="./images/13.jpg" alt="">
                 </div>
                 <div class="scale-img">
-                    <img src="./images/cat_14.jpg" alt="">
+                    <img src="./images/14.jpg" alt="">
                 </div>
                 <div class="scale-img">
-                    <img src="./images/cat_15.jpg" alt="">
+                    <img src="./images/15.jpg" alt="">
                 </div>
                 <div class="scale-img">
-                    <img src="./images/cat_16.jpg" alt="">
+                    <img src="./images/16.jpg" alt="">
                 </div>
                 <div class="scale-img">
-                    <img src="./images/cat_17.jpg" alt="">
+                    <img src="./images/17.jpg" alt="">
                 </div>
                 <div class="scale-img">
-                    <img src="./images/cat_18.jpg" alt="">
+                    <img src="./images/18.jpg" alt="">
                 </div>
                 <div class="scale-img">
-                    <img src="./images/cat_19.jpg" alt="">
+                    <img src="./images/19.jpg" alt="">
                 </div>
                 <div class="scale-img">
-                    <img src="./images/cat_20.jpg" alt="">
+                    <img src="./images/20.jpg" alt="">
                 </div>
                 <div class="scale-img">
-                    <img src="./images/cat_21.jpg" alt="">
+                    <img src="./images/21.jpg" alt="">
                 </div>
                 <div class="scale-img">
-                    <img src="./images/cat_22.jpg" alt="">
+                    <img src="./images/22.jpg" alt="">
                 </div>
                 <div class="scale-img">
-                    <img src="./images/cat_23.jpg" alt="">
+                    <img src="./images/23.jpg" alt="">
                 </div>
                 <div class="scale-img">
-                    <img src="./images/cat_24.jpg" alt="">
+                    <img src="./images/24.jpg" alt="">
                 </div>
                 <div class="scale-img">
-                    <img src="./images/cat_25.jpg" alt="">
+                    <img src="./images/25.jpg" alt="">
                 </div>
                 <div class="scale-img">
-                    <img src="./images/cat_26.jpg" alt="">
+                    <img src="./images/26.jpg" alt="">
                 </div>
                 <div class="scale-img">
-                    <img src="./images/cat_27.jpg" alt="">
+                    <img src="./images/27.jpg" alt="">
                 </div>
                 <div class="scale-img">
-                    <img src="./images/cat_28.jpg" alt="">
+                    <img src="./images/28.jpg" alt="">
                 </div>
                 <div class="scale-img">
-                    <img src="./images/cat_29.jpg" alt="">
+                    <img src="./images/29.jpg" alt="">
                 </div>
                 <div class="scale-img">
-                    <img src="./images/cat_30.jpg" alt="">
+                    <img src="./images/30.jpg" alt="">
                 </div>
             </div>
             <div class="pagination">

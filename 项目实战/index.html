@@ -50,10 +50,60 @@
         </div>
     </main>
     <footer>
-        高度固定 音乐控制条
+        <div class="player-bar-wrapper">
+            <div class="player-bar">
+                <div class="player-btns">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-prev-song"></use>
+                    </svg>
+                    <div class="play-flag">
+                        <svg class="icon" id="flag-play" aria-hidden="true">
+                            <use xlink:href="#icon-play"></use>
+                        </svg>
+                        <svg class="icon" id="flag-pause" aria-hidden="true">
+                            <use xlink:href="#icon-pause"></use>
+                        </svg>
+                    </div>
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-next-song"></use>
+                    </svg>
+                </div>
+                <div class="song-info">
+                    <img src="" alt="" class="song-cover">
+                    <div id="bar-wrapper">
+                        <div>
+                            <span class="song-name">敢</span>
+                            <span class="song-singer">黄龄</span>
+                        </div>
+                        <div id="time-bar">
+                            <div class="song-bar">
+                                <div class="progress">
+                                    <div class="progress-button"></div>
+                                </div>
+                            </div>
+                            <span class="time-start">00:00</span> / <span class="time-end">00:00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-buttons">
+                    <svg class="icon" id="sound-volume" aria-hidden="true">
+                        <use xlink:href="#icon-audio"></use>
+                    </svg>
+                    <svg class="icon" id="loop-play" aria-hidden="true">
+                        <use xlink:href="#icon-play-loop"></use>
+                    </svg>
+                    <div class="svg-wrapper">
+                        <svg class="icon" id="songs-list" aria-hidden="true">
+                            <use xlink:href="#icon-player-list"></use>
+                        </svg>
+                        <span class="songs-num">2</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </footer>
 </div>
-<script src="//at.alicdn.com/t/font_2959176_1tkqt8ynfo9.js"></script>
+<script src="//at.alicdn.com/t/font_2959176_3u37pw8p4d.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="./js/main.js"></script>
 </body>
