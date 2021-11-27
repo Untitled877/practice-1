@@ -235,6 +235,7 @@ main > .content-extension {
 
 .scale-img {
     position: relative;
+    display: none;
     width: 250px;
     height: 250px;
     margin: 10px 0;

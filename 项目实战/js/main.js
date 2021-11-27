@@ -307,9 +307,6 @@ let readMoreHTML = `<div class="more-content">
                     <li>4</li>
                     <li>5</li>
                     <li>6</li>
-                    <li>7</li>
-                    <li>8</li>
-                    <li>9</li>
                 </ul>
                 <span id="next-page">下一页</span>
             </div>
@@ -324,8 +321,20 @@ let onHashChange = () => {
             routerView.innerHTML = readMoreHTML
 
             let imgsNum = document.querySelectorAll('.more-imgs-wrapper img').length
-            // let total = Math.ceil(imgsNum / 3)
-
+            let pageTotal = Math.ceil(imgsNum / 3)
+            let currentPage = 1
+            let imgsArray = document.querySelectorAll('.more-imgs-wrapper .scale-img')
+            let clearStyle = () => {
+                imgsArray.forEach(img => img.style.display = 'none')
+            }
+            let fetchImgs = (currentPage) => {
+                clearStyle()
+                let startIndex = 3 * (currentPage - 1)
+                for(let i = startIndex; i < startIndex + 3; i++) {
+                    imgsArray[i].style.display = 'inline-block'
+                }
+            }
+            fetchImgs(currentPage)
 
             // total 总页数 pagesLen 页码个数 currentPage当前页码
             let around = (total, pagesLen, currentPage) => {
@@ -383,15 +392,16 @@ let onHashChange = () => {
 
             let pages = document.getElementById('pages')
             let pagesSum = pages.children.length
-            let pageTotal = 100
+            // let pageTotal = 100
             let changePage = (total, pagesLen, cur) => {
                 let nums = drawPage(total, pagesLen, cur)
                          for(let i = 0; i < pages.children.length; i++) {
                     pages.children[i].innerText = nums[i]
                 }
             }
-            let currentPage = 1
+
             changePage(pageTotal, pagesSum, currentPage)
+            fetchImgs(currentPage)
 
             pages.addEventListener('click', (e) => {
                 let target = e.target
@@ -404,6 +414,7 @@ let onHashChange = () => {
                     for(let i = 0; i < pages.children.length; i++) {
                         pages.children[i].className = pages.children[i].innerText === numText ? 'current' : '';
                     }
+                    fetchImgs(currentPage)
                 }
             })
             let prevPage = document.getElementById('prev-page')
@@ -415,6 +426,7 @@ let onHashChange = () => {
                 for(let i = 0; i < pages.children.length; i++) {
                     pages.children[i].className = pages.children[i].innerText === ''+currentPage ? 'current' : '';
                 }
+                fetchImgs(currentPage)
             })
 
             nextPage.addEventListener('click', () => {
@@ -424,6 +436,7 @@ let onHashChange = () => {
                 for(let i = 0; i < pages.children.length; i++) {
                     pages.children[i].className = pages.children[i].innerText === ''+currentPage ? 'current' : '';
                 }
+                fetchImgs(currentPage)
             })
 
             return
