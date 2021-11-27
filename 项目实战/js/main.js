@@ -310,7 +310,6 @@ let readMoreHTML = `<div class="more-content">
                     <li>7</li>
                     <li>8</li>
                     <li>9</li>
-                    <li>10</li>
                 </ul>
                 <span id="next-page">下一页</span>
             </div>
@@ -333,7 +332,7 @@ let onHashChange = () => {
                 let pagesNum
                 let side = (pagesLen - 5) / 2
                 let leftArr = [], rightArr = []
-                for(let i = 1; i < side; i++) {
+                for(let i = 1; i <= side; i++) {
                     leftArr.unshift(currentPage - i)
                     rightArr.push(currentPage + i)
                 }
@@ -354,7 +353,7 @@ let onHashChange = () => {
                     // 1. 当前页码小于 temp
                     if(currentPage <= temp) {
                         // 1.1 当前页离首页近，尾部显示省略号
-                        if(currentPage <= temp - Math.ceil(temp / 2)) {
+                        if(currentPage <= temp + 1 - Math.floor(temp / 2)) {
                             for(let i = 0; i < temp; i++) {
                                 pagesNum.push(i + 1)
                             }
@@ -366,7 +365,7 @@ let onHashChange = () => {
                         // 2. 当前页大于 总数 - temp
                     } else if(currentPage >= total - temp) {
                         // 2.1 当前页离尾页近， 首部显示省略号
-                        if(currentPage >= total - Math.floor(temp / 2)) {
+                        if(currentPage >= total - Math.ceil(temp / 2)) {
                             for(let i = 0; i < temp; i++) {
                                 pagesNum.unshift(total - i)
                             }
@@ -384,17 +383,16 @@ let onHashChange = () => {
 
             let pages = document.getElementById('pages')
             let pagesSum = pages.children.length
-            let pageTotal = 30
+            let pageTotal = 100
             let changePage = (total, pagesLen, cur) => {
                 let nums = drawPage(total, pagesLen, cur)
-                console.log(nums)
-                for(let i = 0; i < pages.children.length; i++) {
+                         for(let i = 0; i < pages.children.length; i++) {
                     pages.children[i].innerText = nums[i]
                 }
             }
-
-            changePage(pageTotal, pagesSum, 1)
             let currentPage = 1
+            changePage(pageTotal, pagesSum, currentPage)
+
             pages.addEventListener('click', (e) => {
                 let target = e.target
                 if(target.nodeName === 'LI') {
