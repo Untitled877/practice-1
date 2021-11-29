@@ -232,14 +232,13 @@ let nav1HTML =
                 <div class="box">
                     <div class="img-box">
                         <img src="" alt="" class="image-item" lazyload="true" data-original="./images/12.jpg">
-                    </
+                    </div>
                     <div class="content">
                         <h3>Post Title One</h3>
                         <p>The quick brown fox jumps over a lazy dog.</p>
                     </div>
                 </div>
-            </div>
-        </div>`
+            </div>`
 
 let readMoreHTML = `<div class="more-content">
             <div class="more-imgs-wrapper">
@@ -615,6 +614,19 @@ window.onload = () => {
 let bindEvents = () => {
 
 }
+
+// 音乐播放器部分：
+let musicPanel = document.querySelector('#music-panel')
+let closeButton = document.querySelector('#panel-close')
+let showList = document.querySelector('.svg-wrapper')
+
+closeButton.addEventListener('click', () => {
+    musicPanel.style.display = 'none'
+})
+
+showList.addEventListener('click', () => {
+    musicPanel.style.display = 'block'
+})
 
 
 
