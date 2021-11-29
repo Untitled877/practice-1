@@ -628,6 +628,112 @@ showList.addEventListener('click', () => {
     musicPanel.style.display = 'block'
 })
 
+/*
+class Player {
+    constructor(node) {
+        this.songList = []
+        this.audio = new Audio()
+        this.start()
+        this.bind()
+    }
+
+    start() {
+        this.songList = [
+            {
+                id: '-1',
+                title: '我用什么把你留住',
+                author: '',
+                albumn: '',
+                lyric: '',
+                url: ''
+            },
+            {
+                id: '-1',
+                title: '我用什么把你留住',
+                author: '',
+                albumn: '',
+                lyric: '',
+                url: ''
+            },
+            {
+                id: '-1',
+                title: '我用什么把你留住',
+                author: '',
+                albumn: '',
+                lyric: '',
+                url: ''
+            },
+            {
+                id: '-1',
+                title: '我用什么把你留住',
+                author: '',
+                albumn: '',
+                lyric: '',
+                url: ''
+            },
+            {
+                id: '-1',
+                title: '我用什么把你留住',
+                author: '',
+                albumn: '',
+                lyric: '',
+                url: ''
+            },
+        ]
+        this.renderSong()
+    }
+    bind() {
+        document.querySelector('.song-bar .progress-button').onmousedown = (e) => {
+            this.progressButtonMouseDown = {
+                x: e.clientX,
+                left: e.target.offsetLeft
+            }
+        }
+        document.querySelector('.song-bar .progress-button').onmousemove = (e) => {
+            const delta = e.clientX - this.progressButtonMouseDown.x
+            const bar = document.querySelector('.song-bar')
+            const progress = document.querySelector('.song-bar .progress')
+            progress.style.width =
+                Math.min(
+                    Math.max(((delta + this.progressButtonMouseDown.left) / bar.offsetWidth) * 100, 0), 100
+                ) + "%";
+        }
+        document.querySelector('.song-bar .progress-button').onmouseup = () => {
+            this.progressButtonMouseDown = undefined
+            const progress = document.querySelector('.song-bar .progress')
+            // this.audio.currentTime =
+        }
+    }
+
+    renderSong() {
+
+    }
+}
+*/
+
+let songBar = document.querySelector('.song-bar')
+let progress = document.querySelector('.song-bar .progress')
+let progressButton = document.querySelector('.song-bar .progress-button')
+
+progressButton.onmousedown = function(e) {
+    let progressLeft = e.clientX - this.offsetLeft
+    document.onmousemove = function(e) {
+        let progressX = e.clientX - progressLeft
+        if(progressX <= 0) {
+            progressX = 0
+        } else if(progressX >= 450) {
+            progressX = 450
+        }
+        progressButton.style.left = progressX + 'px'
+        // progress.style.width = progressX + 'px'
+        // todo 计算进度百分比
+
+    }
+    document.onmouseup = function(e) {
+        document.onmousemove = null
+        document.onmouseup = null
+    }
+}
 
 
 
