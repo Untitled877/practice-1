@@ -633,19 +633,27 @@ let songBar = document.querySelector('.song-bar')
 let progress = document.querySelector('.song-bar .progress')
 let progressButton = document.querySelector('.song-bar .progress-button')
 
+let progressChange = (progressLeft) => {
+    if(progressLeft <= 0) {
+        progressLeft = 0
+    } else if(progressLeft >= 445) {
+        progressLeft = 445
+    }
+    progressButton.style.left = progressLeft + 'px'
+    progress.style.width = progressLeft + 'px'
+    audio.currentTime = audio.duration * (progressLeft/445)
+}
+
+let resetProgress = () => {
+    progress.style.width = '0'
+    progressButton.style.left = '0'
+}
+
 progressButton.onmousedown = function(e) {
     let progressLeft = e.clientX - this.offsetLeft
     document.onmousemove = function(e) {
         let progressX = e.clientX - progressLeft
-        if(progressX <= 0) {
-            progressX = 0
-        } else if(progressX >= 450) {
-            progressX = 450
-        }
-        progressButton.style.left = progressX + 'px'
-        progress.style.width = progressX + 10 + 'px'
-        // todo 计算进度百分比
-
+        progressChange(progressX)
     }
     document.onmouseup = function(e) {
         document.onmousemove = null
@@ -655,8 +663,7 @@ progressButton.onmousedown = function(e) {
 
 songBar.onclick = function(e) {
     let progressLeft = e.clientX - this.offsetLeft
-    progressButton.style.left = progressLeft - 10 + 'px'
-    progress.style.width = progressLeft + 10 + 'px'
+    progressChange(progressLeft)
 }
 
 const songList = [
@@ -769,6 +776,7 @@ let changeMusic = (index) => {
     console.log(songList[index].title)
     audio.src = songList[index].url
     audio.play()
+    resetProgress()
     isPlaying = true
     toggleStyle(isPlaying)
 }
