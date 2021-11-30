@@ -1,13 +1,3 @@
-// import chaoduwo from '../assets/chaoduwo.mp3'
-// import woyongshenmebaniliuzhu from '../assets/福禄寿FloruitShow - 我用什么把你留住.mp3'
-// import ma from '../assets/福禄寿FloruitShow - 马.mp3'
-// import yuzhen from '../assets/福禄寿FloruitShow - 玉珍.mp3'
-// import fearless from '../assets/福禄寿FloruitShow - FEARLESS.mp3'
-// import saysomething from '../assets/A Great Big World - Say Something.mp3'
-// import troublesleeping from '../assets/Corinne Bailey Rae - Trouble Sleeping.mp3'
-// import piano1 from '../assets/Yusuke Tsutsumi - Tokyo Love Theme.mp3'
-// import piano2 from '../assets/石进 - 被时光移动的城市.mp3'
-// import xiazaileliangci from '../assets/陈珊妮 林宥嘉 - 如同悲伤被下载了两次.mp3'
 
 let routerView = null
 
@@ -639,89 +629,6 @@ showList.addEventListener('click', () => {
     musicPanel.style.display = 'block'
 })
 
-/*
-class Player {
-    constructor(node) {
-        this.songList = []
-        this.audio = new Audio()
-        this.start()
-        this.bind()
-    }
-
-    start() {
-        this.songList = [
-            {
-                id: '-1',
-                title: '我用什么把你留住',
-                author: '',
-                albumn: '',
-                lyric: '',
-                url: ''
-            },
-            {
-                id: '-1',
-                title: '我用什么把你留住',
-                author: '',
-                albumn: '',
-                lyric: '',
-                url: ''
-            },
-            {
-                id: '-1',
-                title: '我用什么把你留住',
-                author: '',
-                albumn: '',
-                lyric: '',
-                url: ''
-            },
-            {
-                id: '-1',
-                title: '我用什么把你留住',
-                author: '',
-                albumn: '',
-                lyric: '',
-                url: ''
-            },
-            {
-                id: '-1',
-                title: '我用什么把你留住',
-                author: '',
-                albumn: '',
-                lyric: '',
-                url: ''
-            },
-        ]
-        this.renderSong()
-    }
-    bind() {
-        document.querySelector('.song-bar .progress-button').onmousedown = (e) => {
-            this.progressButtonMouseDown = {
-                x: e.clientX,
-                left: e.target.offsetLeft
-            }
-        }
-        document.querySelector('.song-bar .progress-button').onmousemove = (e) => {
-            const delta = e.clientX - this.progressButtonMouseDown.x
-            const bar = document.querySelector('.song-bar')
-            const progress = document.querySelector('.song-bar .progress')
-            progress.style.width =
-                Math.min(
-                    Math.max(((delta + this.progressButtonMouseDown.left) / bar.offsetWidth) * 100, 0), 100
-                ) + "%";
-        }
-        document.querySelector('.song-bar .progress-button').onmouseup = () => {
-            this.progressButtonMouseDown = undefined
-            const progress = document.querySelector('.song-bar .progress')
-            // this.audio.currentTime =
-        }
-    }
-
-    renderSong() {
-
-    }
-}
-*/
-
 let songBar = document.querySelector('.song-bar')
 let progress = document.querySelector('.song-bar .progress')
 let progressButton = document.querySelector('.song-bar .progress-button')
@@ -759,7 +666,7 @@ const songList = [
         author: '福禄寿FloruitShow',
         album: '超度我',
         lyric: 'lyric_chaoduwo',
-        url: 'chaoduwo'
+        url: '../项目实战/assets/福禄寿FloruitShow - 超度我.mp3'
     },
     {
         id: '0',
@@ -767,7 +674,7 @@ const songList = [
         author: '福禄寿FloruitShow',
         album: '我用什么把你留住',
         lyric: 'lyric_baniliuzhu',
-        url: 'woyongshenmebaniliuzhu'
+        url: '../项目实战/assets/福禄寿FloruitShow - 我用什么把你留住.mp3'
     },
     {
         id: '1',
@@ -775,7 +682,7 @@ const songList = [
         author: '福禄寿FloruitShow',
         album: '马',
         lyric: 'lyric_ma',
-        url: 'ma'
+        url: '../项目实战/assets/福禄寿FloruitShow - 马.mp3'
     },
     {
         id: '2',
@@ -783,7 +690,7 @@ const songList = [
         author: '福禄寿FloruitShow',
         album: '玉珍',
         lyric: 'lyric_yuzhen',
-        url: 'yuzhen'
+        url: '../项目实战/assets/福禄寿FloruitShow - 玉珍.mp3'
     },
     {
         id: '3',
@@ -791,7 +698,7 @@ const songList = [
         author: '福禄寿FloruitShow',
         album: 'FEARLESS',
         lyric: 'lyric_fearless',
-        url: 'fearless'
+        url: '../项目实战/assets/福禄寿FloruitShow - FEARLESS.mp3'
     },
     {
         id: '4',
@@ -799,7 +706,7 @@ const songList = [
         author: 'A Great Big World',
         album: 'Is There Anybody Out There?',
         lyric: 'lyric_saysomething',
-        url: 'saysomething'
+        url: '../项目实战/assets/A Great Big World - Say Something.mp3'
     },
     {
         id: '5',
@@ -807,7 +714,7 @@ const songList = [
         author: 'Corinne Bailey Rae',
         album: 'Trouble Sleeping',
         lyric: 'lyric_troublesleeping',
-        url: 'troublesleeping'
+        url: '../项目实战/assets/Corinne Bailey Rae - Trouble Sleeping.mp3'
     },
     {
         id: '6',
@@ -815,7 +722,7 @@ const songList = [
         author: 'Yusuke Tsutsumi',
         album: 'A Little World(Music for Film)',
         lyric: 'lyric_piano1',
-        url: 'piano1'
+        url: '../项目实战/assets/Yusuke Tsutsumi - Tokyo Love Theme.mp3'
     },
     {
         id: '7',
@@ -823,7 +730,7 @@ const songList = [
         author: '石进',
         album: '夜的钢琴曲Ⅱ',
         lyric: 'lyric_piano2',
-        url: 'piano2'
+        url: '../项目实战/assets/石进 - 被时光移动的城市.mp3'
     },
     {
         id: '8',
@@ -831,28 +738,72 @@ const songList = [
         author: '陈珊妮；林宥嘉',
         album: '如同悲伤被下载了两次',
         lyric: 'lyric_xiazaileliangci',
-        url: 'xiazaileliangci'
+        url: '../项目实战/assets/陈珊妮 林宥嘉 - 如同悲伤被下载了两次.mp3'
     }
 ]
 
 let currentIndex = 0
 let isPlaying = false
-let audio = new Audio('../项目实战/assets/chaoduwo.mp3')
+const audio = new Audio()
+let currentTime = 0
 let flagPause = document.querySelector('#flag-pause')
 let flagPlay = document.querySelector('#flag-play')
 
-flagPause.addEventListener('click', (e) => {
-    isPlaying = true
+let prevSong = document.querySelector('#prev-song')
+let nextSong = document.querySelector('#next-song')
+
+let toggleStyle = (isPlaying) => {
+    if(isPlaying) {
+        flagPlay.style.display = 'inline-block'
+        flagPause.style.display = 'none'
+    } else {
+        flagPause.style.display = 'inline-block'
+        flagPlay.style.display = 'none'
+    }
+}
+
+let changeMusic = (index) => {
+    audio.src = songList[index].url
     audio.play()
-    flagPlay.style.display = 'inline-block'
-    flagPause.style.display = 'none'
+    isPlaying = true
+    toggleStyle(isPlaying)
+}
+
+let autoPlay = () => {
+
+}
+
+flagPause.onclick = function() {
+    audio.src = songList[currentIndex].url
+    audio.currentTime = currentTime
+    audio.play()
+    isPlaying = true
+    toggleStyle(isPlaying)
+}
+
+flagPlay.onclick = function() {
+    isPlaying = false
+    currentTime = audio.currentTime
+    audio.pause()
+    toggleStyle(isPlaying)
+}
+
+prevSong.addEventListener('click', (e) => {
+    currentIndex -= 1
+    if(currentIndex < 0) {
+        window.alert('已经是第一首歌啦~')
+        return
+    }
+    changeMusic(currentIndex)
 })
 
-flagPlay.addEventListener('click', (e) => {
-    isPlaying = false
-    audio.pause()
-    flagPause.style.display = 'inline-block'
-    flagPlay.style.display = 'none'
+nextSong.addEventListener('click', (e) => {
+    currentIndex += 1
+    if(currentIndex >= songList.length) {
+        window.alert('已经是最后一首歌啦~')
+        return
+    }
+    changeMusic(currentIndex)
 })
 
 

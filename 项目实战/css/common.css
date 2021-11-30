@@ -96,7 +96,7 @@ main > .left li > a {
     padding: 10px 0;
     font-size: 18px;
     text-align: center;
-    border-bottom: 2px solid black;
+    border-bottom: 1px solid #979595;
 }
 
 main > .left li > a:hover {
@@ -112,7 +112,7 @@ main > .left li:last-child {
     right: 0;
     bottom: 0;
     left: 0;
-    border-top: 2px solid black;
+    border-top: 1px solid #979595;
 }
 
 main > .left li:last-child:hover {
@@ -479,11 +479,6 @@ footer {
 }
 
 
-
-.player-bar-wrapper {
-
-}
-
 .player-bar-wrapper > .player-bar {
     display: flex;
     align-items: center;
@@ -512,7 +507,6 @@ footer {
 
 #flag-play {
     display: none;
-    outline: 1px solid red;
 }
 
 .player-bar-wrapper > .player-bar > .song-info {
