@@ -617,55 +617,6 @@ let bindEvents = () => {
 }
 
 // 音乐播放器部分：
-let musicPanel = document.querySelector('#music-panel')
-let closeButton = document.querySelector('#panel-close')
-let showList = document.querySelector('.svg-wrapper')
-
-closeButton.addEventListener('click', () => {
-    musicPanel.style.display = 'none'
-})
-
-showList.addEventListener('click', () => {
-    musicPanel.style.display = 'block'
-})
-
-let songBar = document.querySelector('.song-bar')
-let progress = document.querySelector('.song-bar .progress')
-let progressButton = document.querySelector('.song-bar .progress-button')
-
-let progressChange = (progressLeft) => {
-    if(progressLeft <= 0) {
-        progressLeft = 0
-    } else if(progressLeft >= 445) {
-        progressLeft = 445
-    }
-    progressButton.style.left = progressLeft + 'px'
-    progress.style.width = progressLeft + 'px'
-    audio.currentTime = audio.duration * (progressLeft/445)
-}
-
-let resetProgress = () => {
-    progress.style.width = '0'
-    progressButton.style.left = '0'
-}
-
-progressButton.onmousedown = function(e) {
-    let progressLeft = e.clientX - this.offsetLeft
-    document.onmousemove = function(e) {
-        let progressX = e.clientX - progressLeft
-        progressChange(progressX)
-    }
-    document.onmouseup = function(e) {
-        document.onmousemove = null
-        document.onmouseup = null
-    }
-}
-
-songBar.onclick = function(e) {
-    let progressLeft = e.clientX - this.offsetLeft
-    progressChange(progressLeft)
-}
-
 const songList = [
     {
         id: '-1',
@@ -759,6 +710,55 @@ let flagPlay = document.querySelector('#flag-play')
 let prevSong = document.querySelector('#prev-song')
 let nextSong = document.querySelector('#next-song')
 
+let musicPanel = document.querySelector('#music-panel')
+let closeButton = document.querySelector('#panel-close')
+let showList = document.querySelector('.svg-wrapper')
+
+closeButton.addEventListener('click', () => {
+    musicPanel.style.display = 'none'
+})
+
+showList.addEventListener('click', () => {
+    musicPanel.style.display = 'block'
+})
+
+let songBar = document.querySelector('.song-bar')
+let progress = document.querySelector('.song-bar .progress')
+let progressButton = document.querySelector('.song-bar .progress-button')
+
+let progressChange = (progressLeft) => {
+    if(progressLeft <= 0) {
+        progressLeft = 0
+    } else if(progressLeft >= 445) {
+        progressLeft = 445
+    }
+    progressButton.style.left = progressLeft + 'px'
+    progress.style.width = progressLeft + 'px'
+    audio.currentTime = audio.duration * (progressLeft/445)
+}
+
+let resetProgress = () => {
+    progress.style.width = '0'
+    progressButton.style.left = '0'
+}
+
+progressButton.onmousedown = function(e) {
+    let progressLeft = e.clientX - this.offsetLeft
+    document.onmousemove = function(e) {
+        let progressX = e.clientX - progressLeft
+        progressChange(progressX)
+    }
+    document.onmouseup = function(e) {
+        document.onmousemove = null
+        document.onmouseup = null
+    }
+}
+
+songBar.onclick = function(e) {
+    let progressLeft = e.clientX - this.offsetLeft
+    progressChange(progressLeft)
+}
+
 let toggleStyle = (isPlaying) => {
     if(isPlaying) {
         flagPlay.style.display = 'inline-block'
@@ -820,6 +820,14 @@ audio.addEventListener('ended', () => {
     currentIndex++
     changeMusic(currentIndex)
 })
+
+audio.addEventListener('timeupdate', () => {
+    let deltaX = (audio.currentTime / audio.duration) * 455
+    progressButton.style.left = deltaX + 'px'
+    progress.style.width = deltaX + 'px'
+})
+
+
 
 
 
