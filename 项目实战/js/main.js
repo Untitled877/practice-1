@@ -1,3 +1,14 @@
+// import chaoduwo from '../assets/chaoduwo.mp3'
+// import woyongshenmebaniliuzhu from '../assets/福禄寿FloruitShow - 我用什么把你留住.mp3'
+// import ma from '../assets/福禄寿FloruitShow - 马.mp3'
+// import yuzhen from '../assets/福禄寿FloruitShow - 玉珍.mp3'
+// import fearless from '../assets/福禄寿FloruitShow - FEARLESS.mp3'
+// import saysomething from '../assets/A Great Big World - Say Something.mp3'
+// import troublesleeping from '../assets/Corinne Bailey Rae - Trouble Sleeping.mp3'
+// import piano1 from '../assets/Yusuke Tsutsumi - Tokyo Love Theme.mp3'
+// import piano2 from '../assets/石进 - 被时光移动的城市.mp3'
+// import xiazaileliangci from '../assets/陈珊妮 林宥嘉 - 如同悲伤被下载了两次.mp3'
+
 let routerView = null
 
 let nav1HTML =
@@ -740,6 +751,110 @@ songBar.onclick = function(e) {
     progressButton.style.left = progressLeft - 10 + 'px'
     progress.style.width = progressLeft + 10 + 'px'
 }
+
+const songList = [
+    {
+        id: '-1',
+        title: '超度我',
+        author: '福禄寿FloruitShow',
+        album: '超度我',
+        lyric: 'lyric_chaoduwo',
+        url: 'chaoduwo'
+    },
+    {
+        id: '0',
+        title: '我用什么把你留住',
+        author: '福禄寿FloruitShow',
+        album: '我用什么把你留住',
+        lyric: 'lyric_baniliuzhu',
+        url: 'woyongshenmebaniliuzhu'
+    },
+    {
+        id: '1',
+        title: '马',
+        author: '福禄寿FloruitShow',
+        album: '马',
+        lyric: 'lyric_ma',
+        url: 'ma'
+    },
+    {
+        id: '2',
+        title: '玉珍',
+        author: '福禄寿FloruitShow',
+        album: '玉珍',
+        lyric: 'lyric_yuzhen',
+        url: 'yuzhen'
+    },
+    {
+        id: '3',
+        title: 'FEARLESS',
+        author: '福禄寿FloruitShow',
+        album: 'FEARLESS',
+        lyric: 'lyric_fearless',
+        url: 'fearless'
+    },
+    {
+        id: '4',
+        title: 'Say Something',
+        author: 'A Great Big World',
+        album: 'Is There Anybody Out There?',
+        lyric: 'lyric_saysomething',
+        url: 'saysomething'
+    },
+    {
+        id: '5',
+        title: 'Trouble Sleeping',
+        author: 'Corinne Bailey Rae',
+        album: 'Trouble Sleeping',
+        lyric: 'lyric_troublesleeping',
+        url: 'troublesleeping'
+    },
+    {
+        id: '6',
+        title: 'Tokyo Love Theme',
+        author: 'Yusuke Tsutsumi',
+        album: 'A Little World(Music for Film)',
+        lyric: 'lyric_piano1',
+        url: 'piano1'
+    },
+    {
+        id: '7',
+        title: '被时光移动的城市',
+        author: '石进',
+        album: '夜的钢琴曲Ⅱ',
+        lyric: 'lyric_piano2',
+        url: 'piano2'
+    },
+    {
+        id: '8',
+        title: '如同悲伤被下载了两次',
+        author: '陈珊妮；林宥嘉',
+        album: '如同悲伤被下载了两次',
+        lyric: 'lyric_xiazaileliangci',
+        url: 'xiazaileliangci'
+    }
+]
+
+let currentIndex = 0
+let isPlaying = false
+let audio = new Audio('../项目实战/assets/chaoduwo.mp3')
+let flagPause = document.querySelector('#flag-pause')
+let flagPlay = document.querySelector('#flag-play')
+
+flagPause.addEventListener('click', (e) => {
+    isPlaying = true
+    audio.play()
+    flagPlay.style.display = 'inline-block'
+    flagPause.style.display = 'none'
+})
+
+flagPlay.addEventListener('click', (e) => {
+    isPlaying = false
+    audio.pause()
+    flagPause.style.display = 'inline-block'
+    flagPlay.style.display = 'none'
+})
+
 
 
 
