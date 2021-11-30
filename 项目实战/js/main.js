@@ -725,7 +725,7 @@ progressButton.onmousedown = function(e) {
             progressX = 450
         }
         progressButton.style.left = progressX + 'px'
-        // progress.style.width = progressX + 'px'
+        progress.style.width = progressX + 10 + 'px'
         // todo 计算进度百分比
 
     }
@@ -734,6 +734,13 @@ progressButton.onmousedown = function(e) {
         document.onmouseup = null
     }
 }
+
+songBar.onclick = function(e) {
+    let progressLeft = e.clientX - this.offsetLeft
+    progressButton.style.left = progressLeft - 10 + 'px'
+    progress.style.width = progressLeft + 10 + 'px'
+}
+
 
 
 

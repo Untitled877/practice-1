@@ -541,6 +541,7 @@ footer {
 }
 
 .player-bar-wrapper > .player-bar > .song-info .song-bar {
+    position: relative;
     width: 466px;
     height: 9px;
     background: #181818;
@@ -549,11 +550,11 @@ footer {
 }
 
 .song-bar > .progress {
-    position: relative;
     width: 0;
     height: 100%;
-    background: yellow;
-    border-radius: 2px;
+    background: #b9180f;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 .song-bar > .progress > .progress-button {
@@ -577,7 +578,6 @@ footer {
     border-radius: 50px;
     transform: translate(50%, 50%);
 }
-
 
 .control-buttons {
     margin-left: 30px;
