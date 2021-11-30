@@ -725,6 +725,14 @@ const songList = [
         url: '../项目实战/assets/Yusuke Tsutsumi - Tokyo Love Theme.mp3'
     },
     {
+        id: '8',
+        title: '如同悲伤被下载了两次',
+        author: '陈珊妮；林宥嘉',
+        album: '如同悲伤被下载了两次',
+        lyric: 'lyric_xiazaileliangci',
+        url: '../项目实战/assets/陈珊妮 林宥嘉 - 如同悲伤被下载了两次.mp3'
+    },
+    {
         id: '7',
         title: '被时光移动的城市',
         author: '石进',
@@ -732,14 +740,6 @@ const songList = [
         lyric: 'lyric_piano2',
         url: '../项目实战/assets/石进 - 被时光移动的城市.mp3'
     },
-    {
-        id: '8',
-        title: '如同悲伤被下载了两次',
-        author: '陈珊妮；林宥嘉',
-        album: '如同悲伤被下载了两次',
-        lyric: 'lyric_xiazaileliangci',
-        url: '../项目实战/assets/陈珊妮 林宥嘉 - 如同悲伤被下载了两次.mp3'
-    }
 ]
 
 let currentIndex = 0
@@ -763,14 +763,14 @@ let toggleStyle = (isPlaying) => {
 }
 
 let changeMusic = (index) => {
+    if(index < 0 || index >= songList.length) {
+        return
+    }
+    console.log(songList[index].title)
     audio.src = songList[index].url
     audio.play()
     isPlaying = true
     toggleStyle(isPlaying)
-}
-
-let autoPlay = () => {
-
 }
 
 flagPause.onclick = function() {
@@ -789,20 +789,27 @@ flagPlay.onclick = function() {
 }
 
 prevSong.addEventListener('click', (e) => {
-    currentIndex -= 1
-    if(currentIndex < 0) {
+    if(--currentIndex < 0) {
         window.alert('已经是第一首歌啦~')
+        currentIndex = 0
         return
     }
     changeMusic(currentIndex)
 })
 
 nextSong.addEventListener('click', (e) => {
-    currentIndex += 1
-    if(currentIndex >= songList.length) {
+    if(++currentIndex >= songList.length) {
         window.alert('已经是最后一首歌啦~')
+        currentIndex = songList.length - 1
         return
     }
+    changeMusic(currentIndex)
+})
+
+audio.addEventListener('ended', () => {
+    isPlaying = false
+    toggleStyle(isPlaying)
+    currentIndex++
     changeMusic(currentIndex)
 })
 
