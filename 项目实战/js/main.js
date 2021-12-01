@@ -623,7 +623,7 @@ const songList = [
         title: '超度我',
         author: '福禄寿FloruitShow',
         album: '超度我',
-        lyric: 'lyric_chaoduwo',
+        lyric: '../项目实战/assets/超度我.lrc',
         url: '../项目实战/assets/福禄寿FloruitShow - 超度我.mp3'
     },
     {
@@ -631,7 +631,7 @@ const songList = [
         title: '我用什么把你留住',
         author: '福禄寿FloruitShow',
         album: '我用什么把你留住',
-        lyric: 'lyric_baniliuzhu',
+        lyric: '../项目实战/assets/我用什么把你留住.lrc',
         url: '../项目实战/assets/福禄寿FloruitShow - 我用什么把你留住.mp3'
     },
     {
@@ -639,7 +639,7 @@ const songList = [
         title: '马',
         author: '福禄寿FloruitShow',
         album: '马',
-        lyric: 'lyric_ma',
+        lyric: '../项目实战/assets/马.lrc',
         url: '../项目实战/assets/福禄寿FloruitShow - 马.mp3'
     },
     {
@@ -647,7 +647,7 @@ const songList = [
         title: '玉珍',
         author: '福禄寿FloruitShow',
         album: '玉珍',
-        lyric: 'lyric_yuzhen',
+        lyric: '../项目实战/assets/玉珍.lrc',
         url: '../项目实战/assets/福禄寿FloruitShow - 玉珍.mp3'
     },
     {
@@ -655,7 +655,7 @@ const songList = [
         title: 'FEARLESS',
         author: '福禄寿FloruitShow',
         album: 'FEARLESS',
-        lyric: 'lyric_fearless',
+        lyric: '../项目实战/assets/FEARLESS.lrc',
         url: '../项目实战/assets/福禄寿FloruitShow - FEARLESS.mp3'
     },
     {
@@ -663,7 +663,7 @@ const songList = [
         title: 'Say Something',
         author: 'A Great Big World',
         album: 'Is There Anybody Out There?',
-        lyric: 'lyric_saysomething',
+        lyric: '../项目实战/assets/Say Something.lrc',
         url: '../项目实战/assets/A Great Big World - Say Something.mp3'
     },
     {
@@ -671,7 +671,7 @@ const songList = [
         title: 'Trouble Sleeping',
         author: 'Corinne Bailey Rae',
         album: 'Trouble Sleeping',
-        lyric: 'lyric_troublesleeping',
+        lyric: '../项目实战/assets/Trouble Sleeping.lrc',
         url: '../项目实战/assets/Corinne Bailey Rae - Trouble Sleeping.mp3'
     },
     {
@@ -679,7 +679,7 @@ const songList = [
         title: 'Tokyo Love Theme',
         author: 'Yusuke Tsutsumi',
         album: 'A Little World(Music for Film)',
-        lyric: 'lyric_piano1',
+        lyric: '../项目实战/assets/Tokyo Love Theme.lrc',
         url: '../项目实战/assets/Yusuke Tsutsumi - Tokyo Love Theme.mp3'
     },
     {
@@ -687,7 +687,7 @@ const songList = [
         title: '如同悲伤被下载了两次',
         author: '陈珊妮；林宥嘉',
         album: '如同悲伤被下载了两次',
-        lyric: 'lyric_xiazaileliangci',
+        lyric: '../项目实战/assets/如同悲伤被下载了两次.lrc',
         url: '../项目实战/assets/陈珊妮 林宥嘉 - 如同悲伤被下载了两次.mp3'
     },
     {
@@ -695,7 +695,7 @@ const songList = [
         title: '被时光移动的城市',
         author: '石进',
         album: '夜的钢琴曲Ⅱ',
-        lyric: 'lyric_piano2',
+        lyric: '../项目实战/assets/被时光移动的城市.lrc',
         url: '../项目实战/assets/石进 - 被时光移动的城市.mp3'
     },
 ]
@@ -713,6 +713,9 @@ let nextSong = document.querySelector('#next-song')
 let musicPanel = document.querySelector('#music-panel')
 let closeButton = document.querySelector('#panel-close')
 let showList = document.querySelector('.svg-wrapper')
+
+let songLength = songList.length
+document.querySelectorAll('.song-list-length').forEach(item => item.innerText = songLength)
 
 closeButton.addEventListener('click', () => {
     musicPanel.style.display = 'none'
@@ -779,6 +782,7 @@ let changeMusic = (index) => {
     resetProgress()
     isPlaying = true
     toggleStyle(isPlaying)
+    getLyric(index)
 }
 
 flagPause.onclick = function() {
@@ -787,6 +791,7 @@ flagPause.onclick = function() {
     audio.play()
     isPlaying = true
     toggleStyle(isPlaying)
+    // loadLyrics(currentIndex)
 }
 
 flagPlay.onclick = function() {
@@ -826,6 +831,22 @@ audio.addEventListener('timeupdate', () => {
     progressButton.style.left = deltaX + 'px'
     progress.style.width = deltaX + 'px'
 })
+
+
+let lyric = ''
+let getLyric = (currentIndex) => {
+    let request = new XMLHttpRequest()
+    request.open('GET', songList[currentIndex].lyric)
+    request.onreadystatechange = () => {
+        if(request.readyState === 4 && request.status === 200) {
+            lyric = request.responseText
+            console.log(lyric)
+        }
+    }
+    request.send()
+}
+
+getLyric(currentIndex)
 
 
 
