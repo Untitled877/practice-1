@@ -473,7 +473,7 @@ footer {
     transition: color 0.7s linear;
 }
 
-.music-content-right > #lyric .lyric-selected{
+.music-content-right > #lyric .current{
     font-size: 14px;
     color: white;
 }

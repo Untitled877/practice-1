@@ -729,6 +729,10 @@ let songBar = document.querySelector('.song-bar')
 let progress = document.querySelector('.song-bar .progress')
 let progressButton = document.querySelector('.song-bar .progress-button')
 
+let lyric = ''
+let lyricIndex = 0
+let lyricArr = []
+
 let progressChange = (progressLeft) => {
     if(progressLeft <= 0) {
         progressLeft = 0
@@ -782,16 +786,14 @@ let changeMusic = (index) => {
     resetProgress()
     isPlaying = true
     toggleStyle(isPlaying)
-    getLyric(index)
 }
 
 flagPause.onclick = function() {
     audio.src = songList[currentIndex].url
     audio.currentTime = currentTime
-    audio.play()
+    audio.oncanplaythrough = () => audio.play()
     isPlaying = true
     toggleStyle(isPlaying)
-    // loadLyrics(currentIndex)
 }
 
 flagPlay.onclick = function() {
@@ -830,25 +832,77 @@ audio.addEventListener('timeupdate', () => {
     let deltaX = (audio.currentTime / audio.duration) * 455
     progressButton.style.left = deltaX + 'px'
     progress.style.width = deltaX + 'px'
+    locateLyric()
 })
 
+let setLyrics = (lyrics) => {
+    let fragment = document.createDocumentFragment()
+    lyrics.split(/\n/)
+        .filter(str => str.match(/\[.+?\]/))
+        .forEach(line => {
+            let str = line.replace(/\[.+?\]/g, '')
+            line.match(/\[.+?\]/g).forEach(t=>{
+                t = t.replace(/[\[\]]/g,'')
+                let milliseconds = parseInt(t.slice(0,2))*60*1000 + parseInt(t.slice(3,5))*1000 + parseInt(t.slice(6))
+                lyricArr.push([milliseconds, str])
+            })
+        })
 
-let lyric = ''
-let getLyric = (currentIndex) => {
+    lyricArr.filter(line => line[1].trim() !== '').sort((v1, v2) => {
+        if(v1[0] > v2[0]) {
+            return 1
+        } else {
+            return -1
+        }
+    }).forEach(line => {
+        let node = document.createElement('li')
+        node.setAttribute('data-time', line[0])
+        node.innerText = line[1]
+        fragment.appendChild(node)
+    })
+    let container = document.querySelector('.music-content-right #lyric')
+    container.innerHTML = ''
+    container.appendChild(fragment)
+}
+
+let loadLyric = (currentIndex) => {
     let request = new XMLHttpRequest()
     request.open('GET', songList[currentIndex].lyric)
     request.onreadystatechange = () => {
         if(request.readyState === 4 && request.status === 200) {
             lyric = request.responseText
-            console.log(lyric)
+            // console.log(lyric)
+            setLyrics(lyric)
         }
     }
     request.send()
 }
 
-getLyric(currentIndex)
+loadLyric(currentIndex)
 
+// 歌词定位
+let locateLyric = () => {
+    let currentTime = audio.currentTime*1000
+    let nextLineTime = lyricArr[lyricIndex+1][0]
+    if(currentTime > nextLineTime && lyricIndex < lyricArr.length - 1) {
+        lyricIndex++
+        let node = document.querySelector(('[data-time="'+ lyricArr[lyricIndex][0]+'"]'))
+        if(node) {
+            setLineToCenter(node)
+            console.log(node.innerText)
+        }
+    }
+}
 
+let setLineToCenter = (node) => {
+    let contentRight = document.querySelector('.music-content-right')
+    let lyricContainer = document.querySelector('.music-content-right #lyric')
+    let offset = node.offsetTop - contentRight.offsetHeight/2
+    offset = offset > 0 ? offset : 0
+    lyricContainer.style.transform = `translateY(-${offset}px)`
+    document.querySelectorAll('#lyric li').forEach(node => node.classList.remove('current'))
+    node.classList.add('current')
+}
 
 
 
