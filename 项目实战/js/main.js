@@ -623,7 +623,7 @@ const songList = [
         title: '超度我',
         author: '福禄寿FloruitShow',
         album: '超度我',
-        duration: '02:41',
+        duration: '03:51',
         cover: '../项目实战/assets/cover/超度我.jpg',
         lyric: '../项目实战/assets/lyrics/超度我.lrc',
         url: '../项目实战/assets/songs/福禄寿FloruitShow - 超度我.mp3'
@@ -633,7 +633,7 @@ const songList = [
         title: '我用什么把你留住',
         author: '福禄寿FloruitShow',
         album: '我用什么把你留住',
-        duration: '02:41',
+        duration: '05:29',
         cover: '../项目实战/assets/cover/我用什么把你留住.jpg',
         lyric: '../项目实战/assets/lyrics/我用什么把你留住.lrc',
         url: '../项目实战/assets/songs/福禄寿FloruitShow - 我用什么把你留住.mp3'
@@ -643,7 +643,7 @@ const songList = [
         title: '马',
         author: '福禄寿FloruitShow',
         album: '马',
-        duration: '02:41',
+        duration: '03:52',
         cover: '../项目实战/assets/cover/马.jpg',
         lyric: '../项目实战/assets/lyrics/马.lrc',
         url: '../项目实战/assets/songs/福禄寿FloruitShow - 马.mp3'
@@ -653,7 +653,7 @@ const songList = [
         title: '玉珍',
         author: '福禄寿FloruitShow',
         album: '玉珍',
-        duration: '02:41',
+        duration: '06:22',
         cover: '../项目实战/assets/cover/玉珍.jpg',
         lyric: '../项目实战/assets/lyrics/玉珍.lrc',
         url: '../项目实战/assets/songs/福禄寿FloruitShow - 玉珍.mp3'
@@ -663,7 +663,7 @@ const songList = [
         title: 'FEARLESS',
         author: '福禄寿FloruitShow',
         album: 'FEARLESS',
-        duration: '02:41',
+        duration: '05:05',
         cover: '../项目实战/assets/cover/fearless.jpg',
         lyric: '../项目实战/assets/lyrics/FEARLESS.lrc',
         url: '../项目实战/assets/songs/福禄寿FloruitShow - FEARLESS.mp3'
@@ -673,7 +673,7 @@ const songList = [
         title: 'Say Something',
         author: 'A Great Big World',
         album: 'Is There Anybody Out There?',
-        duration: '02:41',
+        duration: '03:53',
         cover: '../项目实战/assets/cover/say something.jpg',
         lyric: '../项目实战/assets/lyrics/Say Something.lrc',
         url: '../项目实战/assets/songs/A Great Big World - Say Something.mp3'
@@ -683,7 +683,7 @@ const songList = [
         title: 'Trouble Sleeping',
         author: 'Corinne Bailey Rae',
         album: 'Trouble Sleeping',
-        duration: '02:41',
+        duration: '03:26',
         cover: '../项目实战/assets/cover/trouble sleeping.jpg',
         lyric: '../项目实战/assets/lyrics/Trouble Sleeping.lrc',
         url: '../项目实战/assets/songs/Corinne Bailey Rae - Trouble Sleeping.mp3'
@@ -693,7 +693,7 @@ const songList = [
         title: 'Tokyo Love Theme',
         author: 'Yusuke Tsutsumi',
         album: 'A Little World(Music for Film)',
-        duration: '02:41',
+        duration: '05:37',
         cover: '../项目实战/assets/cover/Tokyo Love Theme.jpg',
         lyric: '../项目实战/assets/lyrics/Tokyo Love Theme.lrc',
         url: '../项目实战/assets/songs/Yusuke Tsutsumi - Tokyo Love Theme.mp3'
@@ -701,9 +701,9 @@ const songList = [
     {
         id: '8',
         title: '如同悲伤被下载了两次',
-        author: '陈珊妮；林宥嘉',
+        author: '陈珊妮 林宥嘉',
         album: '如同悲伤被下载了两次',
-        duration: '02:41',
+        duration: '04:29',
         cover: '../项目实战/assets/cover/如同悲伤被下载了两次.jpg',
         lyric: '../项目实战/assets/lyrics/如同悲伤被下载了两次.lrc',
         url: '../项目实战/assets/songs/陈珊妮 林宥嘉 - 如同悲伤被下载了两次.mp3'
@@ -713,7 +713,7 @@ const songList = [
         title: '被时光移动的城市',
         author: '石进',
         album: '夜的钢琴曲Ⅱ',
-        duration: '02:41',
+        duration: '01:32',
         cover: '../项目实战/assets/cover/被时光移动的城市.jpg',
         lyric: '../项目实战/assets/lyrics/被时光移动的城市.lrc',
         url: '../项目实战/assets/songs/石进 - 被时光移动的城市.mp3'
@@ -747,6 +747,7 @@ showList.addEventListener('click', () => {
 let songBar = document.querySelector('.song-bar')
 let progress = document.querySelector('.song-bar .progress')
 let progressButton = document.querySelector('.song-bar .progress-button')
+let runtime = document.querySelector('#time-bar .time-start')
 
 let lyric = ''
 let lyricIndex = 0
@@ -852,6 +853,7 @@ audio.addEventListener('timeupdate', () => {
     progressButton.style.left = deltaX + 'px'
     progress.style.width = deltaX + 'px'
     locateLyric()
+    runtime.innerText = formatTime(audio.currentTime)
 })
 
 let setLyrics = (lyrics) => {
@@ -908,7 +910,7 @@ let locateLyric = () => {
         let node = document.querySelector(('[data-time="'+ lyricArr[lyricIndex][0]+'"]'))
         if(node) {
             setLineToCenter(node)
-            console.log(node.innerText)
+            // console.log(node.innerText)
         }
     }
 }
@@ -950,9 +952,6 @@ let renderList = () => {
         songTimeNode.classList.add('col-song-time')
         if(index === currentIndex) {
             node.classList.add('song-selected')
-            console.log(node.children)
-            // node.children[0].style.visibility = 'visible'
-            // node.children[0].style.color = '#ba0a0a'
         }
 
         node.appendChild(svg)
@@ -973,6 +972,14 @@ let renderSong = () => {
 }
 
 renderList()
+
+let formatTime = (secondsTotal) => {
+    let minutes = parseInt(secondsTotal/60)
+    minutes = minutes >= 10 ? '' + minutes : '0' + minutes
+    let seconds = parseInt(secondsTotal%60)
+    seconds = seconds >= 10 ? '' + seconds : '0' + seconds
+    return minutes + ':' + seconds
+}
 
 
 
