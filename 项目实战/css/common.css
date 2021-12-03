@@ -423,8 +423,13 @@ footer {
     cursor: pointer;
 }
 
+.music-content-left ul svg {
+    visibility: hidden;
+}
+
 .music-content-left ul > .song-selected svg {
     color: #ba0a0a;
+    visibility: visible;
 }
 
 .col-song-name {
@@ -477,7 +482,6 @@ footer {
     font-size: 14px;
     color: white;
 }
-
 
 .player-bar-wrapper > .player-bar {
     display: flex;

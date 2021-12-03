@@ -623,80 +623,100 @@ const songList = [
         title: '超度我',
         author: '福禄寿FloruitShow',
         album: '超度我',
-        lyric: '../项目实战/assets/超度我.lrc',
-        url: '../项目实战/assets/福禄寿FloruitShow - 超度我.mp3'
+        duration: '02:41',
+        cover: '../项目实战/assets/cover/超度我.jpg',
+        lyric: '../项目实战/assets/lyrics/超度我.lrc',
+        url: '../项目实战/assets/songs/福禄寿FloruitShow - 超度我.mp3'
     },
     {
         id: '0',
         title: '我用什么把你留住',
         author: '福禄寿FloruitShow',
         album: '我用什么把你留住',
-        lyric: '../项目实战/assets/我用什么把你留住.lrc',
-        url: '../项目实战/assets/福禄寿FloruitShow - 我用什么把你留住.mp3'
+        duration: '02:41',
+        cover: '../项目实战/assets/cover/我用什么把你留住.jpg',
+        lyric: '../项目实战/assets/lyrics/我用什么把你留住.lrc',
+        url: '../项目实战/assets/songs/福禄寿FloruitShow - 我用什么把你留住.mp3'
     },
     {
         id: '1',
         title: '马',
         author: '福禄寿FloruitShow',
         album: '马',
-        lyric: '../项目实战/assets/马.lrc',
-        url: '../项目实战/assets/福禄寿FloruitShow - 马.mp3'
+        duration: '02:41',
+        cover: '../项目实战/assets/cover/马.jpg',
+        lyric: '../项目实战/assets/lyrics/马.lrc',
+        url: '../项目实战/assets/songs/福禄寿FloruitShow - 马.mp3'
     },
     {
         id: '2',
         title: '玉珍',
         author: '福禄寿FloruitShow',
         album: '玉珍',
-        lyric: '../项目实战/assets/玉珍.lrc',
-        url: '../项目实战/assets/福禄寿FloruitShow - 玉珍.mp3'
+        duration: '02:41',
+        cover: '../项目实战/assets/cover/玉珍.jpg',
+        lyric: '../项目实战/assets/lyrics/玉珍.lrc',
+        url: '../项目实战/assets/songs/福禄寿FloruitShow - 玉珍.mp3'
     },
     {
         id: '3',
         title: 'FEARLESS',
         author: '福禄寿FloruitShow',
         album: 'FEARLESS',
-        lyric: '../项目实战/assets/FEARLESS.lrc',
-        url: '../项目实战/assets/福禄寿FloruitShow - FEARLESS.mp3'
+        duration: '02:41',
+        cover: '../项目实战/assets/cover/fearless.jpg',
+        lyric: '../项目实战/assets/lyrics/FEARLESS.lrc',
+        url: '../项目实战/assets/songs/福禄寿FloruitShow - FEARLESS.mp3'
     },
     {
         id: '4',
         title: 'Say Something',
         author: 'A Great Big World',
         album: 'Is There Anybody Out There?',
-        lyric: '../项目实战/assets/Say Something.lrc',
-        url: '../项目实战/assets/A Great Big World - Say Something.mp3'
+        duration: '02:41',
+        cover: '../项目实战/assets/cover/say something.jpg',
+        lyric: '../项目实战/assets/lyrics/Say Something.lrc',
+        url: '../项目实战/assets/songs/A Great Big World - Say Something.mp3'
     },
     {
         id: '5',
         title: 'Trouble Sleeping',
         author: 'Corinne Bailey Rae',
         album: 'Trouble Sleeping',
-        lyric: '../项目实战/assets/Trouble Sleeping.lrc',
-        url: '../项目实战/assets/Corinne Bailey Rae - Trouble Sleeping.mp3'
+        duration: '02:41',
+        cover: '../项目实战/assets/cover/trouble sleeping.jpg',
+        lyric: '../项目实战/assets/lyrics/Trouble Sleeping.lrc',
+        url: '../项目实战/assets/songs/Corinne Bailey Rae - Trouble Sleeping.mp3'
     },
     {
         id: '6',
         title: 'Tokyo Love Theme',
         author: 'Yusuke Tsutsumi',
         album: 'A Little World(Music for Film)',
-        lyric: '../项目实战/assets/Tokyo Love Theme.lrc',
-        url: '../项目实战/assets/Yusuke Tsutsumi - Tokyo Love Theme.mp3'
+        duration: '02:41',
+        cover: '../项目实战/assets/cover/Tokyo Love Theme.jpg',
+        lyric: '../项目实战/assets/lyrics/Tokyo Love Theme.lrc',
+        url: '../项目实战/assets/songs/Yusuke Tsutsumi - Tokyo Love Theme.mp3'
     },
     {
         id: '8',
         title: '如同悲伤被下载了两次',
         author: '陈珊妮；林宥嘉',
         album: '如同悲伤被下载了两次',
-        lyric: '../项目实战/assets/如同悲伤被下载了两次.lrc',
-        url: '../项目实战/assets/陈珊妮 林宥嘉 - 如同悲伤被下载了两次.mp3'
+        duration: '02:41',
+        cover: '../项目实战/assets/cover/如同悲伤被下载了两次.jpg',
+        lyric: '../项目实战/assets/lyrics/如同悲伤被下载了两次.lrc',
+        url: '../项目实战/assets/songs/陈珊妮 林宥嘉 - 如同悲伤被下载了两次.mp3'
     },
     {
         id: '7',
         title: '被时光移动的城市',
         author: '石进',
         album: '夜的钢琴曲Ⅱ',
-        lyric: '../项目实战/assets/被时光移动的城市.lrc',
-        url: '../项目实战/assets/石进 - 被时光移动的城市.mp3'
+        duration: '02:41',
+        cover: '../项目实战/assets/cover/被时光移动的城市.jpg',
+        lyric: '../项目实战/assets/lyrics/被时光移动的城市.lrc',
+        url: '../项目实战/assets/songs/石进 - 被时光移动的城市.mp3'
     },
 ]
 
@@ -715,7 +735,6 @@ let closeButton = document.querySelector('#panel-close')
 let showList = document.querySelector('.svg-wrapper')
 
 let songLength = songList.length
-document.querySelectorAll('.song-list-length').forEach(item => item.innerText = songLength)
 
 closeButton.addEventListener('click', () => {
     musicPanel.style.display = 'none'
@@ -903,6 +922,57 @@ let setLineToCenter = (node) => {
     document.querySelectorAll('#lyric li').forEach(node => node.classList.remove('current'))
     node.classList.add('current')
 }
+
+let renderList = () => {
+    document.querySelectorAll('.song-list-length').forEach(item => item.innerText = songLength)
+    let fragment = document.createDocumentFragment()
+    songList.forEach((item, index) => {
+        let node = document.createElement('li')
+        // let svg = document.createElement('svg')
+        let svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+        svg.classList.add('icon')
+        svg.setAttribute('aria-hidden', 'true')
+        let use = document.createElementNS('http://www.w3.org/2000/svg', 'use')
+        use.setAttributeNS(
+            "http://www.w3.org/1999/xlink",
+            "href",
+            "#icon-play-now"
+        );
+        svg.appendChild(use)
+        let songNameNode = document.createElement('span')
+        songNameNode.innerText = item.title
+        songNameNode.classList.add('col-song-name')
+        let singerNode = document.createElement('span')
+        singerNode.innerText = item.author
+        singerNode.classList.add('col-song-singer')
+        let songTimeNode = document.createElement('span')
+        songTimeNode.innerText = item.duration
+        songTimeNode.classList.add('col-song-time')
+        if(index === currentIndex) {
+            node.classList.add('song-selected')
+            console.log(node.children)
+            // node.children[0].style.visibility = 'visible'
+            // node.children[0].style.color = '#ba0a0a'
+        }
+
+        node.appendChild(svg)
+        node.appendChild(songNameNode)
+        node.appendChild(singerNode)
+        node.appendChild(songTimeNode)
+        fragment.appendChild(node)
+    })
+    document.querySelector('.music-names-list').appendChild(fragment)
+    document.querySelector('.song-info img').src = songList[currentIndex].cover
+    document.querySelector('.song-info .song-name').innerText = songList[currentIndex].title
+    document.querySelector('.song-info .song-singer').innerText = songList[currentIndex].author
+    document.querySelector('#time-bar .time-end').innerText = songList[currentIndex].duration
+}
+
+let renderSong = () => {
+
+}
+
+renderList()
 
 
 
