@@ -1,3 +1,4 @@
+import Player from './player.js'
 
 let routerView = null
 
@@ -616,6 +617,9 @@ let bindEvents = () => {
 
 }
 
+let footer = document.querySelector('footer')
+window.p = new Player(footer)
+/*
 // 音乐播放器部分：
 const songList = [
     {
@@ -748,6 +752,7 @@ let songBar = document.querySelector('.song-bar')
 let progress = document.querySelector('.song-bar .progress')
 let progressButton = document.querySelector('.song-bar .progress-button')
 let runtime = document.querySelector('#time-bar .time-start')
+runtime.innerText = '00:00'
 
 let lyric = ''
 let lyricIndex = 0
@@ -800,9 +805,10 @@ let changeMusic = (index) => {
     if(index < 0 || index >= songList.length) {
         return
     }
-    console.log(songList[index].title)
+    // console.log(songList[index].title)
     audio.src = songList[index].url
     audio.play()
+    runtime.innerText = '00:00'
     resetProgress()
     isPlaying = true
     toggleStyle(isPlaying)
@@ -968,7 +974,7 @@ let renderList = () => {
 }
 
 let renderSong = () => {
-
+    // startTime置为00：00
 }
 
 renderList()
@@ -980,7 +986,7 @@ let formatTime = (secondsTotal) => {
     seconds = seconds >= 10 ? '' + seconds : '0' + seconds
     return minutes + ':' + seconds
 }
-
+*/
 
 
 

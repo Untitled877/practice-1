@@ -509,9 +509,9 @@ footer {
     padding: 0 8px;
 }
 
-#flag-play {
-    display: none;
-}
+/*#flag-play {*/
+/*    display: none;*/
+/*}*/
 
 .player-bar-wrapper > .player-bar > .song-info {
     display: flex;
