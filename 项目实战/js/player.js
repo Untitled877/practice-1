@@ -88,7 +88,6 @@ class Player {
         ]
 
         this.currentIndex = 0
-        // this.runtime = '00:00'
         this.audio = new Audio()
         this.lyricIndex = -1
         this.lyricArr = []
@@ -117,9 +116,67 @@ class Player {
                 this.querySelector('use').setAttribute('xlink:href', '#icon-play')
             }
         }
+
+        this.$('#prev-song').onclick = function() {
+            // 列表循环
+            self.currentIndex = (self.songList.length + self.currentIndex - 1) % self.songList.length
+            self.loadSong()
+            self.playSong()
+            // todo 切换暂停播放按钮
+            // todo 切换列表选中
+        }
+
+        this.$('#next-song').onclick = function() {
+            // 列表循环
+            self.currentIndex = (self.currentIndex + 1) % self.songList.length
+            self.loadSong()
+            self.playSong()
+            // todo 切换暂停播放按钮
+            // todo 切换列表选中
+        }
+
+        let songBar = this.$('.song-bar')
+        let progressButton = this.$('.song-bar .progress-button')
+
+        progressButton.onmousedown = function(e) {
+            let progressLeft = e.clientX - this.offsetLeft
+            document.onmousemove = function(e) {
+                let progressX = e.clientX - progressLeft
+                self.progressChange(progressX)
+            }
+            document.onmouseup = function(e) {
+                document.onmousemove = null
+                document.onmouseup = null
+            }
+        }
+
+        songBar.onclick = function(e) {
+            let progressLeft = e.clientX - this.offsetLeft
+            self.progressChange(progressLeft)
+        }
+
         this.audio.ontimeupdate = function() {
             self.locateLyric()
+            self.setProgressBar()
         }
+
+        this.audio.addEventListener('ended', function() {
+            // 自动加载下一首
+            self.$('#next-song').onclick()
+        })
+    }
+
+    progressChange(progressLeft) {
+        if(progressLeft <= 0) {
+            progressLeft = 0
+        } else if(progressLeft >= 460) {
+            progressLeft = 460
+        }
+        this.$('.song-bar .progress-button').style.left = progressLeft + 'px'
+        this.$('.song-bar .progress').style.width = progressLeft + 'px'
+        this.audio.currentTime = this.audio.duration * (progressLeft/460)
+
+        this.locateLyric()
     }
 
     renderSongsList() {
@@ -158,11 +215,11 @@ class Player {
             fragment.appendChild(node)
         })
         this.$('.music-names-list').appendChild(fragment)
-
     }
 
     loadSong() {
         let songObj = this.songList[this.currentIndex]
+        this.$('.music-header-right .header-song-name').innerText = songObj.title
         this.$('.song-info img').src = songObj.cover
         this.$('.song-info .song-name').innerText = songObj.title
         this.$('.song-info .song-singer').innerText = songObj.author
@@ -177,6 +234,13 @@ class Player {
         this.audio.oncanplaythrough = () => this.audio.play()
     }
 
+    setProgressBar() {
+        let percent = (this.audio.currentTime * 100 / this.audio.duration) + '%'
+        this.$('.song-bar .progress').style.width = percent
+        this.$('.song-bar .progress-button').style.left = percent
+        this.$('#time-bar .time-start').innerText = this.formatTime(this.audio.currentTime)
+    }
+
     loadLyric() {
         let lyric = ''
         let request = new XMLHttpRequest()
@@ -184,7 +248,6 @@ class Player {
         request.onreadystatechange = () => {
             if(request.readyState === 4 && request.status === 200) {
                 lyric = request.responseText
-                // console.log(lyric)
                 this.setLyrics(lyric)
             }
         }
@@ -192,7 +255,7 @@ class Player {
     }
 
     setLyrics(lyrics) {
-        // this.lyricIndex = 0
+        this.lyricIndex = -1
         let fragment = document.createDocumentFragment()
         let lyricArr = []
         this.lyricArr = lyricArr
@@ -224,19 +287,30 @@ class Player {
         container.appendChild(fragment)
     }
 
-
-
     locateLyric() {
         let currentTime = this.audio.currentTime*1000
-        let nextLineTime = this.lyricArr[this.lyricIndex+1][0]
-        if(currentTime > nextLineTime && this.lyricIndex < this.lyricArr.length - 1) {
-            this.lyricIndex++
-            let node = document.querySelector(('[data-time="'+ this.lyricArr[this.lyricIndex][0]+'"]'))
-            if(node) {
-                this.setLineToCenter(node)
-                // console.log(node.innerText)
-            }
+        if(this.lyricIndex + 1 >= this.lyricArr.length || this.lyricIndex < -1) {
+            return
         }
+        // let prevLineTime = this.lyricArr[this.lyricIndex-1][0]
+        let nextLineTime = this.lyricArr[this.lyricIndex+1][0]
+        if(currentTime > nextLineTime ) {
+            this.lyricIndex++
+        }
+        // else if(currentTime < prevLineTime) {
+        //     this.lyricIndex--
+        // }
+        let node = document.querySelector(('[data-time="'+ this.lyricArr[this.lyricIndex][0]+'"]'))
+        if(node) {
+            this.setLineToCenter(node)
+        }
+        // if(currentTime > nextLineTime) {
+        //     this.lyricIndex++
+        //     let node = document.querySelector(('[data-time="'+ this.lyricArr[this.lyricIndex][0]+'"]'))
+        //     if(node) {
+        //         this.setLineToCenter(node)
+        //     }
+        // }
     }
 
     setLineToCenter(node) {
@@ -248,6 +322,15 @@ class Player {
         document.querySelectorAll('#lyric li').forEach(node => node.classList.remove('current'))
         node.classList.add('current')
     }
+
+    formatTime = (secondsTotal) => {
+        let minutes = parseInt(secondsTotal/60 + '')
+        minutes = minutes >= 10 ? '' + minutes : '0' + minutes
+        let seconds = parseInt(secondsTotal%60 + '')
+        seconds = seconds >= 10 ? '' + seconds : '0' + seconds
+        return minutes + ':' + seconds
+    }
+
 
 }
 

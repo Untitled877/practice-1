@@ -535,7 +535,7 @@ footer {
 }
 
 #time-bar > .song-bar {
-    margin-right: 10px;
+    margin-right: 20px;
 }
 
 .player-bar-wrapper > .player-bar > .song-info .song-bar {
@@ -555,26 +555,26 @@ footer {
     border-bottom-left-radius: 5px;
 }
 
+
 .song-bar > .progress > .progress-button {
     position: absolute;
-    bottom: -15px;
     left: 0;
     display: block;
-    width: 20px;
-    height: 20px;
-    background: #eaeaeb;
-    border-radius: 50%;
-    transform: translateY(-50%);
-}
-
-.song-bar > .progress > .progress-button::before {
-    position: absolute;
     width: 10px;
     height: 10px;
-    content: '';
     background: #b9180f;
+    border-radius: 50%;
+}
+
+.song-bar > .progress > .progress-button::after {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    content: '';
+    border: 5px solid #eaeaeb;
     border-radius: 50px;
-    transform: translate(50%, 50%);
 }
 
 .control-buttons {
@@ -608,9 +608,6 @@ footer {
 .player-bar svg:hover {
     color: white;
 }
-
-
-
 
 .image-wrapper > .box {
     position: relative;
