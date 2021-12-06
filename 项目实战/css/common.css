@@ -329,6 +329,7 @@ footer {
     bottom: 50px;
     left: 50%;
     z-index: 5;
+    display: none;
     width: 800px;
     height: 300px;
     background: #1e1e1e;
@@ -509,9 +510,6 @@ footer {
     padding: 0 8px;
 }
 
-/*#flag-play {*/
-/*    display: none;*/
-/*}*/
 
 .player-bar-wrapper > .player-bar > .song-info {
     display: flex;
@@ -569,9 +567,9 @@ footer {
 .song-bar > .progress > .progress-button::after {
     position: absolute;
     top: -5px;
-    left: -5px;
     right: -5px;
     bottom: -5px;
+    left: -5px;
     content: '';
     border: 5px solid #eaeaeb;
     border-radius: 50px;

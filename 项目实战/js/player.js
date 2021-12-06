@@ -135,6 +135,16 @@ class Player {
             // todo 切换列表选中
         }
 
+        let musicPanel = this.$('#music-panel')
+
+        this.$('#panel-close').onclick = () => {
+            musicPanel.style.display = 'none'
+        }
+
+        this.$('.svg-wrapper').onclick = () => {
+            musicPanel.style.display = 'block'
+        }
+
         let songBar = this.$('.song-bar')
         let progressButton = this.$('.song-bar .progress-button')
 
@@ -334,75 +344,8 @@ class Player {
 
 }
 
-// 音乐播放器部分：
-
 /*
-// let currentIndex = 0
 let isPlaying = false
-// const audio = new Audio()
-let currentTime = 0
-let flagPause = document.querySelector('#flag-pause')
-let flagPlay = document.querySelector('#flag-play')
-
-let prevSong = document.querySelector('#prev-song')
-let nextSong = document.querySelector('#next-song')
-
-let musicPanel = document.querySelector('#music-panel')
-let closeButton = document.querySelector('#panel-close')
-let showList = document.querySelector('.svg-wrapper')
-
-let songLength = songList.length
-
-closeButton.addEventListener('click', () => {
-    musicPanel.style.display = 'none'
-})
-
-showList.addEventListener('click', () => {
-    musicPanel.style.display = 'block'
-})
-
-let songBar = document.querySelector('.song-bar')
-let progress = document.querySelector('.song-bar .progress')
-let progressButton = document.querySelector('.song-bar .progress-button')
-let runtime = document.querySelector('#time-bar .time-start')
-runtime.innerText = '00:00'
-
-let lyric = ''
-let lyricIndex = 0
-let lyricArr = []
-
-let progressChange = (progressLeft) => {
-    if(progressLeft <= 0) {
-        progressLeft = 0
-    } else if(progressLeft >= 445) {
-        progressLeft = 445
-    }
-    progressButton.style.left = progressLeft + 'px'
-    progress.style.width = progressLeft + 'px'
-    audio.currentTime = audio.duration * (progressLeft/445)
-}
-
-let resetProgress = () => {
-    progress.style.width = '0'
-    progressButton.style.left = '0'
-}
-
-progressButton.onmousedown = function(e) {
-    let progressLeft = e.clientX - this.offsetLeft
-    document.onmousemove = function(e) {
-        let progressX = e.clientX - progressLeft
-        progressChange(progressX)
-    }
-    document.onmouseup = function(e) {
-        document.onmousemove = null
-        document.onmouseup = null
-    }
-}
-
-songBar.onclick = function(e) {
-    let progressLeft = e.clientX - this.offsetLeft
-    progressChange(progressLeft)
-}
 
 let toggleStyle = (isPlaying) => {
     if(isPlaying) {
@@ -412,176 +355,6 @@ let toggleStyle = (isPlaying) => {
         flagPause.style.display = 'inline-block'
         flagPlay.style.display = 'none'
     }
-}
-
-let changeMusic = (index) => {
-    if(index < 0 || index >= songList.length) {
-        return
-    }
-    // console.log(songList[index].title)
-    audio.src = songList[index].url
-    audio.play()
-    runtime.innerText = '00:00'
-    resetProgress()
-    isPlaying = true
-    toggleStyle(isPlaying)
-}
-
-flagPause.onclick = function() {
-    audio.src = songList[currentIndex].url
-    audio.currentTime = currentTime
-    audio.oncanplaythrough = () => audio.play()
-    isPlaying = true
-    toggleStyle(isPlaying)
-}
-
-flagPlay.onclick = function() {
-    isPlaying = false
-    currentTime = audio.currentTime
-    audio.pause()
-    toggleStyle(isPlaying)
-}
-
-
-
-audio.addEventListener('ended', () => {
-    isPlaying = false
-    toggleStyle(isPlaying)
-    currentIndex++
-    changeMusic(currentIndex)
-})
-
-audio.addEventListener('timeupdate', () => {
-    let deltaX = (audio.currentTime / audio.duration) * 455
-    progressButton.style.left = deltaX + 'px'
-    progress.style.width = deltaX + 'px'
-    locateLyric()
-    runtime.innerText = formatTime(audio.currentTime)
-})
-
-let setLyrics = (lyrics) => {
-    let fragment = document.createDocumentFragment()
-    lyrics.split(/\n/)
-        .filter(str => str.match(/\[.+?\]/))
-        .forEach(line => {
-            let str = line.replace(/\[.+?\]/g, '')
-            line.match(/\[.+?\]/g).forEach(t=>{
-                t = t.replace(/[\[\]]/g,'')
-                let milliseconds = parseInt(t.slice(0,2))*60*1000 + parseInt(t.slice(3,5))*1000 + parseInt(t.slice(6))
-                lyricArr.push([milliseconds, str])
-            })
-        })
-
-    lyricArr.filter(line => line[1].trim() !== '').sort((v1, v2) => {
-        if(v1[0] > v2[0]) {
-            return 1
-        } else {
-            return -1
-        }
-    }).forEach(line => {
-        let node = document.createElement('li')
-        node.setAttribute('data-time', line[0])
-        node.innerText = line[1]
-        fragment.appendChild(node)
-    })
-    let container = document.querySelector('.music-content-right #lyric')
-    container.innerHTML = ''
-    container.appendChild(fragment)
-}
-
-let loadLyric = (currentIndex) => {
-    let request = new XMLHttpRequest()
-    request.open('GET', songList[currentIndex].lyric)
-    request.onreadystatechange = () => {
-        if(request.readyState === 4 && request.status === 200) {
-            lyric = request.responseText
-            // console.log(lyric)
-            setLyrics(lyric)
-        }
-    }
-    request.send()
-}
-
-loadLyric(currentIndex)
-
-// 歌词定位
-let locateLyric = () => {
-    let currentTime = audio.currentTime*1000
-    let nextLineTime = lyricArr[lyricIndex+1][0]
-    if(currentTime > nextLineTime && lyricIndex < lyricArr.length - 1) {
-        lyricIndex++
-        let node = document.querySelector(('[data-time="'+ lyricArr[lyricIndex][0]+'"]'))
-        if(node) {
-            setLineToCenter(node)
-            // console.log(node.innerText)
-        }
-    }
-}
-
-let setLineToCenter = (node) => {
-    let contentRight = document.querySelector('.music-content-right')
-    let lyricContainer = document.querySelector('.music-content-right #lyric')
-    let offset = node.offsetTop - contentRight.offsetHeight/2
-    offset = offset > 0 ? offset : 0
-    lyricContainer.style.transform = `translateY(-${offset}px)`
-    document.querySelectorAll('#lyric li').forEach(node => node.classList.remove('current'))
-    node.classList.add('current')
-}
-
-let renderList = () => {
-    document.querySelectorAll('.song-list-length').forEach(item => item.innerText = songLength)
-    let fragment = document.createDocumentFragment()
-    songList.forEach((item, index) => {
-        let node = document.createElement('li')
-        // let svg = document.createElement('svg')
-        let svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
-        svg.classList.add('icon')
-        svg.setAttribute('aria-hidden', 'true')
-        let use = document.createElementNS('http://www.w3.org/2000/svg', 'use')
-        use.setAttributeNS(
-            "http://www.w3.org/1999/xlink",
-            "href",
-            "#icon-play-now"
-        );
-        svg.appendChild(use)
-        let songNameNode = document.createElement('span')
-        songNameNode.innerText = item.title
-        songNameNode.classList.add('col-song-name')
-        let singerNode = document.createElement('span')
-        singerNode.innerText = item.author
-        singerNode.classList.add('col-song-singer')
-        let songTimeNode = document.createElement('span')
-        songTimeNode.innerText = item.duration
-        songTimeNode.classList.add('col-song-time')
-        if(index === currentIndex) {
-            node.classList.add('song-selected')
-        }
-
-        node.appendChild(svg)
-        node.appendChild(songNameNode)
-        node.appendChild(singerNode)
-        node.appendChild(songTimeNode)
-        fragment.appendChild(node)
-    })
-    document.querySelector('.music-names-list').appendChild(fragment)
-    document.querySelector('.song-info img').src = songList[currentIndex].cover
-    document.querySelector('.song-info .song-name').innerText = songList[currentIndex].title
-    document.querySelector('.song-info .song-singer').innerText = songList[currentIndex].author
-    document.querySelector('#time-bar .time-end').innerText = songList[currentIndex].duration
-}
-
-let renderSong = () => {
-    // startTime置为00：00
-}
-
-renderList()
-
-let formatTime = (secondsTotal) => {
-    let minutes = parseInt(secondsTotal/60)
-    minutes = minutes >= 10 ? '' + minutes : '0' + minutes
-    let seconds = parseInt(secondsTotal%60)
-    seconds = seconds >= 10 ? '' + seconds : '0' + seconds
-    return minutes + ':' + seconds
 }
 */
 
