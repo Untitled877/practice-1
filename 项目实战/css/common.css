@@ -91,7 +91,7 @@ main > .left li .svg-right {
     display: none;
 }
 
-main > .left li > a {
+main > .left li > span {
     display: block;
     padding: 10px 0;
     font-size: 18px;
@@ -99,27 +99,25 @@ main > .left li > a {
     border-bottom: 1px solid #979595;
 }
 
-main > .left li > a:hover {
+main > .left li > span:hover {
+    cursor: pointer;
     background: grey;
 }
 
-main > .left li > .selected {
+main > .left li > .tab-nav-active {
     background: gray;
 }
 
-main > .left li:last-child {
+main > .left #toggle-menu {
     position: absolute;
     right: 0;
     bottom: 0;
     left: 0;
+    cursor: pointer;
     border-top: 1px solid #979595;
 }
 
-main > .left li:last-child:hover {
-    cursor: pointer;
-}
-
-main > .left li > svg {
+main > .left #toggle-menu > svg {
     display: block;
     width: 30px;
     height: 30px;
@@ -142,6 +140,14 @@ main > .content {
 main > .content-extension {
     left: 70px;
     transition: left .5s;
+}
+
+#route-view > li {
+    display: none;
+}
+
+#route-view > .tab-box-active {
+    display: block;
 }
 
 #carousel {
@@ -257,6 +263,10 @@ main > .content .content-bottom, .more-content {
     max-width: 900px;
     margin: 50px auto 10px;
     border: 3px solid black;
+}
+
+main > .content .more-content {
+    display: none;
 }
 
 main > .content .content-bottom > .image-wrapper, .more-imgs-wrapper{

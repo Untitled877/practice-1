@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="css/common.css">
     <style>
         .icon {
-            width: 1em; height: 1em;
+            width: 1em;
+            height: 1em;
             vertical-align: -0.15em;
             fill: currentColor;
             overflow: hidden;
@@ -24,24 +25,343 @@
     <main>
         <div id="left-nav" class="left">
             <ul>
-                <li><a href="#/nav1" class="selected">nav 1</a></li>
-                <li><a href="#/nav2">nav 2</a></li>
-                <li><a href="#/nav3">nav 3</a></li>
-                <li><a href="#/nav4">nav 4</a></li>
-                <li><a href="#/nav5">nav 5</a></li>
-                <li id="toggle-menu">
-                    <svg class="icon svg-right" aria-hidden="true">
-                        <use xlink:href="#icon-right"></use>
-                    </svg>
-                    <svg class="icon svg-left" aria-hidden="true">
-                        <use xlink:href="#icon-left"></use>
-                    </svg>
-                </li>
+                <li id="nav1" class="tab-nav-active"><span>nav 1</span></li>
+                <li id="nav2"><span>nav 2</span></li>
+                <li id="nav3"><span>nav 3</span></li>
+                <li id="nav4"><span>nav 4</span></li>
+                <li id="nav5"><span>nav 5</span></li>
+
             </ul>
+            <div id="toggle-menu">
+                <svg class="icon svg-left" aria-hidden="true">
+                    <use xlink:href="#icon-left"></use>
+                </svg>
+            </div>
         </div>
         <div id="right-content" class="content">
-            <div id="route-view">
-            </div>
+            <ul id="route-view">
+                <li class="tab-box-active">
+                    <div class="content-top" id="carousel">
+                        <div id="list-wrapper">
+                            <div id="list" style="left: 0">
+                                <img src="./images/carousel/carousel_1.jpg" alt="">
+                                <img src="./images/carousel/carousel_2.jpg" alt="">
+                                <img src="./images/carousel/carousel_3.jpg" alt="">
+                                <img src="./images/carousel/carousel_4.png" alt="">
+                                <img src="./images/carousel/carousel_5.png" alt="">
+                            </div>
+                            <div id="buttons">
+                                <span index="1" class="on"></span>
+                                <span index="2"></span>
+                                <span index="3"></span>
+                                <span index="4"></span>
+                                <span index="5"></span>
+                            </div>
+                        </div>
+                        <svg class="icon" id="prev" aria-hidden="true">
+                            <use xlink:href="#icon-left"></use>
+                        </svg>
+                        <svg class="icon" id="next" aria-hidden="true">
+                            <use xlink:href="#icon-right"></use>
+                        </svg>
+                    </div>
+                    <div class="content-bottom">
+                        <p class="read-more"><a href="#/nav1/readMore">查看更多</a></p>
+                        <div class="image-wrapper">
+                            <div class="box">
+                                <div class="img-box">
+                                    <img src="" alt="" class="image-item" lazyload="true" data-original="./images/1.jpg">
+                                </div>
+                                <div class="content">
+                                    <h3>Post Title One</h3>
+                                    <p>The quick brown fox jumps over a lazy dog.</p>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="img-box">
+                                    <img src="" alt="" class="image-item" lazyload="true" data-original="./images/2.jpg">
+                                </div>
+                                <div class="content">
+                                    <h3>Post Title One</h3>
+                                    <p>The quick brown fox jumps over a lazy dog.</p>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="img-box">
+                                    <img src="" alt="" class="image-item" lazyload="true" data-original="./images/3.jpg">
+                                </div>
+                                <div class="content">
+                                    <h3>Post Title One</h3>
+                                    <p>The quick brown fox jumps over a lazy dog.</p>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="img-box">
+                                    <img src="" alt="" class="image-item" lazyload="true" data-original="./images/4.jpg">
+                                </div>
+                                <div class="content">
+                                    <h3>Post Title One</h3>
+                                    <p>The quick brown fox jumps over a lazy dog.</p>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="img-box">
+                                    <img src="" alt="" class="image-item" lazyload="true" data-original="./images/5.jpg">
+                                </div>
+                                <div class="content">
+                                    <h3>Post Title One</h3>
+                                    <p>The quick brown fox jumps over a lazy dog.</p>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="img-box">
+                                    <img src="" alt="" class="image-item" lazyload="true" data-original="./images/6.jpg">
+                                </div>
+                                <div class="content">
+                                    <h3>Post Title One</h3>
+                                    <p>The quick brown fox jumps over a lazy dog.</p>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="img-box">
+                                    <img src="" alt="" class="image-item" lazyload="true" data-original="./images/7.jpg">
+                                </div>
+                                <div class="content">
+                                    <h3>Post Title One</h3>
+                                    <p>The quick brown fox jumps over a lazy dog.</p>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="img-box">
+                                    <img src="" alt="" class="image-item" lazyload="true" data-original="./images/8.jpg">
+                                </div>
+                                <div class="content">
+                                    <h3>Post Title One</h3>
+                                    <p>The quick brown fox jumps over a lazy dog.</p>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="img-box">
+                                    <img src="" alt="" class="image-item" lazyload="true" data-original="./images/9.jpg">
+                                </div>
+                                <div class="content">
+                                    <h3>Post Title One</h3>
+                                    <p>The quick brown fox jumps over a lazy dog.</p>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="img-box">
+                                    <img src="" alt="" class="image-item" lazyload="true" data-original="./images/10.jpg">
+                                </div>
+                                <div class="content">
+                                    <h3>Post Title One</h3>
+                                    <p>The quick brown fox jumps over a lazy dog.</p>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="img-box">
+                                    <img src="" alt="" class="image-item" lazyload="true" data-original="./images/11.jpg">
+                                </div>
+                                <div class="content">
+                                    <h3>Post Title One</h3>
+                                    <p>The quick brown fox jumps over a lazy dog.</p>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="img-box">
+                                    <img src="" alt="" class="image-item" lazyload="true" data-original="./images/12.jpg">
+                                </div>
+                                <div class="content">
+                                    <h3>Post Title One</h3>
+                                    <p>The quick brown fox jumps over a lazy dog.</p>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="img-box">
+                                    <img src="" alt="" class="image-item" lazyload="true" data-original="./images/1.jpg">
+                                </div>
+                                <div class="content">
+                                    <h3>Post Title One</h3>
+                                    <p>The quick brown fox jumps over a lazy dog.</p>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="img-box">
+                                    <img src="" alt="" class="image-item" lazyload="true" data-original="./images/2.jpg">
+                                </div>
+                                <div class="content">
+                                    <h3>Post Title One</h3>
+                                    <p>The quick brown fox jumps over a lazy dog.</p>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="img-box">
+                                    <img src="" alt="" class="image-item" lazyload="true" data-original="./images/3.jpg">
+                                </div>
+                                <div class="content">
+                                    <h3>Post Title One</h3>
+                                    <p>The quick brown fox jumps over a lazy dog.</p>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="img-box">
+                                    <img src="" alt="" class="image-item" lazyload="true" data-original="./images/4.jpg">
+                                </div>
+                                <div class="content">
+                                    <h3>Post Title One</h3>
+                                    <p>The quick brown fox jumps over a lazy dog.</p>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="img-box">
+                                    <img src="" alt="" class="image-item" lazyload="true" data-original="./images/5.jpg">
+                                </div>
+                                <div class="content">
+                                    <h3>Post Title One</h3>
+                                    <p>The quick brown fox jumps over a lazy dog.</p>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="img-box">
+                                    <img src="" alt="" class="image-item" lazyload="true" data-original="./images/6.jpg">
+                                </div>
+                                <div class="content">
+                                    <h3>Post Title One</h3>
+                                    <p>The quick brown fox jumps over a lazy dog.</p>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="img-box">
+                                    <img src="" alt="" class="image-item" lazyload="true" data-original="./images/7.jpg">
+                                </div>
+                                <div class="content">
+                                    <h3>Post Title One</h3>
+                                    <p>The quick brown fox jumps over a lazy dog.</p>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="img-box">
+                                    <img src="" alt="" class="image-item" lazyload="true" data-original="./images/8.jpg">
+                                </div>
+                                <div class="content">
+                                    <h3>Post Title One</h3>
+                                    <p>The quick brown fox jumps over a lazy dog.</p>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="img-box">
+                                    <img src="" alt="" class="image-item" lazyload="true" data-original="./images/9.jpg">
+                                </div>
+                                <div class="content">
+                                    <h3>Post Title One</h3>
+                                    <p>The quick brown fox jumps over a lazy dog.</p>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="img-box">
+                                    <img src="" alt="" class="image-item" lazyload="true" data-original="./images/10.jpg">
+                                </div>
+                                <div class="content">
+                                    <h3>Post Title One</h3>
+                                    <p>The quick brown fox jumps over a lazy dog.</p>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="img-box">
+                                    <img src="" alt="" class="image-item" lazyload="true" data-original="./images/11.jpg">
+                                </div>
+                                <div class="content">
+                                    <h3>Post Title One</h3>
+                                    <p>The quick brown fox jumps over a lazy dog.</p>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="img-box">
+                                    <img src="" alt="" class="image-item" lazyload="true" data-original="./images/12.jpg">
+                                </div>
+                                <div class="content">
+                                    <h3>Post Title One</h3>
+                                    <p>The quick brown fox jumps over a lazy dog.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="more-content">
+                        <div class="more-imgs-wrapper">
+                            <div class="scale-img">
+                                <img src="./images/13.jpg" alt="">
+                            </div>
+                            <div class="scale-img">
+                                <img src="./images/14.jpg" alt="">
+                            </div>
+                            <div class="scale-img">
+                                <img src="./images/15.jpg" alt="">
+                            </div>
+                            <div class="scale-img">
+                                <img src="./images/16.jpg" alt="">
+                            </div>
+                            <div class="scale-img">
+                                <img src="./images/17.jpg" alt="">
+                            </div>
+                            <div class="scale-img">
+                                <img src="./images/18.jpg" alt="">
+                            </div>
+                            <div class="scale-img">
+                                <img src="./images/19.jpg" alt="">
+                            </div>
+                            <div class="scale-img">
+                                <img src="./images/20.jpg" alt="">
+                            </div>
+                            <div class="scale-img">
+                                <img src="./images/21.jpg" alt="">
+                            </div>
+                            <div class="scale-img">
+                                <img src="./images/22.jpg" alt="">
+                            </div>
+                            <div class="scale-img">
+                                <img src="./images/23.jpg" alt="">
+                            </div>
+                            <div class="scale-img">
+                                <img src="./images/24.jpg" alt="">
+                            </div>
+                            <div class="scale-img">
+                                <img src="./images/25.jpg" alt="">
+                            </div>
+                            <div class="scale-img">
+                                <img src="./images/26.jpg" alt="">
+                            </div>
+                            <div class="scale-img">
+                                <img src="./images/27.jpg" alt="">
+                            </div>
+                            <div class="scale-img">
+                                <img src="./images/28.jpg" alt="">
+                            </div>
+                            <div class="scale-img">
+                                <img src="./images/29.jpg" alt="">
+                            </div>
+                            <div class="scale-img">
+                                <img src="./images/30.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="pagination">
+                            <span id="prev-page">上一页</span>
+                            <ul id="pages">
+                                <li class="current">1</li>
+                                <li>2</li>
+                                <li>3</li>
+                                <li>4</li>
+                                <li>5</li>
+                                <li>6</li>
+                            </ul>
+                            <span id="next-page">下一页</span>
+                        </div>
+                    </div>
+                </li>
+                <li>nav 2</li>
+                <li>nav 3</li>
+                <li>nav 4</li>
+                <li>nav 5</li>
+            </ul>
             <div class="back-to-top">
                 <svg class="icon svg-to-top" aria-hidden="true">
                     <use xlink:href="#icon-to-top"></use>
