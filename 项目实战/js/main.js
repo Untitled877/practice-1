@@ -1,6 +1,6 @@
 import Player from './player.js'
 import Carousel from "./carousel.js"
-// import GroupImgs from "./group-imgs"
+import GroupImgs from "./group-imgs.js"
 // import Pagination from "./pagination"
 
 // 侧边栏展开收缩
@@ -80,6 +80,9 @@ document.querySelector('.back-to-top').addEventListener('click', smoothScrollToT
 
 let carousel = document.querySelector('#carousel')
 window.carousel = new Carousel(carousel)
+
+let contentBottom = document.querySelector('.content-bottom')
+window.groupImgs = new GroupImgs(contentBottom)
 
 let footer = document.querySelector('footer')
 window.p = new Player(footer)
