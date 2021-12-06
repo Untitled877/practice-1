@@ -1,5 +1,5 @@
 import Player from './player.js'
-// import Carousel from "./carousel"
+import Carousel from "./carousel.js"
 // import GroupImgs from "./group-imgs"
 // import Pagination from "./pagination"
 
@@ -41,6 +41,20 @@ tabNavItems.forEach((item, index) => {
     }
 })
 
+// 点击查看更多
+let readMore = document.querySelector('.read-more span')
+readMore.addEventListener('click', () => {
+    document.querySelector('#route-view .hidden-view').style.display = 'none'
+    document.querySelector('#route-view .more-content').style.display = 'block'
+})
+
+// 返回
+let comeBack = document.querySelector('.more-content .come-back')
+comeBack.addEventListener('click', () => {
+    document.querySelector('#route-view .hidden-view').style.display = 'block'
+    document.querySelector('#route-view .more-content').style.display = 'none'
+})
+
 // 回到顶部
 let showScrollBar = () => {
     let backToTop = document.querySelector('.back-to-top')
@@ -63,6 +77,9 @@ let smoothScrollToTop = () => {
 
 document.querySelector('#right-content').addEventListener('scroll', showScrollBar)
 document.querySelector('.back-to-top').addEventListener('click', smoothScrollToTop)
+
+let carousel = document.querySelector('#carousel')
+window.carousel = new Carousel(carousel)
 
 let footer = document.querySelector('footer')
 window.p = new Player(footer)

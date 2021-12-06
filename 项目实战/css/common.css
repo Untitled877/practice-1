@@ -104,7 +104,7 @@ main > .left li > span:hover {
     background: grey;
 }
 
-main > .left li > .tab-nav-active {
+main > .left .tab-nav-active {
     background: gray;
 }
 
@@ -231,12 +231,23 @@ main > .content-extension {
     text-align: right;
 }
 
-.read-more > a {
+.read-more > span {
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .read-more > a:hover {
     color: blue;
+}
+
+.more-content > p {
+    margin: 20px;
+}
+
+.more-content > p > span {
+    font-size: 16px;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .scale-img {
