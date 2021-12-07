@@ -83,6 +83,10 @@ window.carousel = new Carousel(carousel)
 
 let contentBottom = document.querySelector('.content-bottom')
 window.groupImgs = new GroupImgs(contentBottom)
+groupImgs.lazyload()
+document.querySelector('#right-content').addEventListener('scroll', () => {
+    window.groupImgs.throttle_lazyload()
+})
 
 let moreContent = document.querySelector('.more-content')
 window.moreContent = new Pagination(moreContent)

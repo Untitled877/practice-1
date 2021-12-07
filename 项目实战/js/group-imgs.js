@@ -3,10 +3,10 @@ class GroupImgs {
         this.root = typeof node === 'string' ? document.querySelector(node) : node
         this.viewHeight = document.documentElement.clientHeight
 
-        this.lazyload()
-        document.querySelector('#right-content').addEventListener('scroll', () => {
-            this.throttle_lazyload()
-        })
+        // this.lazyload()
+        // document.querySelector('#right-content').addEventListener('scroll', () => {
+        //     this.throttle_lazyload()
+        // })
     }
 
     throttle = function(fn, delay) {
