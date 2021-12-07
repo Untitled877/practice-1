@@ -90,7 +90,9 @@ class Player {
         this.currentIndex = 0
         this.audio = new Audio()
         this.lyricIndex = -1
+        this.currentLyricIndex = 0
         this.lyricArr = []
+        this.lyricTimeArr = []
 
         this.start()
         this.bind()
@@ -268,7 +270,9 @@ class Player {
         this.lyricIndex = -1
         let fragment = document.createDocumentFragment()
         let lyricArr = []
+        let lyricTimeArr = []
         this.lyricArr = lyricArr
+        this.lyricTimeArr = lyricTimeArr
         lyrics.split(/\n/)
             .filter(str => str.match(/\[.+?\]/))
             .forEach(line => {
@@ -292,6 +296,11 @@ class Player {
             node.innerText = line[1]
             fragment.appendChild(node)
         })
+
+        this.lyricArr.forEach((item, index) => {
+            this.lyricTimeArr.push(item[0])
+        })
+
         let container = document.querySelector('.music-content-right #lyric')
         container.innerHTML = ''
         container.appendChild(fragment)
@@ -299,28 +308,16 @@ class Player {
 
     locateLyric() {
         let currentTime = this.audio.currentTime*1000
-        if(this.lyricIndex + 1 >= this.lyricArr.length || this.lyricIndex < -1) {
-            return
-        }
-        // let prevLineTime = this.lyricArr[this.lyricIndex-1][0]
-        let nextLineTime = this.lyricArr[this.lyricIndex+1][0]
-        if(currentTime > nextLineTime ) {
-            this.lyricIndex++
-        }
-        // else if(currentTime < prevLineTime) {
-        //     this.lyricIndex--
-        // }
-        let node = document.querySelector(('[data-time="'+ this.lyricArr[this.lyricIndex][0]+'"]'))
+        this.currentLyricIndex = 0
+        this.lyricTimeArr.forEach((item, index) => {
+            if(currentTime >= item) {
+                this.currentLyricIndex = index
+            }
+        })
+        let node = document.querySelector(('[data-time="'+ this.lyricArr[this.currentLyricIndex][0]+'"]'))
         if(node) {
             this.setLineToCenter(node)
         }
-        // if(currentTime > nextLineTime) {
-        //     this.lyricIndex++
-        //     let node = document.querySelector(('[data-time="'+ this.lyricArr[this.lyricIndex][0]+'"]'))
-        //     if(node) {
-        //         this.setLineToCenter(node)
-        //     }
-        // }
     }
 
     setLineToCenter(node) {
