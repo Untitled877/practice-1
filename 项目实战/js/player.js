@@ -89,10 +89,11 @@ class Player {
 
         this.currentIndex = 0
         this.audio = new Audio()
-        this.lyricIndex = -1
         this.currentLyricIndex = 0
         this.lyricArr = []
         this.lyricTimeArr = []
+
+        this.isPlaying = false
 
         this.start()
         this.bind()
@@ -106,17 +107,8 @@ class Player {
     bind() {
         let self = this
         this.$('#flag-play').onclick = function() {
-            if(this.classList.contains('playing')) {
-                self.audio.pause()
-                this.classList.remove('playing')
-                this.classList.add('pause')
-                this.querySelector('use').setAttribute('xlink:href', '#icon-pause')
-            } else if(this.classList.contains('pause')) {
-                self.audio.play()
-                this.classList.remove('pause')
-                this.classList.add('playing')
-                this.querySelector('use').setAttribute('xlink:href', '#icon-play')
-            }
+            self.isPlaying = !self.isPlaying
+            self.togglePlay()
         }
 
         this.$('#prev-song').onclick = function() {
@@ -125,6 +117,8 @@ class Player {
             self.loadSong()
             self.playSong()
             // todo 切换暂停播放按钮
+            self.isPlaying = true
+            self.togglePlay()
             // todo 切换列表选中
         }
 
@@ -134,6 +128,8 @@ class Player {
             self.loadSong()
             self.playSong()
             // todo 切换暂停播放按钮
+            self.isPlaying = true
+            self.togglePlay()
             // todo 切换列表选中
         }
 
@@ -156,7 +152,7 @@ class Player {
                 let progressX = e.clientX - progressLeft
                 self.progressChange(progressX)
             }
-            document.onmouseup = function(e) {
+            document.onmouseup = function() {
                 document.onmousemove = null
                 document.onmouseup = null
             }
@@ -168,6 +164,7 @@ class Player {
         }
 
         this.audio.ontimeupdate = function() {
+            self.togglePlay()
             self.locateLyric()
             self.setProgressBar()
         }
@@ -176,6 +173,15 @@ class Player {
             // 自动加载下一首
             self.$('#next-song').onclick()
         })
+    }
+    togglePlay() {
+        if(this.isPlaying) {
+            this.audio.play()
+            this.$('#flag-play').querySelector('use').setAttribute('xlink:href', '#icon-play')
+        } else {
+            this.audio.pause()
+            this.$('#flag-play').querySelector('use').setAttribute('xlink:href', '#icon-pause')
+        }
     }
 
     progressChange(progressLeft) {
@@ -186,8 +192,8 @@ class Player {
         }
         this.$('.song-bar .progress-button').style.left = progressLeft + 'px'
         this.$('.song-bar .progress').style.width = progressLeft + 'px'
-        this.audio.currentTime = this.audio.duration * (progressLeft/460)
 
+        this.audio.currentTime = this.audio.duration * (progressLeft/460)
         this.locateLyric()
     }
 
@@ -267,7 +273,6 @@ class Player {
     }
 
     setLyrics(lyrics) {
-        this.lyricIndex = -1
         let fragment = document.createDocumentFragment()
         let lyricArr = []
         let lyricTimeArr = []
@@ -297,7 +302,7 @@ class Player {
             fragment.appendChild(node)
         })
 
-        this.lyricArr.forEach((item, index) => {
+        this.lyricArr.forEach((item) => {
             this.lyricTimeArr.push(item[0])
         })
 
@@ -338,19 +343,5 @@ class Player {
         return minutes + ':' + seconds
     }
 }
-
-/*
-let isPlaying = false
-
-let toggleStyle = (isPlaying) => {
-    if(isPlaying) {
-        flagPlay.style.display = 'inline-block'
-        flagPause.style.display = 'none'
-    } else {
-        flagPause.style.display = 'inline-block'
-        flagPlay.style.display = 'none'
-    }
-}
-*/
 
 export default Player
