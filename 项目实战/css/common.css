@@ -458,6 +458,11 @@ footer {
     visibility: visible;
 }
 
+.music-content-left ul > .song-selected {
+    color: white;
+    background: #111613;
+}
+
 .col-song-name {
     display: inline-block;
     width: 207px;

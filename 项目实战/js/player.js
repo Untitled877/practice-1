@@ -114,23 +114,13 @@ class Player {
         this.$('#prev-song').onclick = function() {
             // 列表循环
             self.currentIndex = (self.songList.length + self.currentIndex - 1) % self.songList.length
-            self.loadSong()
-            self.playSong()
-            // todo 切换暂停播放按钮
-            self.isPlaying = true
-            self.togglePlay()
-            // todo 切换列表选中
+            self.changeMusic()
         }
 
         this.$('#next-song').onclick = function() {
             // 列表循环
             self.currentIndex = (self.currentIndex + 1) % self.songList.length
-            self.loadSong()
-            self.playSong()
-            // todo 切换暂停播放按钮
-            self.isPlaying = true
-            self.togglePlay()
-            // todo 切换列表选中
+            self.changeMusic()
         }
 
         let musicPanel = this.$('#music-panel')
@@ -141,6 +131,7 @@ class Player {
 
         this.$('.svg-wrapper').onclick = () => {
             musicPanel.style.display = 'block'
+            self.renderSongSelected()
         }
 
         let songBar = this.$('.song-bar')
@@ -184,6 +175,14 @@ class Player {
         }
     }
 
+    changeMusic() {
+        this.loadSong()
+        this.playSong()
+        this.isPlaying = true
+        this.togglePlay()
+        this.renderSongSelected()
+    }
+
     progressChange(progressLeft) {
         if(progressLeft <= 0) {
             progressLeft = 0
@@ -222,9 +221,6 @@ class Player {
             let songTimeNode = document.createElement('span')
             songTimeNode.innerText = item.duration
             songTimeNode.classList.add('col-song-time')
-            if(index === this.currentIndex) {
-                node.classList.add('song-selected')
-            }
 
             node.appendChild(svg)
             node.appendChild(songNameNode)
@@ -233,6 +229,27 @@ class Player {
             fragment.appendChild(node)
         })
         this.$('.music-names-list').appendChild(fragment)
+        this.renderSongSelected()
+    }
+
+    renderSongSelected() {
+        this.$$('.music-names-list li').forEach((item, index) => {
+            item.classList.remove('song-selected')
+            if(index === this.currentIndex) {
+                item.classList.add('song-selected')
+            }
+        })
+        if(this.$$('.music-names-list li')[this.currentIndex].offsetTop > 150) {
+            this.$('.music-content-left').scrollTo({
+                top: 200,
+                behavior: 'smooth'
+            })
+        } else {
+            this.$('.music-content-left').scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            })
+        }
     }
 
     loadSong() {
