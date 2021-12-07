@@ -154,6 +154,13 @@ class Player {
             self.progressChange(progressLeft)
         }
 
+        this.$$('.music-names-list li').forEach((item, index) => {
+            item.addEventListener('dblclick', () => {
+                this.currentIndex = index
+                this.changeMusic()
+            })
+        })
+
         this.audio.ontimeupdate = function() {
             self.togglePlay()
             self.locateLyric()
