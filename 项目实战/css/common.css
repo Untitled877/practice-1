@@ -371,33 +371,10 @@ footer {
 #music-panel > .music-header-wrapper > .music-header-left {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     width: 50%;
     border-right: 1px solid #0f0f0f;
     box-shadow: 2px 0 2px #242424;
  }
-
-#music-panel > .music-header-wrapper > .music-header-left .button-clear {
-    display: flex;
-    margin-right: 20px;
-}
-
-#music-panel > .music-header-wrapper > .music-header-left .button-clear svg {
-    width: 20px;
-    height: 20px;
-    padding-right: 5px;
-    color: #ccc;
-}
-
-#music-panel > .music-header-wrapper > .music-header-left .button-clear:hover {
-    color: white;
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-#music-panel > .music-header-wrapper > .music-header-left .button-clear:hover svg {
-    color: white;
-}
 
 #music-panel > .music-header-wrapper > .music-header-right {
     display: flex;
