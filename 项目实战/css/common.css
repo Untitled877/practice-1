@@ -406,6 +406,10 @@ footer {
     justify-content: space-between;
 }
 
+.music-header-right #panel-close:hover {
+    color: white;
+}
+
 #music-panel > .music-content {
     display: flex;
     height: 259px;

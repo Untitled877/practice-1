@@ -1,7 +1,7 @@
 import Player from './player.js'
 import Carousel from "./carousel.js"
 import GroupImgs from "./group-imgs.js"
-// import Pagination from "./pagination"
+import Pagination from "./pagination.js"
 
 // 侧边栏展开收缩
 let visible = true
@@ -83,6 +83,10 @@ window.carousel = new Carousel(carousel)
 
 let contentBottom = document.querySelector('.content-bottom')
 window.groupImgs = new GroupImgs(contentBottom)
+
+let moreContent = document.querySelector('.more-content')
+window.moreContent = new Pagination(moreContent)
+
 
 let footer = document.querySelector('footer')
 window.p = new Player(footer)
