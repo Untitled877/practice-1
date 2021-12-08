@@ -94,6 +94,8 @@ class Player {
         this.lyricTimeArr = []
 
         this.isPlaying = false
+        this.mode = 'listcycle'
+        // listcycle 列表循环 singlecycle 单曲循环 shuffleplay 随机播放
 
         this.start()
         this.bind()
@@ -112,14 +114,20 @@ class Player {
         }
 
         this.$('#prev-song').onclick = function() {
-            // 列表循环
-            self.currentIndex = (self.songList.length + self.currentIndex - 1) % self.songList.length
+            if(self.mode === 'listcycle') {
+                self.currentIndex = (self.songList.length + self.currentIndex - 1) % self.songList.length
+            } else if(self.mode === 'shuffleplay') {
+                self.currentIndex = Math.floor(Math.random() * self.songList.length)
+            }
             self.changeMusic()
         }
 
         this.$('#next-song').onclick = function() {
-            // 列表循环
-            self.currentIndex = (self.currentIndex + 1) % self.songList.length
+            if(self.mode === 'listcycle') {
+                self.currentIndex = (self.currentIndex + 1) % self.songList.length
+            } else if(self.mode === 'shuffleplay') {
+                self.currentIndex = Math.floor(Math.random() * self.songList.length)
+            }
             self.changeMusic()
         }
 
@@ -171,6 +179,19 @@ class Player {
             // 自动加载下一首
             self.$('#next-song').onclick()
         })
+
+        this.$('#loop-play').onclick = function() {
+            if(self.mode === 'listcycle') {
+                this.querySelector('use').setAttribute('xlink:href', '#icon-play-shuffle')
+                self.mode = 'shuffleplay'
+            } else if(self.mode === 'shuffleplay') {
+                this.querySelector('use').setAttribute('xlink:href', '#icon-single-circle')
+                self.mode = 'singlecycle'
+            } else {
+                this.querySelector('use').setAttribute('xlink:href', '#icon-play-loop')
+                self.mode = 'listcycle'
+            }
+        }
     }
     togglePlay() {
         if(this.isPlaying) {
