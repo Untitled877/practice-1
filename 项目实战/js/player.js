@@ -89,13 +89,17 @@ class Player {
 
         this.currentIndex = 0
         this.audio = new Audio()
+        this.audio.volume = 0.5
         this.currentLyricIndex = 0
         this.lyricArr = []
         this.lyricTimeArr = []
 
         this.isPlaying = false
+        // listcycle 列表循环
+        // singlecycle 单曲循环
+        // shuffleplay 随机播放
         this.mode = 'listcycle'
-        // listcycle 列表循环 singlecycle 单曲循环 shuffleplay 随机播放
+        this.show = false
 
         this.start()
         this.bind()
@@ -162,6 +166,30 @@ class Player {
             self.progressChange(progressLeft)
         }
 
+        let volumnProgressButton = this.$('.volumn-bar .volumn-progress-button')
+
+        volumnProgressButton.onmousedown = function(e) {
+            let progressTop = e.clientY - this.offsetTop
+            document.onmousemove = function(e) {
+                let progressY = e.clientY - progressTop
+                self.volumnProgressChange(100 - progressY)
+            }
+            document.onmouseup = function() {
+                document.onmousemove = null
+                document.onmouseup = null
+            }
+        }
+
+        this.$('#sound-volume').onclick = function() {
+            self.show = !self.show
+            if(self.show) {
+                self.$('.control-buttons .box-wrapper').style.display = 'block'
+                self.setVolumnBar()
+            } else {
+                self.$('.control-buttons .box-wrapper').style.display = 'none'
+            }
+        }
+
         this.$$('.music-names-list li').forEach((item, index) => {
             item.addEventListener('dblclick', () => {
                 this.currentIndex = index
@@ -211,6 +239,11 @@ class Player {
         this.renderSongSelected()
     }
 
+    setVolumnBar() {
+        this.$('.volumn-bar .volumn-progress-button').style.bottom = this.audio.volume * 100 + 'px'
+        this.$('.volumn-progress').style.height = this.audio.volume * 100 + 'px'
+    }
+
     progressChange(progressLeft) {
         if(progressLeft <= 0) {
             progressLeft = 0
@@ -222,6 +255,22 @@ class Player {
 
         this.audio.currentTime = this.audio.duration * (progressLeft/460)
         this.locateLyric()
+    }
+
+    volumnProgressChange(progressTop) {
+        if(progressTop <= 0) {
+            progressTop = 0
+            this.$('#sound-volume').querySelector('use').setAttribute('xlink:href', '#icon-mute')
+        } else if(progressTop >= 100) {
+            progressTop = 100
+        } else {
+            this.$('#sound-volume').querySelector('use').setAttribute('xlink:href', '#icon-audio')
+        }
+
+        this.$('.volumn-bar .volumn-progress-button').style.bottom = progressTop + 'px'
+        this.$('.volumn-progress').style.height = progressTop + 'px'
+
+        this.audio.volume = progressTop / 100
     }
 
     renderSongsList() {
