@@ -42,30 +42,50 @@
             <ul id="route-view">
                 <li class="tab-box-active">
                     <div class="hidden-view">
-                        <div class="content-top" id="carousel">
-                            <div id="list-wrapper">
-                                <div id="list" style="left: 0">
-                                    <img src="./images/carousel/carousel_1.jpg" alt="">
-                                    <img src="./images/carousel/carousel_2.jpg" alt="">
-                                    <img src="./images/carousel/carousel_3.jpg" alt="">
-                                    <img src="./images/carousel/carousel_4.png" alt="">
-                                    <img src="./images/carousel/carousel_5.png" alt="">
-                                </div>
-                                <div id="buttons">
-                                    <span index="1" class="on"></span>
-                                    <span index="2"></span>
-                                    <span index="3"></span>
-                                    <span index="4"></span>
-                                    <span index="5"></span>
-                                </div>
+                        <div class="content-top" id="slider">
+                            <ul class="slider-item-container">
+                                <li><a href="#"><img src="./images/carousel/carousel_1.png" /></a></li>
+                                <li><a href="#"><img src="./images/carousel/carousel_2.jpg" /></a></li>
+                                <li><a href="#"><img src="./images/carousel/carousel_3.jpg" /></a></li>
+                                <li><a href="#"><img src="./images/carousel/carousel_4.png" /></a></li>
+                                <li><a href="#"><img src="./images/carousel/carousel_5.png" /></a></li>
+                            </ul>
+                            <div class="arrow-container">
+                                <span class="left-arrow"><</span>
+                                <span class="right-arrow">></span>
                             </div>
-                            <svg class="icon" id="prev" aria-hidden="true">
-                                <use xlink:href="#icon-left"></use>
-                            </svg>
-                            <svg class="icon" id="next" aria-hidden="true">
-                                <use xlink:href="#icon-right"></use>
-                            </svg>
+                            <div class="indicator-container">
+                                <span class="indicator active"></span>
+                                <span class="indicator"></span>
+                                <span class="indicator"></span>
+                                <span class="indicator"></span>
+                                <span class="indicator"></span>
+                            </div>
                         </div>
+<!--                        <div class="content-top" id="carousel">-->
+<!--                            <div id="list-wrapper">-->
+<!--                                <div id="list" style="left: 0">-->
+<!--                                    <img src="./images/carousel/carousel_1.jpg" alt="">-->
+<!--                                    <img src="./images/carousel/carousel_2.jpg" alt="">-->
+<!--                                    <img src="./images/carousel/carousel_3.jpg" alt="">-->
+<!--                                    <img src="./images/carousel/carousel_4.png" alt="">-->
+<!--                                    <img src="./images/carousel/carousel_5.png" alt="">-->
+<!--                                </div>-->
+<!--                                <div id="buttons">-->
+<!--                                    <span index="1" class="on"></span>-->
+<!--                                    <span index="2"></span>-->
+<!--                                    <span index="3"></span>-->
+<!--                                    <span index="4"></span>-->
+<!--                                    <span index="5"></span>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <svg class="icon" id="prev" aria-hidden="true">-->
+<!--                                <use xlink:href="#icon-left"></use>-->
+<!--                            </svg>-->
+<!--                            <svg class="icon" id="next" aria-hidden="true">-->
+<!--                                <use xlink:href="#icon-right"></use>-->
+<!--                            </svg>-->
+<!--                        </div>-->
                         <div class="content-bottom">
                             <p class="read-more"><span>查看更多</span></p>
                             <div class="image-wrapper">

@@ -1,5 +1,6 @@
 import Player from './player.js'
-import Carousel from "./carousel.js"
+// import Carousel from "./carousel.js"
+import Slider from "./slider.js"
 import GroupImgs from "./group-imgs.js"
 import Pagination from "./pagination.js"
 
@@ -78,8 +79,11 @@ let smoothScrollToTop = () => {
 document.querySelector('#right-content').addEventListener('scroll', showScrollBar)
 document.querySelector('.back-to-top').addEventListener('click', smoothScrollToTop)
 
-let carousel = document.querySelector('#carousel')
-window.carousel = new Carousel(carousel)
+// let carousel = document.querySelector('#carousel')
+// window.carousel = new Carousel(carousel)
+
+let slider = document.querySelector('#slider')
+window.slider = new Slider(slider)
 
 let contentBottom = document.querySelector('.content-bottom')
 window.groupImgs = new GroupImgs(contentBottom)
